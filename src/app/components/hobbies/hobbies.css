@@ -1,0 +1,158 @@
+.hobbies-container {
+  padding: 60px 20px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.intro-text {
+  position: fixed;
+  top: 40px;
+  left: 60px;
+
+  width: 300px;
+  text-align: left;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.intro-text p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.6;
+}
+
+.highlight-phrase {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.arts-wrapper {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.art-item {
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.art-description {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 600;
+
+  text-align: center;
+
+  width: 100%;
+  max-width: 600px;
+}
+
+.image-frame {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.image-frame:hover {
+  transform: scale(1.02);
+}
+
+.image-frame img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  max-height: 500px;
+}
+
+.tools-used {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 600px;
+  justify-content: flex-start;
+}
+
+.tool-label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.tool-icon {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+  .intro-text {
+    width: 200px;
+  }
+  .intro-text p {
+    font-size: 0.9rem;
+  }
+  .highlight-phrase {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hobbies-container {
+    padding: 100px 20px 40px 20px;
+  }
+
+  .intro-text {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    pointer-events: auto;
+  }
+
+  .highlight-phrase {
+    font-size: 1.4rem;
+  }
+
+  .image-frame {
+    box-shadow: none;
+  }
+
+  .art-description,
+  .tools-used {
+    text-align: center;
+    justify-content: center;
+  }
+}

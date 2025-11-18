@@ -1,0 +1,35 @@
+<div class="header-fixed">
+  <a routerLink="/" class="home-link" (mouseenter)="playNameSound()" (click)="playClickSound()">
+    <h1 class="glitch" data-text="Mickeias Charles">Mickeias Charles</h1>
+
+    <p>Software Developer</p>
+  </a>
+</div>
+
+<nav class="nav-timeline">
+  <div class="timeline-strip">
+    <div class="geo-arrow-up"></div>
+
+    <div class="vertical-line">
+      <div class="menu-items-overlay">
+        <div *ngFor="let item of menuItems" class="menu-item-wrapper">
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            class="nav-link"
+            (mouseenter)="playHoverSound()"
+            (click)="playClickSound()"
+          >
+            <span class="label">{{ item.label }}</span>
+            <div class="connector">
+              <div class="line-horizontal"></div>
+              <div class="dot"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="geo-arrow-down"></div>
+  </div>
+</nav>

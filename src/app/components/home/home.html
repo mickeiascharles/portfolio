@@ -1,0 +1,150 @@
+<section class="home-container">
+  <div class="code-background">
+    <pre><code>
+/*
+  Historia_Mickeias.c
+  Um programa em C que representa a história de vida do usuário (Mickeias)
+  com base nas informações que ele compartilhou.
+
+  Como usar:
+  gcc Historia_Mickeias.c -o Historia_Mickeias
+  ./Historia_Mickeias
+*/
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct &#123;
+    int day;
+    int month;
+    int year;
+&#125; Date;
+
+typedef struct &#123;
+    const char *title;
+    const char *description;
+    Date date; // data aproximada (quando disponível)
+&#125; Event;
+
+typedef struct &#123;
+    const char *name;
+    Date birthdate;
+    const char *birthplace;
+    const char *favorites[10];
+    int favorites_count;
+    const char *idols[10];
+    int idols_count;
+    Event timeline[32];
+    int timeline_count;
+&#125; Person;
+
+void printDate(Date d)&#123;
+    if(d.day==0 && d.month==0 && d.year==0) printf("(data desconhecida)");
+    else printf("%02d/%02d/%04d", d.day, d.month, d.year);
+&#125;
+
+void printHeader(const Person *p)&#123;
+    printf("========================================\n");
+    printf("Historia: %s\n", p-&gt;name);
+    printf("Nascimento: "); printDate(p-&gt;birthdate); printf(" - %s\n", p-&gt;birthplace);
+    printf("========================================\n\n");
+&#125;
+
+void printFavorites(const Person *p)&#123;
+    printf("Favoritos (amostral):\n");
+    for(int i=0;i&lt;p-&gt;favorites_count;i++)&#123;
+        printf(" - %s\n", p-&gt;favorites[i]);
+    &#125;
+    printf("\n");
+&#125;
+
+void printIdols(const Person *p)&#123;
+    printf("Ídolos e inspirações:\n");
+    for(int i=0;i&lt;p-&gt;idols_count;i++)&#123;
+        printf(" - %s\n", p-&gt;idols[i]);
+    &#125;
+    printf("\n");
+&#125;
+
+void printTimeline(const Person *p)&#123;
+    printf("Linha do tempo (eventos registrados):\n\n");
+    for(int i=0;i&lt;p-&gt;timeline_count;i++)&#123;
+        Event e = p-&gt;timeline[i];
+        printf("[%02d/%02d/%04d] %s\n", e.date.day, e.date.month, e.date.year, e.title);
+        printf("   %s\n\n", e.description);
+    &#125;
+&#125;
+
+int main(void)&#123;
+    Person user = &#123;0&#125;;
+
+    // Identidade básica
+    user.name = "Mickeias"; // nome associado à conta
+    user.birthdate.day = 3; user.birthdate.month = 10; user.birthdate.year = 2001;
+    user.birthplace = "Brasília, Brasil";
+
+    // Favoritos (jogos, filmes, séries)
+    user.favorites[0] = "GTA San Andreas";
+    user.favorites[1] = "Elden Ring";
+    user.favorites[2] = "Assassin's Creed: Black Flag / Valhalla";
+    user.favorites[3] = "Harry Potter";
+    user.favorites[4] = "Game of Thrones / House of the Dragon";
+    user.favorites[5] = "Stranger Things";
+    user.favorites[6] = "Breaking Bad";
+    user.favorites_count = 7;
+
+    // Ídolos e referências
+    user.idols[0] = "Travis Scott";
+    user.idols[1] = "Djavan";
+    user.idols[2] = "Alan Turing";
+    user.idols[3] = "George R.R. Martin";
+    user.idols[4] = "Hideo Kojima";
+    user.idols[5] = "Hidetaka Miyazaki";
+    user.idols_count = 6;
+
+    // Timeline (eventos importantes conhecidos)
+    int tc = 0;
+
+    user.timeline[tc++] = (Event)&#123;"Nascimento",
+        "Nascimento em Brasília.", &#123;3,10,2001&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Interesse por tecnologia e jogos",
+        "Infância e adolescência marcadas por curiosidade por tecnologia; jogos como GTA e Assassin's Creed formaram gosto narrativo.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Fãs e shows de Travis Scott",
+        "Grande fã de Travis Scott; foi a dois shows: Primavera Sound (SP) e Rock in Rio.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Entrada na faculdade de Ciência da Computação",
+        "Começou o curso e iniciou projetos práticos e acadêmicos, vendo o código como forma de arte.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Amizade com Gustavo",
+        "Fez amizade com Gustavo na faculdade — parceiro em projetos como ListBeat e ideias para equipe freelancer.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Projeto: ListBeat",
+        "Aplicativo inspirado no Letterboxd para música: catálogo pessoal, avaliações, listas e histórico de músicas; desenvolvido em SwiftUI.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Projeto: Rolê (HackaTruck)",
+        "Rede social para entretenimento cultural, entregue como projeto acadêmico.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline[tc++] = (Event)&#123;"Trabalhos e estudos em diversas tecnologias",
+        "Experiência com Swift, SwiftUI, Java, modelagem de banco de dados, autenticação multifator e desenvolvimento web.", &#123;0,0,0&#125;&#125;;
+
+    user.timeline_count = tc;
+
+    // Impressão
+    printHeader(&user);
+    printFavorites(&user);
+    printIdols(&user);
+    printTimeline(&user);
+
+    printf("FIM DA HISTORIA — até o momento presente (faculdade e projetos em andamento).\n");
+
+    return 0;
+&#125;
+    </code></pre>
+  </div>
+
+  <div class="character-wrapper">
+    <img src="assets/character.webp" alt="Ilustração Mickeias" class="character-img" />
+  </div>
+</section>

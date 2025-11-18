@@ -1,0 +1,262 @@
+.header-fixed {
+  position: fixed;
+  top: 40px;
+  right: 60px;
+  text-align: right;
+  z-index: 100;
+}
+
+.header-fixed .home-link {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  display: block;
+}
+
+.header-fixed h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -1px;
+  position: relative;
+}
+
+.header-fixed p {
+  font-size: 1.2rem;
+  margin: 5px 0 0 0;
+  font-weight: 300;
+}
+
+.home-link:hover h1.glitch {
+  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #000;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  display: none;
+}
+
+.home-link:hover .glitch::before {
+  display: block;
+  color: #0ff;
+  z-index: -1;
+  animation: glitch-anim-1 0.4s infinite linear alternate-reverse;
+}
+
+.home-link:hover .glitch::after {
+  display: block;
+  color: #f00;
+  z-index: -2;
+  animation: glitch-anim-2 0.4s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-2px, 2px);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, -2px);
+  }
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-2px, 1px);
+  }
+  100% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(2px, -1px);
+  }
+  20% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(2px, -2px);
+  }
+  60% {
+    clip-path: inset(10% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+  80% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(2px, -1px);
+  }
+  100% {
+    clip-path: inset(20% 0 60% 0);
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes glitch-skew {
+  0% {
+    transform: skew(0deg);
+  }
+  20% {
+    transform: skew(-2deg);
+  }
+  40% {
+    transform: skew(2deg);
+  }
+  60% {
+    transform: skew(-1deg);
+  }
+  80% {
+    transform: skew(1deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+.nav-timeline {
+  position: fixed;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 450px;
+  z-index: 90;
+  display: flex;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.timeline-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 20px;
+  position: relative;
+}
+
+.geo-arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #000;
+  margin-bottom: 0;
+}
+
+.geo-arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #000;
+  margin-top: 0;
+}
+
+.vertical-line {
+  width: 1px;
+  background-color: #000;
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+}
+
+.menu-items-overlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+}
+
+.menu-item-wrapper {
+  pointer-events: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  padding-right: 0;
+}
+
+.nav-link .label {
+  font-size: 1rem;
+  margin-right: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.connector {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.connector .line-horizontal {
+  width: 30px;
+  height: 1px;
+  background-color: #000;
+}
+
+.connector .dot {
+  width: 5px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 50%;
+  position: absolute;
+  right: -2px;
+}
+
+.nav-link:hover .label,
+.nav-link.active .label {
+  font-weight: bold;
+}
+.nav-link:hover .connector .dot,
+.nav-link.active .connector .dot {
+  transform: scale(1.8);
+}
+
+@media (max-width: 768px) {
+  .header-fixed {
+    position: relative;
+    top: auto;
+    right: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .nav-timeline {
+    display: none;
+  }
+}
