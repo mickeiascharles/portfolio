@@ -1,6 +1,6 @@
 <div>   
   <a href="https://hubies.onrender.com">
-    Acesse
+    Acessar
 </div>
 <div align="center">
     <img height="200cm" src="/public/assets/signature.webp"/>
