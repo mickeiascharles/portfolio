@@ -62,10 +62,16 @@
   margin-top: 40px;
   padding-top: 30px;
   border-top: 1px solid #ccc;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.skills-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 30px 0 0;
+  color: #444;
 }
 
 .skill-group {
@@ -75,13 +81,6 @@
   margin-bottom: 30px;
   flex-wrap: wrap;
   width: 100%;
-}
-
-.skill-group h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0 30px 0 0;
-  color: #444;
 }
 
 .icons {
