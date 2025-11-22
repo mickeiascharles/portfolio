@@ -3,7 +3,7 @@
     <i class="bi" [class.bi-list]="!isMenuOpen" [class.bi-x]="isMenuOpen"></i>
   </button>
 
-  <app-navbar></app-navbar>
+  <app-navbar (linkClicked)="closeMenu()"></app-navbar>
 
   <div class="scrollable-area">
     <router-outlet></router-outlet>

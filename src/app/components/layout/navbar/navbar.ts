@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -10,6 +10,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class NavbarComponent {
+  @Output() linkClicked = new EventEmitter<void>();
+
   menuItems = [
     { label: 'Sobre mim', route: '/sobre' },
     { label: 'Projetos', route: '/projetos' },
@@ -33,5 +35,10 @@ export class NavbarComponent {
     const audio = new Audio('assets/name.mp3');
     audio.volume = 0.3;
     audio.play().catch((err) => console.warn(err));
+  }
+
+  handleLinkClick() {
+    this.playClickSound();
+    this.linkClicked.emit();
   }
 }

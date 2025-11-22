@@ -23,4 +23,8 @@ export class AppComponent {
     this.playMenuSound();
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 }

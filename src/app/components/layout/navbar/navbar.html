@@ -1,5 +1,5 @@
 <div class="header-fixed">
-  <a routerLink="/" class="home-link" (mouseenter)="playNameSound()" (click)="playClickSound()">
+  <a routerLink="/" class="home-link" (mouseenter)="playNameSound()" (click)="handleLinkClick()">
     <h1 class="glitch" data-text="Mickeias Charles">Mickeias Charles</h1>
     <p>Software Developer</p>
   </a>
@@ -7,7 +7,7 @@
 
 <nav class="nav-timeline">
   <div class="mobile-header">
-    <a routerLink="/" (click)="playClickSound()" class="mobile-home-link">
+    <a routerLink="/" (click)="handleLinkClick()" class="mobile-home-link">
       <h1>Mickeias Charles</h1>
       <p>Software Developer</p>
     </a>
@@ -24,7 +24,7 @@
             routerLinkActive="active"
             class="nav-link"
             (mouseenter)="playHoverSound()"
-            (click)="playClickSound()"
+            (click)="handleLinkClick()"
           >
             <span class="label">{{ item.label }}</span>
             <div class="connector">
