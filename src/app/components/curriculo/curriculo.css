@@ -1,11 +1,9 @@
 .curriculo-container {
   padding: 60px 100px 60px 60px;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
   animation: slideIn 0.6s ease-out;
 }
 
@@ -23,7 +21,6 @@
 .download-section {
   margin-bottom: 40px;
   width: 100%;
-
   display: flex;
   justify-content: center;
 }
@@ -44,17 +41,14 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
-
 .download-link i {
   font-size: 1.5rem;
   margin-left: 5px;
   transition: transform 0.3s;
 }
-
 .download-link:hover {
   border-bottom: 1px solid #000;
 }
-
 .download-link:hover i {
   transform: translateY(3px);
 }
@@ -62,7 +56,6 @@
 .resume-preview {
   width: 100%;
   max-width: 700px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,20 +65,23 @@
   width: 100%;
   height: auto;
   display: block;
-
   background-color: #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   border: 1px solid #ddd;
-
   margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
   .curriculo-container {
-    padding: 80px 20px 40px 20px;
+    padding: 80px 15px 40px 15px;
   }
 
   .download-link {
     font-size: 1rem;
+  }
+
+  .resume-preview img {
+    box-shadow: none;
+    border: none;
   }
 }

@@ -11,4 +11,16 @@ import { NavbarComponent } from './components/layout/navbar/navbar';
 })
 export class AppComponent {
   title = 'mickeiascharles';
+  isMenuOpen = false;
+
+  playMenuSound() {
+    const audio = new Audio('assets/click.mp3');
+    audio.volume = 0.4;
+    audio.play().catch((err) => console.warn('Erro ao tocar som:', err));
+  }
+
+  toggleMenu() {
+    this.playMenuSound();
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

@@ -1,4 +1,8 @@
-<div class="layout-frame">
+<div class="layout-frame" [class.menu-open]="isMenuOpen">
+  <button class="mobile-menu-toggle" (click)="toggleMenu()">
+    <i class="bi" [class.bi-list]="!isMenuOpen" [class.bi-x]="isMenuOpen"></i>
+  </button>
+
   <app-navbar></app-navbar>
 
   <div class="scrollable-area">

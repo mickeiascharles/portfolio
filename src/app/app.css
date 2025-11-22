@@ -12,6 +12,8 @@
 
   display: flex;
   flex-direction: column;
+
+  transition: all 0.3s ease;
 }
 
 .scrollable-area {
@@ -36,7 +38,6 @@
   opacity: 1;
 }
 
-/* Copyright */
 .copyright-fixed {
   position: absolute;
   bottom: 10px;
@@ -48,6 +49,25 @@
   pointer-events: none;
 }
 
+.mobile-menu-toggle {
+  display: none !important;
+  position: fixed;
+  top: 40px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  background: #ebebeb;
+  border: 2px solid #000;
+  border-radius: 50%;
+  color: #000;
+  font-size: 1.5rem;
+  z-index: 2000;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .layout-frame {
     top: 10px;
@@ -55,15 +75,46 @@
     right: 10px;
     bottom: 10px;
   }
+
   .copyright-fixed {
     width: 100%;
     text-align: center;
     right: 0;
     bottom: 5px;
   }
+
   .signature-logo {
     right: 50%;
     transform: translateX(50%);
     bottom: 25px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  app-navbar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1500;
+    background-color: #ebebeb;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .layout-frame.menu-open app-navbar {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .layout-frame.menu-open .scrollable-area {
+    overflow: hidden;
   }
 }
