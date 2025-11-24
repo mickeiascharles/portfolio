@@ -4,6 +4,7 @@
   right: 60px;
   text-align: right;
   z-index: 100;
+  transition: all 0.3s ease;
 }
 
 .header-fixed .home-link {
@@ -135,6 +136,7 @@
   display: flex;
   justify-content: flex-end;
   overflow: visible;
+  transition: right 0.3s ease, height 0.3s ease;
 }
 
 .timeline-strip {
@@ -201,6 +203,7 @@
   color: #000;
   transition: all 0.3s ease;
   padding-right: 0;
+
   pointer-events: auto !important;
   position: relative;
   z-index: 100;
@@ -241,6 +244,39 @@
 .nav-link:hover .connector .dot,
 .nav-link.active .connector .dot {
   transform: scale(1.8);
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+  .header-fixed {
+    top: 30px;
+    right: 30px;
+  }
+
+  .header-fixed h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-fixed p {
+    font-size: 1rem;
+  }
+
+  .nav-timeline {
+    right: 30px;
+    height: 350px;
+  }
+
+  .menu-items-overlay {
+    width: 220px;
+  }
+
+  .nav-link .label {
+    font-size: 0.9rem;
+    margin-right: 10px;
+  }
+
+  .connector .line-horizontal {
+    width: 20px;
+  }
 }
 
 @media (max-width: 768px) {

@@ -13,9 +13,9 @@ export class NavbarComponent {
   @Output() linkClicked = new EventEmitter<void>();
 
   menuItems = [
-    { label: 'Sobre mim', route: '/sobre' },
     { label: 'Projetos', route: '/projetos' },
     { label: 'Hobbies', route: '/hobbies' },
+    { label: 'Sobre mim', route: '/sobre' },
     { label: 'Currículo Pdf.', route: '/curriculo' },
   ];
 
