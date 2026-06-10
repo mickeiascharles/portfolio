@@ -1,6 +1,6 @@
 .projects-container {
-  padding: 60px 150px 60px 60px;
-  max-width: 900px;
+  padding: clamp(45px, 5vw, 80px) clamp(320px, 28vw, 560px) 80px clamp(45px, 6vw, 110px);
+  max-width: min(1180px, calc(100% - 260px));
   position: relative;
   z-index: 5;
 }
@@ -17,7 +17,7 @@
 }
 
 .project-item {
-  margin-bottom: 60px;
+  margin-bottom: clamp(48px, 6vw, 90px);
   border-left: 4px solid transparent;
   padding-left: 0;
   transition: all 0.3s ease;
@@ -32,19 +32,19 @@
 
 .project-item h2 {
   font-family: inherit;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 2.4vw, 3.1rem);
   font-weight: 600;
-  margin: 0 0 20px 0;
+  margin: 0 0 clamp(14px, 1.5vw, 24px) 0;
   color: #000;
-  letter-spacing: -1px;
+  letter-spacing: 0;
 }
 
 .project-item p {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: clamp(0.9rem, 1vw, 1.18rem);
+  line-height: 1.65;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: clamp(18px, 2vw, 28px);
   text-align: justify;
   font-weight: 600;
 }
@@ -81,12 +81,12 @@
   top: 50%;
   transform: translateY(-50%);
 
-  right: 20%;
+  right: clamp(150px, 15vw, 285px);
   z-index: 0;
   pointer-events: none;
 
-  max-width: 550px;
-  width: 35vw;
+  max-width: 690px;
+  width: clamp(360px, 36vw, 690px);
   height: auto;
   opacity: 1;
   transition: all 0.3s ease;
@@ -101,40 +101,64 @@
 
 @media (min-width: 769px) and (max-width: 1440px) {
   .projetos-side-image {
-    max-width: 400px;
-    width: 35vw;
-    right: 220px;
-    opacity: 0.9;
+    right: clamp(190px, 17vw, 240px);
+    width: clamp(340px, 30vw, 420px);
+    opacity: 0.95;
   }
 
   .projects-container {
-    padding-right: 580px;
-    padding-left: 40px;
-    max-width: 100%;
+    padding-top: clamp(44px, 4.5vw, 64px);
+    padding-right: clamp(650px, 53vw, 760px);
+    padding-left: clamp(36px, 5vw, 70px);
+    max-width: none;
   }
 
   .project-item h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: clamp(1.75rem, 2vw, 2.35rem);
+    margin-bottom: 12px;
   }
 
   .project-item p {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: clamp(0.82rem, 0.95vw, 1rem);
+    line-height: 1.55;
   }
 
   .link-btn {
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 0.9vw, 1rem);
   }
 }
 
 @media (max-width: 768px) {
   .projects-container {
-    padding: 80px 20px 40px 20px;
+    padding: 84px clamp(26px, 7vw, 34px) 64px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .project-item {
+    margin-bottom: 48px;
   }
 
   .project-item h2 {
     font-size: 2rem;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .project-item p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    text-align: left;
+    margin-bottom: 18px;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .link-btn {
+    font-size: 0.95rem;
   }
 
   .project-item:hover {
