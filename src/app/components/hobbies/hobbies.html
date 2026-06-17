@@ -1,137 +1,26 @@
 <section class="hobbies-container">
   <div class="intro-text">
     <p>
-      <span class="highlight-phrase">Artes desenvolvidas</span>
+      <span class="highlight-phrase">{{ language.text().hobbies.title }}</span>
     </p>
   </div>
 
   <div class="arts-wrapper">
-    <article class="art-item">
+    <article *ngFor="let item of language.text().hobbies.items" class="art-item">
       <p class="art-description">
-        Logo e protótipo desenvolvidos para uma rede social de um projeto acadêmico.
+        {{ item.description }}
       </p>
 
       <div class="image-frame">
-        <img src="assets/hubies-prototipo.png" alt="Protótipo Hubies" loading="lazy" />
+        <img [src]="item.image" [alt]="item.alt" loading="lazy" />
       </div>
 
       <div class="tools-used">
-        <span class="tool-label">Ferramentas:</span>
+        <span class="tool-label">{{ item.toolsLabel }}</span>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-        <img
-          src="https://www.pngall.com/wp-content/uploads/13/Figma-Logo-PNG-Cutout.png"
-          alt="Figma"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">
-        Logo e protótipo desenvolvidos para um aplicativo do projeto HackTruck.
-      </p>
-
-      <div class="image-frame">
-        <img src="assets/ListBeat.png" alt="Protótipo ListBeat" loading="lazy" />
-      </div>
-
-      <div class="tools-used">
-        <span class="tool-label">Ferramentas:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-        <img
-          src="https://www.pngall.com/wp-content/uploads/13/Figma-Logo-PNG-Cutout.png"
-          alt="Figma"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">Logo desenvolvida para um projeto de residência.</p>
-      <div class="image-frame">
-        <img src="assets/mov-logo.png" alt="Protótipo MOV" loading="lazy" />
-      </div>
-      <div class="tools-used">
-        <span class="tool-label">Ferramenta:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">Pintura no illustrator (Personagem no Espaço)</p>
-      <div class="image-frame">
-        <img src="assets/painting.png" alt="Pintura Digital" loading="lazy" />
-      </div>
-      <div class="tools-used">
-        <span class="tool-label">Ferramenta:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">Pintura no illustrator (Arte Abstrata)</p>
-      <div class="image-frame">
-        <img src="assets/arte.png" alt="Pintura Digital" loading="lazy" />
-      </div>
-      <div class="tools-used">
-        <span class="tool-label">Ferramenta:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">Pintura no illustrator (Travis Scott)</p>
-      <div class="image-frame">
-        <img src="assets/Travis.png" alt="Pintura Digital" loading="lazy" />
-      </div>
-      <div class="tools-used">
-        <span class="tool-label">Ferramenta:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
-          class="tool-icon"
-          loading="lazy"
-        />
-      </div>
-    </article>
-
-    <article class="art-item">
-      <p class="art-description">Pintura no illustrator (Barba de Polvo)</p>
-      <div class="image-frame">
-        <img src="assets/barba-pova.png" alt="Pintura Digital" loading="lazy" />
-      </div>
-      <div class="tools-used">
-        <span class="tool-label">Ferramenta:</span>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-          alt="Illustrator"
+          *ngFor="let tool of item.tools"
+          [src]="tool.src"
+          [alt]="tool.alt"
           class="tool-icon"
           loading="lazy"
         />
@@ -139,23 +28,7 @@
     </article>
   </div>
 
-  <article class="art-item">
-    <p class="art-description">Pintura no illustrator (Fantasy)</p>
-    <div class="image-frame">
-      <img src="assets/kovucke.png" alt="Pintura Digital" loading="lazy" />
-    </div>
-    <div class="tools-used">
-      <span class="tool-label">Ferramenta:</span>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/2048px-Adobe_Illustrator_CC_icon.svg.png"
-        alt="Illustrator"
-        class="tool-icon"
-        loading="lazy"
-      />
-    </div>
-  </article>
-
   <div class="hobbies-bg-character">
-    <img src="assets/character-full.png" alt="Mickeias High" />
+    <img src="assets/character-full.png" [alt]="language.text().hobbies.backgroundAlt" />
   </div>
 </section>

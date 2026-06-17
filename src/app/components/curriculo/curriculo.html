@@ -2,16 +2,17 @@
   <div class="download-section">
     <a
       href="assets/curriculo.pdf"
-      download="Mickeias_Charles_de_Oliveira_Paiva_resume.pdf"
+      [attr.download]="language.text().resume.downloadFileName"
       class="download-link"
     >
-      <span class="highlight-letter">D</span>ownload aqui
+      <span class="highlight-letter">{{ language.text().resume.downloadLead }}</span
+      >{{ language.text().resume.downloadRest }}
       <i class="bi bi-arrow-down-short"></i>
     </a>
   </div>
 
   <div class="resume-preview">
-    <img src="assets/cv-page-1.jpg" alt="Currículo Página 1" />
-    <img src="assets/carta-recomendacao.jpg" alt="Currículo Página 2" />
+    <img src="assets/cv-page-1.jpg" [alt]="language.text().resume.pageOneAlt" />
+    <img src="assets/carta-recomendacao.jpg" [alt]="language.text().resume.pageTwoAlt" />
   </div>
 </section>

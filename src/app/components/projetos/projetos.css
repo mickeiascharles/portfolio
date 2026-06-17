@@ -42,11 +42,14 @@
 .project-item p {
   font-family: 'Courier New', Courier, monospace;
   font-size: clamp(0.9rem, 1vw, 1.18rem);
-  line-height: 1.65;
+  line-height: 1.55;
   color: #333;
-  margin-bottom: clamp(18px, 2vw, 28px);
-  text-align: justify;
+  margin-bottom: clamp(16px, 1.6vw, 24px);
+  max-width: 68ch;
+  text-align: left;
   font-weight: 600;
+  letter-spacing: 0;
+  word-spacing: 0;
 }
 
 .project-links {

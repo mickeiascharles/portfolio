@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-projetos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './projetos.html',
   styleUrl: './projetos.css',
 })
-export class ProjetosComponent {}
+export class ProjetosComponent {
+  readonly language = inject(LanguageService);
+}

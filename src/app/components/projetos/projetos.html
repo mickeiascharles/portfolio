@@ -1,183 +1,21 @@
 <section class="projects-container">
   <div class="projetos-side-image">
-    <img src="assets/projetos-bd.png" alt="Imagem lateral de projetos" loading="eager" />
+    <img src="assets/projetos-bd.png" [alt]="language.text().projects.sideImageAlt" loading="eager" />
   </div>
 
-  <article class="project-item">
-    <h2>LUMA</h2>
-    <p>
-      Desenvolvi uma landing page interativa para a startup Ideia Space, projetada para apresentar
-      de forma moderna e imersiva o ecossistema educacional de engenharia espacial da plataforma
-      LUMA. O site transforma conceitos complexos em uma experiência visual intuitiva, permitindo
-      que o usuário explore a arquitetura de um nanossatélite educacional, seus subsistemas,
-      sensores e o fluxo operacional de uma missão espacial simulada. A interface destaca aplicações
-      práticas em escolas técnicas, universidades, laboratórios maker e programas STEM, unindo
-      programação, eletrônica, física e análise de dados em um ambiente educacional inovador. O
-      projeto foi desenvolvido com foco em experiência do usuário (UX), interatividade, identidade
-      visual futurista e comunicação clara de conceitos tecnológicos avançados.
-    </p>
+  <article *ngFor="let project of language.text().projects.items" class="project-item">
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
     <div class="project-links">
-      <a href="https://github.com/mickeiascharles/LUMA" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
       <a
-        href="https://mickeiascharles.github.io/LUMA/assets/index.html"
+        *ngFor="let link of project.links"
+        [href]="link.href"
         target="_blank"
         class="link-btn"
+        rel="noopener noreferrer"
       >
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>ListBeat</h2>
-    <p>
-      O ListBeat é um aplicativo offline de catálogo musical pessoal, inspirado no Letterboxd, mas
-      voltado para músicas e álbuns. Ele permite ao usuário cadastrar faixas ou discos, avaliar com
-      notas de 1 a 5 estrelas, escrever comentários, criar listas personalizadas e visualizar seu
-      catálogo filtrando por gênero, artista ou nota. O app também mantém um histórico do que já foi
-      ouvido. Sua proposta é oferecer uma plataforma simples e independente para organizar e
-      revisitar músicas sem depender de serviços de streaming.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/_ListBeat" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>Hubbies</h2>
-    <p>
-      Hubies é uma plataforma de rede social e portfólio profissional projetada para ser a ponte
-      entre o talento universitário e o mercado de trabalho. A aplicação funciona como um "hub" onde
-      estudantes podem exibir seus projetos acadêmicos e pessoais, enquanto empresas podem descobrir
-      e se conectar com novos talentos de forma direcionada e interativa.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/Hubies" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-      <a href="https://hubies.onrender.com/" target="_blank" class="link-btn">
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>Calculadora</h2>
-    <p>
-      Este projeto consiste em uma calculadora web funcional desenvolvida para aplicar conceitos
-      fundamentais de TypeScript no desenvolvimento Frontend sem o uso de frameworks (Vanilla TS).
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/Calculadora" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-      <a href="https://mickeiascharles.github.io/Calculadora/" target="_blank" class="link-btn">
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>ShelfShare</h2>
-    <p>
-      ShelfShare é uma plataforma digital para o compartilhamento e empréstimo de livros entre
-      usuários. A aplicação foi desenhada para funcionar como uma "biblioteca" comunitária, onde
-      usuários podem disponibilizar livros que já leram e solicitar o empréstimo de títulos de
-      outros membros da comunidade. O projeto foi construído com o objetivo principal de servir como
-      um sistema completo para a aplicação prática de metodologias de teste de software.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/ShelfShare" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>Farmalink</h2>
-    <p>
-      Farmalink é um sistema de marketplace de farmácias Full Stack que conecta clientes a uma
-      variedade de medicamentos e produtos de saúde. A aplicação simula um ambiente de e-commerce
-      real onde usuários podem pesquisar produtos, montar carrinhos de compras e acompanhar seus
-      pedidos, enquanto administradores possuem controle total sobre o catálogo e as vendas. O
-      projeto foi construído com o objetivo de aplicar conceitos avançados de desenvolvimento web,
-      integrando um frontend moderno em React com uma API robusta em Node.js.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/Farmalink" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>InsightPro</h2>
-    <p>
-      Projeto de sistema para usuários visualizarem seus paínes BI, com segurança e compartilhamento
-      multi-tenant. Tecnologias usadas: HTML, CSS, JavaScript, API.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/InsightPro" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-      <a href="https://mickeiascharles.github.io/InsightPro/" target="_blank" class="link-btn">
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>MOV</h2>
-    <p>
-      Projeto desenvolvido para matéria de Residencia em parceria com a Startup Azzz. MOV é um
-      sistema de monitoramento preventivo para evitar roubo de cabos e vandalismo em infraestrutura
-      subterrânea. MOV é uma plataforma full-stack desenhada para monitorar em tempo real a abertura
-      de bueiros, diferenciando eventos de Manutenção Agendada (Autorizada) de eventos de Violação
-      (Não Autorizada) detectados por sensores IoT (Internet das Coisas). O objetivo principal foi
-      criar um painel de controle robusto, seguro e reativo, com foco na Gestão de Incidentes e na
-      Visualização Geográfica dos ativos.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/MOV" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-      <a href="https://mickeiascharles.github.io/MOV/" target="_blank" class="link-btn">
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
-      </a>
-    </div>
-  </article>
-
-  <article class="project-item">
-    <h2>Calculadora de Orçamento por Ponto de Função</h2>
-    <p>
-      Uma ferramenta web para estimativa de custos e prazos de desenvolvimento de software, baseada
-      na metodologia IFPUG, com geração de propostas em PDF.
-    </p>
-    <div class="project-links">
-      <a href="https://github.com/mickeiascharles/calculadora-apf" target="_blank" class="link-btn">
-        <i class="bi bi-github"></i>
-        <span>repositório</span>
-      </a>
-      <a href="https://mickeiascharles.github.io/calculadora-apf/" target="_blank" class="link-btn">
-        <i class="bi bi-house-door-fill"></i>
-        <span>hospedagem</span>
+        <i [class]="link.iconClass"></i>
+        <span>{{ link.label }}</span>
       </a>
     </div>
   </article>

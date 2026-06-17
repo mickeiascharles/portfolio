@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LanguageService } from '../../../services/language';
 
 @Component({
   selector: 'app-navbar',
@@ -10,14 +11,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class NavbarComponent {
-  @Output() linkClicked = new EventEmitter<void>();
+  readonly language = inject(LanguageService);
 
-  menuItems = [
-    { label: 'Projetos', route: '/projetos' },
-    { label: 'Hobbies', route: '/hobbies' },
-    { label: 'Sobre mim', route: '/sobre' },
-    { label: 'Currículo Pdf.', route: '/curriculo' },
-  ];
+  @Output() linkClicked = new EventEmitter<void>();
 
   playHoverSound() {
     const audio = new Audio('assets/hover.mp3');

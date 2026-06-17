@@ -1,7 +1,7 @@
 <div class="header-fixed">
   <a routerLink="/" class="home-link" (mouseenter)="playNameSound()" (click)="handleLinkClick()">
     <h1 class="glitch" data-text="Mickeias Charles">Mickeias Charles</h1>
-    <p>Software Developer</p>
+    <p>{{ language.text().nav.role }}</p>
   </a>
 </div>
 
@@ -9,7 +9,7 @@
   <div class="mobile-header">
     <a routerLink="/" (click)="handleLinkClick()" class="mobile-home-link">
       <h1>Mickeias Charles</h1>
-      <p>Software Developer</p>
+      <p>{{ language.text().nav.role }}</p>
     </a>
   </div>
 
@@ -18,7 +18,7 @@
 
     <div class="vertical-line">
       <div class="menu-items-overlay">
-        <div *ngFor="let item of menuItems" class="menu-item-wrapper">
+        <div *ngFor="let item of language.text().nav.menuItems" class="menu-item-wrapper">
           <a
             [routerLink]="item.route"
             routerLinkActive="active"

@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-sobre',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css',
 })
-export class SobreComponent {}
+export class SobreComponent {
+  readonly language = inject(LanguageService);
+}

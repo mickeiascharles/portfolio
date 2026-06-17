@@ -1,137 +1,128 @@
 <section class="sobre-container">
   <div class="content-wrapper">
     <div class="profile-header">
-      <img src="assets/profile.webp" alt="Foto de Mickeias" class="profile-img" />
+      <img src="assets/profile.webp" [alt]="language.text().about.profileAlt" class="profile-img" />
     </div>
 
     <div class="text-content">
-      <p>
-        Graduando em Ciência da Computação pela Universidade Católica de Brasília, atuo como
-        Desenvolvedor Fullstack com experiência em projetos acadêmicos e pessoais no desenvolvimento
-        de sistemas.
-      </p>
-      <p>
-        Possuo domínio em desenvolvimento frontend, trabalhando com HTML, CSS, JavaScript e
-        TypeScript para criação de interfaces responsivas e intuitivas. No backend, desenvolvi
-        projetos utilizando JavaScript com Node.js, realizando integração de APIs e estruturação de
-        servidores.
-      </p>
-      <p>
-        Tenho vivência na análise, desenvolvimento e manutenção de sistemas nas linguagens C e Java,
-        além de experiência em prototipagem de interfaces e UX/UI design, criando fluxos de
-        navegação e protótipos funcionais.
-      </p>
-      <p>
-        Paralelamente, tenho com domínio em Adobe Illustrator, focado na criação de logotipos,
-        identidades visuais e ilustrações personalizadas para clientes de diferentes segmentos.
+      <p *ngFor="let paragraph of language.text().about.paragraphs">
+        {{ paragraph }}
       </p>
     </div>
 
     <div class="skills-section">
-      <h3>Linguagens de domínio:</h3>
+      <h3>{{ language.text().about.languagesTitle }}</h3>
       <br />
       <div class="skill-group">
         <div class="icons">
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            src="assets/icons/html5.svg"
             alt="HTML5"
             title="HTML5"
             class="skill-icon"
           />
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+            src="assets/icons/css3.svg"
             alt="CSS3"
             title="CSS3"
             class="skill-icon"
           />
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+            src="assets/icons/sql.svg"
             alt="MySQL"
             title="SQL"
             class="skill-icon"
           />
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+            src="assets/icons/java.svg"
             alt="Java"
             title="Java"
             class="skill-icon"
           />
           <img
-            src="https://img.icons8.com/color/600/c-programming.png"
+            src="assets/icons/c.svg"
             alt="C"
             title="C"
             class="skill-icon"
           />
           <img
-            src="https://cdn-icons-png.flaticon.com/512/5968/5968371.png"
+            src="assets/icons/swift.svg"
             alt="Swift"
             title="Swift"
             class="skill-icon"
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+            src="assets/icons/javascript.svg"
             alt="JavaScript"
             title="JavaScript"
             class="skill-icon"
           />
           <img
-            src="https://images.icon-icons.com/2415/PNG/512/typescript_original_logo_icon_146317.png"
+            src="assets/icons/typescript.svg"
             alt="TypeScript"
             title="TypeScript"
             class="skill-icon"
           />
+          <img
+            src="assets/icons/python.svg"
+            alt="Python"
+            title="Python"
+            class="skill-icon"
+          />
+          <img src="assets/icons/cpp.svg" alt="C++" title="C++" class="skill-icon" />
+          <img src="assets/icons/dart.svg" alt="Dart" title="Dart" class="skill-icon" />
         </div>
       </div>
 
-      <h3>Tecnologias e ferramentas de domínio:</h3>
+      <h3>{{ language.text().about.toolsTitle }}</h3>
       <br />
       <div class="skill-group">
         <div class="icons">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png"
+            src="assets/icons/nodejs.svg"
             alt="Node.js"
             title="Node.js"
             class="skill-icon"
           />
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+            src="assets/icons/react.svg"
             alt="React"
             title="React"
             class="skill-icon"
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1039px-Vitejs-logo.svg.png"
+            src="assets/icons/vite.svg"
             alt="Vite"
             title="Vite"
             class="skill-icon"
           />
           <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+            src="assets/icons/git.svg"
             alt="Git"
             title="Git"
             class="skill-icon"
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Axios_logo_%282020%29.svg/2560px-Axios_logo_%282020%29.svg.png"
+            src="assets/icons/axios.svg"
             alt="Axios"
             title="Axios"
             class="skill-icon"
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/1200px-Angular_gradient_logo.png"
+            src="assets/icons/angular.svg"
             alt="Angular"
             title="Angular"
             class="skill-icon"
           />
           <img
-            src="https://cdn.worldvectorlogo.com/logos/postman.svg"
+            src="assets/icons/postman.svg"
             alt="Postman"
             title="Postman"
             class="skill-icon"
           />
           <img
-            src="https://cdn.worldvectorlogo.com/logos/expressjs.svg"
-            alt="Expreess"
+            src="assets/icons/express.svg"
+            alt="Express"
             title="Express"
             class="skill-icon"
           />

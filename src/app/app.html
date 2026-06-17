@@ -1,7 +1,29 @@
 <div class="layout-frame" [class.menu-open]="isMenuOpen">
-  <button class="mobile-menu-toggle" (click)="toggleMenu()">
+  <button
+    class="mobile-menu-toggle"
+    (click)="toggleMenu()"
+    [attr.aria-label]="language.text().common.menuButtonLabel"
+  >
     <i class="bi" [class.bi-list]="!isMenuOpen" [class.bi-x]="isMenuOpen"></i>
   </button>
+
+  <div
+    class="language-switcher"
+    role="group"
+    [attr.aria-label]="language.text().common.languageSwitcherLabel"
+  >
+    <button
+      *ngFor="let option of language.options"
+      type="button"
+      class="language-option"
+      [class.active]="language.current() === option.code"
+      [attr.aria-pressed]="language.current() === option.code"
+      [attr.title]="option.title"
+      (click)="language.setLanguage(option.code)"
+    >
+      {{ option.label }}
+    </button>
+  </div>
 
   <app-navbar (linkClicked)="closeMenu()"></app-navbar>
 
@@ -10,8 +32,8 @@
   </div>
 
   <div class="signature-logo">
-    <img src="assets/signature.webp" alt="Assinatura" />
+    <img src="assets/signature.webp" [alt]="language.text().common.signatureAlt" />
   </div>
 
-  <div class="copyright-fixed">Copyright©, Todos os direitos reservados.</div>
+  <div class="copyright-fixed">{{ language.text().common.copyright }}</div>
 </div>
