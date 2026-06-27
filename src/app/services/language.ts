@@ -858,6 +858,20 @@ int main(void) {
           tools: [illustrator],
         },
         {
+          description: 'Illustrator painting (Cartoon Art).',
+          image: 'assets/Lobo.jpg',
+          alt: 'Digital painting',
+          toolsLabel: 'Tool:',
+          tools: [illustrator],
+        },
+        {
+          description: 'Illustrator painting (Cartoon Character).',
+          image: 'assets/Miguel.png',
+          alt: 'Digital painting',
+          toolsLabel: 'Tool:',
+          tools: [illustrator],
+        },
+        {
           description: 'Illustrator painting (Abstract Art).',
           image: 'assets/arte.png',
           alt: 'Digital painting',
