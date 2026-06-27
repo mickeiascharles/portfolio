@@ -425,7 +425,8 @@ int main(void) {
       backgroundAlt: 'Mickeias High',
       items: [
         {
-          description: 'Logo e protótipo desenvolvidos para uma rede social de um projeto acadêmico.',
+          description:
+            'Logo e protótipo desenvolvidos para uma rede social de um projeto acadêmico.',
           image: 'assets/hubies-prototipo.png',
           alt: 'Protótipo Hubies',
           toolsLabel: 'Ferramentas:',
@@ -448,6 +449,20 @@ int main(void) {
         {
           description: 'Pintura no Illustrator (Personagem no Espaço).',
           image: 'assets/painting.png',
+          alt: 'Pintura digital',
+          toolsLabel: 'Ferramenta:',
+          tools: [illustrator],
+        },
+        {
+          description: 'Pintura no Illustrator (Arte Cartoon).',
+          image: 'assets/Lobo.jpg',
+          alt: 'Pintura digital',
+          toolsLabel: 'Ferramenta:',
+          tools: [illustrator],
+        },
+        {
+          description: 'Pintura no Illustrator (Personagem Cartoon).',
+          image: 'assets/Miguel.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
