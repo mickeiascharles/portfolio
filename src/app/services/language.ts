@@ -335,10 +335,10 @@ int main(void) {
     about: {
       profileAlt: 'Foto de Mickeias',
       paragraphs: [
-        'Graduando em Ciência da Computação pela Universidade Católica de Brasília (UCB), sou desenvolvedor fullstack, com experiência prática trabalhando tanto no frontend quanto no backend de aplicações web e mobile.',
-        'Curto bastante a parte de qualidade de software, então testes automatizados (Robot Framework) e testes manuais são meu forte. Também tenho domínio forte em arquitetura de software, sempre pensando em soluções escaláveis e bem estruturadas desde o início do projeto.',
+        'Sou desenvolvedor fullstack, com experiência prática na área trabalhando tanto no frontend quanto no backend de aplicações web e mobile. Curto bastante a parte de qualidade de software, então testes automatizados (Robot Framework) e testes manuais são meu forte. Também tenho domínio forte em arquitetura de software, sempre pensando em soluções escaláveis e bem estruturadas desde o início do projeto.',
         'No frontend, transito bem entre Angular, React e Flutter. No backend, trabalho com JavaScript e Node.js. Também já mexi com integração de IoT, uso Git no dia a dia e estou familiarizado com metodologias ágeis.',
         'Além do código, tenho o design como hobbie — o que acabou virando uma qualificação extra pra criar artes e pensar em UX/UI. Gosto de ver o produto do início ao fim, da arquitetura e da ideia visual até a implementação técnica.',
+        'Graduando Ciência da Computação na Universidade Católica de Brasília (UCB).',
       ],
       languagesTitle: 'Linguagens de domínio:',
       toolsTitle: 'Tecnologias e ferramentas de domínio:',
@@ -740,10 +740,10 @@ int main(void) {
     about: {
       profileAlt: 'Photo of Mickeias',
       paragraphs: [
-        'A Computer Science undergraduate at the Catholic University of Brasília (UCB), I\'m a fullstack developer with hands-on experience working on both the frontend and backend of web and mobile applications.',
-        'I really enjoy the software quality side of things, so automated testing (Robot Framework) and manual testing are among my strengths. I also have strong expertise in software architecture, always thinking about scalable, well-structured solutions from the start of a project.',
+        'I\'m a fullstack developer with hands-on experience working on both the frontend and backend of web and mobile applications. I really enjoy the software quality side of things, so automated testing (Robot Framework) and manual testing are among my strengths. I also have strong expertise in software architecture, always thinking about scalable, well-structured solutions from the start of a project.',
         'On the frontend, I move comfortably between Angular, React and Flutter. On the backend, I work with JavaScript and Node.js. I\'ve also worked with IoT integration, use Git daily and am familiar with agile methodologies.',
         'Beyond code, design is a hobby of mine — which ended up becoming an extra skill for creating art and thinking about UX/UI. I like seeing a product from start to finish, from architecture and visual concept through to technical implementation.',
+        'Computer Science undergraduate at the Catholic University of Brasília (UCB).',
       ],
       languagesTitle: 'Core languages:',
       toolsTitle: 'Core technologies and tools:',
