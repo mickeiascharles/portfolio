@@ -418,6 +418,12 @@ int main(void) {
             hostingLink('hospedagem', 'https://mickeiascharles.github.io/calculadora-apf/'),
           ],
         },
+        {
+          title: 'INFRA TESTER',
+          description:
+            'INFRA TESTER é uma solução de automação para cadastro de usuários no sistema SISCORP PCA, construída com uma arquitetura de quatro componentes: frontend em React, backend em FastAPI e um robô de automação em Robot Framework/Selenium. Como o SISCORP não possui API pública, o sistema envolve um wizard de cadastro em 5 etapas ao redor de um robô Selenium que automatiza o login e o preenchimento do formulário. A aplicação acompanha os logs de execução em tempo real, armazena o histórico das execuções em SQLite e disponibiliza para download os relatórios gerados pelo Robot Framework (report.html e log.html), com as credenciais trafegando apenas via variáveis de ambiente, sem serem persistidas.',
+          links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/INFRA-TESTER')],
+        },
       ],
     },
     hobbies: {
@@ -822,6 +828,12 @@ int main(void) {
             repositoryLink('repository', 'https://github.com/mickeiascharles/calculadora-apf'),
             hostingLink('live site', 'https://mickeiascharles.github.io/calculadora-apf/'),
           ],
+        },
+        {
+          title: 'INFRA TESTER',
+          description:
+            'INFRA TESTER is an automation solution for registering users in the SISCORP PCA system, built with a four-component architecture: a React frontend, a FastAPI backend and a Robot Framework/Selenium automation script. Since SISCORP has no public API, the system wraps a 5-step registration wizard around a Selenium robot that automates login and form-filling. The app streams execution logs in real time, stores execution history in SQLite and makes the Robot Framework-generated reports (report.html and log.html) available for download, with credentials passed only through environment variables and never persisted.',
+          links: [repositoryLink('repository', 'https://github.com/mickeiascharles/INFRA-TESTER')],
         },
       ],
     },
