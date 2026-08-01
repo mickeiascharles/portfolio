@@ -72,6 +72,8 @@ type SiteCopy = {
     downloadLead: string;
     downloadRest: string;
     downloadFileName: string;
+    filePath: string;
+    previewImage: string;
     pageOneAlt: string;
     pageTwoAlt: string;
   };
@@ -507,6 +509,8 @@ int main(void) {
       downloadLead: 'D',
       downloadRest: 'ownload aqui',
       downloadFileName: 'Mickeias_Charles_de_Oliveira_Paiva_curriculo.pdf',
+      filePath: 'assets/curriculo_PT.pdf',
+      previewImage: 'assets/curriculo_PT.jpg',
       pageOneAlt: 'Currículo Página 1',
       pageTwoAlt: 'Carta de recomendação',
     },
@@ -917,6 +921,8 @@ int main(void) {
       downloadLead: 'D',
       downloadRest: 'ownload resume',
       downloadFileName: 'Mickeias_Charles_de_Oliveira_Paiva_resume.pdf',
+      filePath: 'assets/curriculo_EN.pdf',
+      previewImage: 'assets/curriculo_EN.jpg',
       pageOneAlt: 'Resume page 1',
       pageTwoAlt: 'Recommendation letter',
     },

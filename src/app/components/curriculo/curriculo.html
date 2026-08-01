@@ -1,7 +1,7 @@
 <section class="curriculo-container">
   <div class="download-section">
     <a
-      href="assets/curriculo.pdf"
+      [href]="language.text().resume.filePath"
       [attr.download]="language.text().resume.downloadFileName"
       class="download-link"
     >
@@ -12,7 +12,7 @@
   </div>
 
   <div class="resume-preview">
-    <img src="assets/cv-page-1.jpg" [alt]="language.text().resume.pageOneAlt" />
+    <img [src]="language.text().resume.previewImage" [alt]="language.text().resume.pageOneAlt" />
     <img src="assets/carta-recomendacao.jpg" [alt]="language.text().resume.pageTwoAlt" />
   </div>
 </section>
