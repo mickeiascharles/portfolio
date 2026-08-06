@@ -112,6 +112,36 @@
   transform: translateY(-5px);
 }
 
+.badges {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 10px 5px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.badges::-webkit-scrollbar {
+  display: none;
+}
+
+.badge-icon {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.badge-icon:hover {
+  transform: translateY(-5px);
+}
+
 .contacts-footer {
   position: fixed;
   bottom: 40px;

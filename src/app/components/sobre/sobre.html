@@ -128,6 +128,20 @@
           />
         </div>
       </div>
+
+      <h3>{{ language.text().about.badgesTitle }}</h3>
+      <br />
+      <div class="skill-group">
+        <div class="badges">
+          <img
+            *ngFor="let badge of language.text().about.badges"
+            [src]="badge.src"
+            [alt]="badge.alt"
+            [title]="badge.alt"
+            class="badge-icon"
+          />
+        </div>
+      </div>
     </div>
 
     <footer class="contacts-footer">

@@ -58,6 +58,8 @@ type SiteCopy = {
     paragraphs: string[];
     languagesTitle: string;
     toolsTitle: string;
+    badgesTitle: string;
+    badges: ToolItem[];
   };
   projects: {
     sideImageAlt: string;
@@ -344,6 +346,10 @@ int main(void) {
       ],
       languagesTitle: 'Linguagens de domínio:',
       toolsTitle: 'Tecnologias e ferramentas de domínio:',
+      badgesTitle: 'Certificados e emblemas:',
+      badges: [
+        { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
+      ],
     },
     projects: {
       sideImageAlt: 'Imagem lateral de projetos',
@@ -766,6 +772,10 @@ int main(void) {
       ],
       languagesTitle: 'Core languages:',
       toolsTitle: 'Core technologies and tools:',
+      badgesTitle: 'Certificates and badges:',
+      badges: [
+        { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
+      ],
     },
     projects: {
       sideImageAlt: 'Side image for projects',
