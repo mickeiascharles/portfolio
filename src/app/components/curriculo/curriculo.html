@@ -12,14 +12,54 @@
   </div>
 
   <div class="resume-preview">
-    <img [src]="language.text().resume.previewImage" [alt]="language.text().resume.pageOneAlt" />
+    <img
+      [src]="language.text().resume.previewImage"
+      [alt]="language.text().resume.pageOneAlt"
+      class="resume-page"
+    />
     <img
       [src]="language.text().resume.previewImagePageTwo"
       [alt]="language.text().resume.pageTwoAlt"
+      class="resume-page"
+      loading="lazy"
     />
-    <img
-      src="assets/carta-recomendacao.jpg"
-      [alt]="language.text().resume.recommendationLetterAlt"
-    />
+  </div>
+
+  <div class="document-stack" role="list">
+    <figure
+      *ngFor="let document of language.text().resume.documents"
+      class="document-item"
+      role="listitem"
+    >
+      <img [src]="document.src" [alt]="document.alt" loading="lazy" />
+    </figure>
+  </div>
+
+  <div class="recommendations-list">
+    <article
+      *ngFor="let recommendation of language.text().resume.recommendations"
+      class="recommendation-card"
+    >
+      <header class="recommendation-header">
+        <img
+          [src]="recommendation.photo"
+          [alt]="recommendation.photoAlt"
+          class="recommendation-photo"
+          loading="lazy"
+        />
+
+        <div class="recommendation-author">
+          <div class="recommendation-name-row">
+            <h3>{{ recommendation.name }}</h3>
+            <i class="bi bi-patch-check-fill verified-icon" aria-hidden="true"></i>
+            <span class="connection-degree">· {{ recommendation.degree }}</span>
+          </div>
+          <p class="recommendation-headline">{{ recommendation.headline }}</p>
+          <p class="recommendation-context">{{ recommendation.context }}</p>
+        </div>
+      </header>
+
+      <blockquote lang="pt-BR">{{ recommendation.text }}</blockquote>
+    </article>
   </div>
 </section>

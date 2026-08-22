@@ -138,6 +138,10 @@
   flex-shrink: 0;
 }
 
+.badge-icon[src$='google_embaixador.png'] {
+  height: 64px;
+}
+
 .badge-icon:hover {
   transform: translateY(-5px);
 }

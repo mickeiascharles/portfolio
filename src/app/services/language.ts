@@ -32,6 +32,16 @@ type HobbyItem = {
   tools: ToolItem[];
 };
 
+type RecommendationItem = {
+  name: string;
+  degree: string;
+  headline: string;
+  context: string;
+  text: string;
+  photo: string;
+  photoAlt: string;
+};
+
 type SiteCopy = {
   common: {
     copyright: string;
@@ -79,7 +89,8 @@ type SiteCopy = {
     previewImagePageTwo: string;
     pageOneAlt: string;
     pageTwoAlt: string;
-    recommendationLetterAlt: string;
+    documents: ToolItem[];
+    recommendations: RecommendationItem[];
   };
 };
 
@@ -351,6 +362,7 @@ int main(void) {
       badgesTitle: 'Certificados e emblemas:',
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
+        { src: 'assets/google_embaixador.png', alt: 'Emblema Google Embaixador' },
       ],
     },
     projects: {
@@ -531,7 +543,37 @@ int main(void) {
       previewImagePageTwo: 'assets/curriculo_PT_page2.jpg',
       pageOneAlt: 'Currículo Página 1',
       pageTwoAlt: 'Currículo Página 2',
-      recommendationLetterAlt: 'Carta de recomendação',
+      documents: [
+        {
+          src: 'assets/carta-recomendacao.jpg',
+          alt: 'Carta de referência profissional da Intech',
+        },
+        {
+          src: 'assets/carta_AWS.jpeg',
+          alt: 'Carta de boas-vindas ao Core-Team do AWS Student Builder Group da Universidade Católica de Brasília',
+        },
+        {
+          src: 'assets/certificado_monitoria.jpg',
+          alt: 'Certificado de monitoria voluntária em Desenvolvimento Front End',
+        },
+        {
+          src: 'assets/certificado_ai_essentials.jpg',
+          alt: 'Certificado Google AI Essentials',
+        },
+      ],
+      recommendations: [
+        {
+          name: 'Lorena Viana',
+          degree: '1º',
+          headline:
+            'Análise de Requisitos e Negócios | Gerenciamento de Projetos | Voluntariado PMI-DF | Product Owner | Scrum Master',
+          context: 'Em Julho de 2026, Lorena foi mentora de Mickeias',
+          text:
+            'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          photo: 'assets/Lorena_INFRA.png',
+          photoAlt: 'Foto de perfil de Lorena Viana',
+        },
+      ],
     },
   },
   en: {
@@ -779,6 +821,7 @@ int main(void) {
       badgesTitle: 'Certificates and badges:',
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
+        { src: 'assets/google_embaixador.png', alt: 'Google Ambassador badge' },
       ],
     },
     projects: {
@@ -958,7 +1001,37 @@ int main(void) {
       previewImagePageTwo: 'assets/curriculo_EN_page2.jpg',
       pageOneAlt: 'Resume page 1',
       pageTwoAlt: 'Resume page 2',
-      recommendationLetterAlt: 'Recommendation letter',
+      documents: [
+        {
+          src: 'assets/carta-recomendacao.jpg',
+          alt: 'Professional reference letter from Intech',
+        },
+        {
+          src: 'assets/carta_AWS.jpeg',
+          alt: 'Welcome letter to the Core Team of the AWS Student Builder Group at the Catholic University of Brasília',
+        },
+        {
+          src: 'assets/certificado_monitoria.jpg',
+          alt: 'Volunteer teaching assistant certificate in Front End Development',
+        },
+        {
+          src: 'assets/certificado_ai_essentials.jpg',
+          alt: 'Google AI Essentials certificate',
+        },
+      ],
+      recommendations: [
+        {
+          name: 'Lorena Viana',
+          degree: '1st',
+          headline:
+            'Requirements and Business Analysis | Project Management | PMI-DF Volunteer | Product Owner | Scrum Master',
+          context: "In July 2026, Lorena was Mickeias's mentor",
+          text:
+            'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          photo: 'assets/Lorena_INFRA.png',
+          photoAlt: 'Profile photo of Lorena Viana',
+        },
+      ],
     },
   },
 };

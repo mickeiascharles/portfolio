@@ -158,6 +158,15 @@
     overflow: hidden;
   }
 
+  .scrollable-area {
+    z-index: 1;
+  }
+
+  .signature-logo,
+  .copyright-fixed {
+    z-index: 0;
+  }
+
   app-navbar {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease;
     position: absolute;

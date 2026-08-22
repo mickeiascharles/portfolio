@@ -1,6 +1,6 @@
 .curriculo-container {
-  padding: 60px 100px 60px 60px;
   width: 100%;
+  padding: 60px clamp(280px, 20vw, 360px) 150px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,69 +19,272 @@
 }
 
 .download-section {
-  margin-bottom: 40px;
   width: 100%;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
 }
 
 .download-link {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem;
-  font-weight: 600;
   color: #000;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   border-bottom: 1px solid transparent;
-  transition: all 0.3s;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.3s ease;
 }
 
 .highlight-letter {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
 }
+
 .download-link i {
-  font-size: 1.5rem;
   margin-left: 5px;
-  transition: transform 0.3s;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
-.download-link:hover {
-  border-bottom: 1px solid #000;
+
+.download-link:hover,
+.download-link:focus-visible {
+  border-bottom-color: #000;
 }
+
 .download-link:hover i {
   transform: translateY(3px);
 }
 
+.download-link:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 5px;
+}
+
+.resume-preview,
+.document-stack {
+  width: min(100%, 760px);
+}
+
 .resume-preview {
-  width: 100%;
-  max-width: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.resume-preview img {
+.resume-page {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  display: block;
+  border: 1px solid #d3d3d3;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.document-stack {
+  margin-top: clamp(70px, 8vw, 110px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(52px, 7vw, 78px);
+}
+
+.document-item {
+  width: 100%;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #c8c8c8;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.document-item img {
   width: 100%;
   height: auto;
   display: block;
-  background-color: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  margin-bottom: 30px;
+}
+
+.recommendations-list {
+  width: min(100%, 620px);
+  margin-top: clamp(64px, 8vw, 90px);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.recommendation-card {
+  width: 100%;
+  padding: 22px 24px 24px;
+  border: 2px solid #1f1f1f;
+  border-radius: 15px 8px 17px 10px;
+  background-color: #f7f7f3;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 16px 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-header {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.recommendation-photo {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #1f1f1f;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.recommendation-author {
+  min-width: 0;
+}
+
+.recommendation-name-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.recommendation-name-row h3 {
+  margin: 0;
+  color: #111;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.verified-icon {
+  color: #242424;
+  font-size: 0.92rem;
+}
+
+.connection-degree {
+  color: #666;
+  font-size: 0.82rem;
+}
+
+.recommendation-headline,
+.recommendation-context {
+  margin: 3px 0 0;
+  line-height: 1.35;
+}
+
+.recommendation-headline {
+  color: #333;
+  font-size: 0.76rem;
+  font-weight: 550;
+}
+
+.recommendation-context {
+  color: #747474;
+  font-size: 0.72rem;
+}
+
+.recommendation-card blockquote {
+  margin: 18px 0 0;
+  color: #252525;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .curriculo-container {
+    padding-right: 260px;
+    padding-left: 40px;
+  }
 }
 
 @media (max-width: 768px) {
   .curriculo-container {
-    padding: 80px 15px 40px 15px;
+    padding: 84px 20px 120px;
+  }
+
+  .download-section {
+    margin-bottom: 30px;
   }
 
   .download-link {
     font-size: 1rem;
   }
 
-  .resume-preview img {
+  .resume-page {
+    border-color: #d9d9d9;
     box-shadow: none;
-    border: none;
+  }
+
+  .document-stack {
+    margin-top: 58px;
+    gap: 46px;
+  }
+
+  .document-item {
+    padding: 4px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  }
+
+  .recommendations-list {
+    margin-top: 54px;
+  }
+
+  .recommendation-card {
+    padding: 18px;
+    border-width: 1.5px;
+    border-radius: 12px 7px 14px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .recommendation-header {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .recommendation-photo {
+    width: 52px;
+    height: 52px;
+    border-width: 1.5px;
+  }
+
+  .recommendation-name-row h3 {
+    font-size: 0.98rem;
+  }
+
+  .recommendation-headline {
+    font-size: 0.7rem;
+  }
+
+  .recommendation-context {
+    font-size: 0.67rem;
+  }
+
+  .recommendation-card blockquote {
+    margin-top: 15px;
+    font-size: 0.79rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 420px) {
+  .curriculo-container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .recommendation-card {
+    padding: 16px;
+  }
+
+  .recommendation-header {
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+
+  .recommendation-photo {
+    width: 48px;
+    height: 48px;
   }
 }
