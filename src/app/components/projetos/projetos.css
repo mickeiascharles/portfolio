@@ -1,6 +1,7 @@
 .projects-container {
-  padding: clamp(45px, 5vw, 80px) clamp(320px, 28vw, 560px) 80px clamp(45px, 6vw, 110px);
-  max-width: min(1180px, calc(100% - 260px));
+  width: min(100%, 1540px);
+  padding: clamp(70px, 5vw, 96px) clamp(420px, 31vw, 600px) 110px
+    clamp(48px, 6vw, 110px);
   position: relative;
   z-index: 5;
 }
@@ -102,18 +103,17 @@
   filter: none;
 }
 
-@media (min-width: 769px) and (max-width: 1440px) {
+@media (min-width: 1201px) and (max-width: 1440px) {
   .projetos-side-image {
-    right: clamp(190px, 17vw, 240px);
-    width: clamp(340px, 30vw, 420px);
+    right: clamp(170px, 15vw, 220px);
+    width: clamp(340px, 29vw, 420px);
     opacity: 0.95;
   }
 
   .projects-container {
-    padding-top: clamp(44px, 4.5vw, 64px);
-    padding-right: clamp(650px, 53vw, 760px);
-    padding-left: clamp(36px, 5vw, 70px);
-    max-width: none;
+    width: 100%;
+    padding: clamp(62px, 5vw, 78px) clamp(480px, 39vw, 560px) 110px
+      clamp(48px, 5vw, 70px);
   }
 
   .project-item h2 {
@@ -128,6 +128,35 @@
 
   .link-btn {
     font-size: clamp(0.85rem, 0.9vw, 1rem);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .projects-container {
+    width: 100%;
+    padding: clamp(88px, 8vw, 104px) clamp(230px, 24vw, 290px) 110px
+      clamp(36px, 5vw, 60px);
+  }
+
+  .project-item {
+    margin-bottom: clamp(52px, 7vw, 72px);
+  }
+
+  .project-item h2 {
+    font-size: clamp(1.8rem, 2.8vw, 2.35rem);
+    line-height: 1.12;
+  }
+
+  .project-item p {
+    max-width: 65ch;
+    font-size: clamp(0.88rem, 1.45vw, 1rem);
+    line-height: 1.6;
+  }
+
+  .projetos-side-image {
+    right: clamp(145px, 18vw, 205px);
+    width: clamp(300px, 40vw, 430px);
+    opacity: 0.12;
   }
 }
 

@@ -1,6 +1,11 @@
 <section class="home-container">
   <div class="editor-toolbar">
-    <button class="run-btn" (click)="openTerminal()" [title]="language.text().home.runButtonTitle">
+    <button
+      type="button"
+      class="run-btn"
+      (click)="openTerminal()"
+      [title]="language.text().home.runButtonTitle"
+    >
       <i class="bi bi-play-fill"></i>
       <span>{{ language.text().home.runButton }}</span>
     </button>
@@ -19,13 +24,24 @@
   </div>
 
   <div class="terminal-overlay" *ngIf="isTerminalOpen" (click)="closeTerminal()">
-    <div class="terminal-window" (click)="$event.stopPropagation()">
+    <div
+      class="terminal-window"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="terminal-title"
+      (click)="$event.stopPropagation()"
+    >
       <div class="terminal-header">
-        <div class="terminal-title">
+        <div id="terminal-title" class="terminal-title">
           <i class="bi bi-terminal-fill"></i>
           <span>{{ language.text().home.terminalTitle }}</span>
         </div>
-        <button class="close-btn" (click)="closeTerminal()">
+        <button
+          type="button"
+          class="close-btn"
+          [attr.aria-label]="language.text().home.closeTerminalLabel"
+          (click)="closeTerminal()"
+        >
           <i class="bi bi-x-lg"></i>
         </button>
       </div>

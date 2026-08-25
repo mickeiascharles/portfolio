@@ -60,6 +60,7 @@ type SiteCopy = {
     runButtonTitle: string;
     characterAlt: string;
     terminalTitle: string;
+    closeTerminalLabel: string;
     codeSample: string;
     terminalLines: TerminalLine[];
   };
@@ -140,6 +141,7 @@ const translations: Record<LanguageCode, SiteCopy> = {
       runButtonTitle: 'Compilar e rodar',
       characterAlt: 'Ilustração Mickeias',
       terminalTitle: 'Terminal - ./Historia_Mickeias.c',
+      closeTerminalLabel: 'Fechar terminal',
       codeSample: String.raw`/*
   Historia_Mickeias.c
   Um programa em C que representa a história de vida do desenvolvedor (Mickeias).
@@ -599,6 +601,7 @@ int main(void) {
       runButtonTitle: 'Compile and run',
       characterAlt: 'Mickeias illustration',
       terminalTitle: 'Terminal - ./Life_Mickeias.c',
+      closeTerminalLabel: 'Close terminal',
       codeSample: String.raw`/*
   Life_Mickeias.c
   A C program that represents the developer's life story (Mickeias).
