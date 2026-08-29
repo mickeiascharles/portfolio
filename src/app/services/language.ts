@@ -565,6 +565,16 @@ int main(void) {
       ],
       recommendations: [
         {
+          name: 'Douglas Franco',
+          degree: '1º',
+          headline: 'Coordenador de TI na CAIXA',
+          context: 'Recomendação profissional recebida no LinkedIn',
+          text:
+            'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          photo: 'assets/Douglas_CAIXA.jpg',
+          photoAlt: 'Foto de perfil de Douglas Franco',
+        },
+        {
           name: 'Lorena Viana',
           degree: '1º',
           headline:
@@ -1023,6 +1033,16 @@ int main(void) {
         },
       ],
       recommendations: [
+        {
+          name: 'Douglas Franco',
+          degree: '1st',
+          headline: 'IT Coordinator at CAIXA',
+          context: 'Professional recommendation received on LinkedIn',
+          text:
+            'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          photo: 'assets/Douglas_CAIXA.jpg',
+          photoAlt: 'Profile photo of Douglas Franco',
+        },
         {
           name: 'Lorena Viana',
           degree: '1st',
