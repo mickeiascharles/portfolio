@@ -46,7 +46,7 @@
         </button>
       </div>
 
-      <div class="terminal-body">
+      <div class="terminal-body" #terminalBody>
         <p *ngFor="let line of displayedLines" [class]="line.cssClass">
           {{ line.text }}
         </p>

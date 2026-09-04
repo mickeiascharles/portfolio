@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { LanguageService } from '../../services/language';
 
 @Component({
@@ -11,6 +11,8 @@ import { LanguageService } from '../../services/language';
 })
 export class HomeComponent {
   readonly language = inject(LanguageService);
+
+  @ViewChild('terminalBody') private terminalBody?: ElementRef<HTMLDivElement>;
 
   isTerminalOpen = false;
   displayedLines: { text: string; cssClass: string }[] = [];
@@ -41,10 +43,12 @@ export class HomeComponent {
     this.displayedLines.push({ text: '', cssClass: lineData.cssClass });
 
     this.cdr.detectChanges();
+    this.scrollTerminalToBottom();
 
     if (lineIndex === terminalLines.length - 1) {
       this.displayedLines[lineIndex].text = lineData.text;
       this.cdr.detectChanges();
+      this.scrollTerminalToBottom();
       return;
     }
 
@@ -58,6 +62,7 @@ export class HomeComponent {
       this.displayedLines[lineIndex].text += fullText.charAt(charIndex);
 
       this.cdr.detectChanges();
+      this.scrollTerminalToBottom();
 
       this.typingTimeout = setTimeout(() => {
         this.typeLineChars(lineIndex, fullText, charIndex + 1);
@@ -67,5 +72,15 @@ export class HomeComponent {
         this.startTypingEffect(lineIndex + 1);
       }, 20);
     }
+  }
+
+  private scrollTerminalToBottom() {
+    const terminalBody = this.terminalBody?.nativeElement;
+
+    if (!terminalBody) return;
+
+    requestAnimationFrame(() => {
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    });
   }
 }

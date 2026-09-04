@@ -171,7 +171,7 @@ typedef struct {
     int favorites_count;
     const char *idols[20];
     int idols_count;
-    Event timeline[32];
+    Event timeline[40];
     int timeline_count;
 } Person;
 
@@ -274,6 +274,27 @@ int main(void) {
     user.timeline[tc++] = (Event){"Projeto: Hubbies",
         "Plataforma de conexão universitária e portfólio profissional.", {0,0,2024}};
 
+    user.timeline[tc++] = (Event){"Projeto: Beatfy",
+        "Rede social musical integrada ao Spotify, com personalização por Machine Learning.", {0,0,2025}};
+
+    user.timeline[tc++] = (Event){"Estágio Fullstack na INFRA S.A.",
+        "Desenvolvimento web e mobile, testes automatizados e manuais e code reviews.", {0,7,2026}};
+
+    user.timeline[tc++] = (Event){"Estágio Fullstack na CAIXA",
+        "Aplicações web, integração de APIs, banco de dados, testes e colaboração ágil.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Residência em IA na UnB",
+        "Especialização em Inteligência Artificial iniciada na Universidade de Brasília.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Core Team AWS Student Builder Group",
+        "Coordenação de comunidade na UCB, eventos, canais, parcerias e networking em nuvem.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Embaixador Estudantil Google",
+        "Workshops, engajamento tecnológico no campus e comunidades de inovação.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Comunidades técnicas",
+        "Membro da SBC e da ACM desde 2026.", {0,0,2026}};
+
     user.timeline_count = tc;
 
     printHeader(&user);
@@ -345,6 +366,27 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '[00/00/2024] Projeto: Hubbies', cssClass: '' },
         { text: '   Plataforma de conexão universitária e portfólio.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/00/2025] Projeto: Beatfy', cssClass: '' },
+        { text: '   Rede social musical integrada ao Spotify com Machine Learning.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/07/2026] Estágio Fullstack na INFRA S.A.', cssClass: '' },
+        { text: '   Web/mobile, Robot Framework, testes manuais e code reviews.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Estágio Fullstack na CAIXA', cssClass: '' },
+        { text: '   APIs, banco de dados, testes, Git e colaboração ágil.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Residência em IA na UnB', cssClass: '' },
+        { text: '   Especialização em Inteligência Artificial.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Core Team AWS Student Builder Group', cssClass: '' },
+        { text: '   Coordenação de comunidade, eventos e networking em nuvem.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Embaixador Estudantil Google', cssClass: '' },
+        { text: '   Workshops e engajamento tecnológico no campus.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/00/2026] Comunidades técnicas', cssClass: '' },
+        { text: '   Membro da SBC e da ACM.', cssClass: '' },
         { text: '------------', cssClass: '' },
         { text: 'ACOMPANHE PARA AS MINHAS PRÓXIMAS AVENTURAS.', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -365,6 +407,7 @@ int main(void) {
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
         { src: 'assets/google_embaixador.png', alt: 'Emblema Google Embaixador' },
+        { src: 'assets/badge_core_team.png', alt: 'Emblema Core Team AWS Student Builder Group' },
       ],
     },
     projects: {
@@ -569,8 +612,7 @@ int main(void) {
           degree: '1º',
           headline: 'Coordenador de TI na CAIXA',
           context: 'Recomendação profissional recebida no LinkedIn',
-          text:
-            'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
           photo: 'assets/Douglas_CAIXA.jpg',
           photoAlt: 'Foto de perfil de Douglas Franco',
         },
@@ -580,8 +622,7 @@ int main(void) {
           headline:
             'Análise de Requisitos e Negócios | Gerenciamento de Projetos | Voluntariado PMI-DF | Product Owner | Scrum Master',
           context: 'Em Julho de 2026, Lorena foi mentora de Mickeias',
-          text:
-            'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
           photo: 'assets/Lorena_INFRA.png',
           photoAlt: 'Foto de perfil de Lorena Viana',
         },
@@ -641,7 +682,7 @@ typedef struct {
     int favorites_count;
     const char *idols[20];
     int idols_count;
-    Event timeline[32];
+    Event timeline[40];
     int timeline_count;
 } Person;
 
@@ -744,6 +785,27 @@ int main(void) {
     user.timeline[tc++] = (Event){"Project: Hubbies",
         "A university connection platform and professional portfolio.", {0,0,2024}};
 
+    user.timeline[tc++] = (Event){"Project: Beatfy",
+        "A music social network integrated with Spotify, personalized with Machine Learning.", {0,0,2025}};
+
+    user.timeline[tc++] = (Event){"Fullstack internship at INFRA S.A.",
+        "Web and mobile development, automated and manual tests, and code reviews.", {0,7,2026}};
+
+    user.timeline[tc++] = (Event){"Fullstack internship at CAIXA",
+        "Web applications, API integration, databases, testing and agile collaboration.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"AI residency at UnB",
+        "Artificial Intelligence specialization started at the University of Brasília.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Core Team AWS Student Builder Group",
+        "Community coordination at UCB with events, channels, partnerships and cloud networking.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Google Student Ambassador",
+        "Workshops, campus technology engagement and innovation communities.", {0,8,2026}};
+
+    user.timeline[tc++] = (Event){"Technical communities",
+        "Member of SBC and ACM since 2026.", {0,0,2026}};
+
     user.timeline_count = tc;
 
     printHeader(&user);
@@ -815,6 +877,30 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '[00/00/2024] Project: Hubbies', cssClass: '' },
         { text: '   University connection and portfolio platform.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/00/2025] Project: Beatfy', cssClass: '' },
+        {
+          text: '   Music social network integrated with Spotify and Machine Learning.',
+          cssClass: '',
+        },
+        { text: ' ', cssClass: '' },
+        { text: '[00/07/2026] Fullstack internship at INFRA S.A.', cssClass: '' },
+        { text: '   Web/mobile, Robot Framework, manual tests and code reviews.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Fullstack internship at CAIXA', cssClass: '' },
+        { text: '   APIs, databases, testing, Git and agile collaboration.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] AI residency at UnB', cssClass: '' },
+        { text: '   Specialization in Artificial Intelligence.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Core Team AWS Student Builder Group', cssClass: '' },
+        { text: '   Community coordination, events and cloud networking.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/08/2026] Google Student Ambassador', cssClass: '' },
+        { text: '   Workshops and campus technology engagement.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/00/2026] Technical communities', cssClass: '' },
+        { text: '   Member of SBC and ACM.', cssClass: '' },
         { text: '------------', cssClass: '' },
         { text: 'FOLLOW ALONG FOR MY NEXT ADVENTURES.', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -824,8 +910,8 @@ int main(void) {
     about: {
       profileAlt: 'Photo of Mickeias',
       paragraphs: [
-        'I\'m a fullstack developer with hands-on experience working on both the frontend and backend of web and mobile applications. I really enjoy the software quality side of things, so automated testing (Robot Framework) and manual testing are among my strengths. I also have strong expertise in software architecture, always thinking about scalable, well-structured solutions from the start of a project.',
-        'On the frontend, I move comfortably between Angular, React and Flutter. On the backend, I work with JavaScript and Node.js. I\'ve also worked with IoT integration, use Git daily and am familiar with agile methodologies.',
+        "I'm a fullstack developer with hands-on experience working on both the frontend and backend of web and mobile applications. I really enjoy the software quality side of things, so automated testing (Robot Framework) and manual testing are among my strengths. I also have strong expertise in software architecture, always thinking about scalable, well-structured solutions from the start of a project.",
+        "On the frontend, I move comfortably between Angular, React and Flutter. On the backend, I work with JavaScript and Node.js. I've also worked with IoT integration, use Git daily and am familiar with agile methodologies.",
         'Beyond code, design is a hobby of mine — which ended up becoming an extra skill for creating art and thinking about UX/UI. I like seeing a product from start to finish, from architecture and visual concept through to technical implementation.',
         'Computer Science undergraduate at the Catholic University of Brasília (UCB).',
       ],
@@ -835,6 +921,7 @@ int main(void) {
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
         { src: 'assets/google_embaixador.png', alt: 'Google Ambassador badge' },
+        { src: 'assets/badge_core_team.png', alt: 'AWS Student Builder Group Core Team badge' },
       ],
     },
     projects: {
@@ -1038,8 +1125,7 @@ int main(void) {
           degree: '1st',
           headline: 'IT Coordinator at CAIXA',
           context: 'Professional recommendation received on LinkedIn',
-          text:
-            'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
           photo: 'assets/Douglas_CAIXA.jpg',
           photoAlt: 'Profile photo of Douglas Franco',
         },
@@ -1049,8 +1135,7 @@ int main(void) {
           headline:
             'Requirements and Business Analysis | Project Management | PMI-DF Volunteer | Product Owner | Scrum Master',
           context: "In July 2026, Lorena was Mickeias's mentor",
-          text:
-            'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
           photo: 'assets/Lorena_INFRA.png',
           photoAlt: 'Profile photo of Lorena Viana',
         },
