@@ -429,6 +429,15 @@ int main(void) {
           links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/_ListBeat')],
         },
         {
+          title: 'BEATfy',
+          description:
+            'O BEATfy é uma rede social musical integrada ao ecossistema do Spotify, onde usuários podem avaliar músicas, publicar opiniões e interagir com a comunidade. A plataforma utiliza Machine Learning para personalizar o feed e recomendar novas músicas com base no perfil e nas preferências de cada usuário.',
+          links: [
+            repositoryLink('repositório', 'https://github.com/mickeiascharles/Beatfy'),
+            hostingLink('hospedagem', 'https://mickeiascharles.github.io/Beatfy/'),
+          ],
+        },
+        {
           title: 'Hubbies',
           description:
             'Hubies é uma plataforma de rede social e portfólio profissional projetada para ser a ponte entre o talento universitário e o mercado de trabalho. A aplicação funciona como um "hub" onde estudantes podem exibir seus projetos acadêmicos e pessoais, enquanto empresas podem descobrir e se conectar com novos talentos de forma direcionada e interativa.',
@@ -941,6 +950,15 @@ int main(void) {
           description:
             'ListBeat is an offline personal music catalog app inspired by Letterboxd, but focused on songs and albums. It lets users register tracks or records, rate them from 1 to 5 stars, write comments, create custom lists and browse their catalog by genre, artist or rating. The app also keeps a listening history. Its goal is to provide a simple and independent platform for organizing and revisiting music without relying on streaming services.',
           links: [repositoryLink('repository', 'https://github.com/mickeiascharles/_ListBeat')],
+        },
+        {
+          title: 'BEATfy',
+          description:
+            'BEATfy is a music social network integrated with the Spotify ecosystem, where users can rate songs, publish opinions and interact with the community. The platform uses Machine Learning to personalize the feed and recommend new songs based on each user profile and preferences.',
+          links: [
+            repositoryLink('repository', 'https://github.com/mickeiascharles/Beatfy'),
+            hostingLink('live site', 'https://mickeiascharles.github.io/Beatfy/'),
+          ],
         },
         {
           title: 'Hubbies',
