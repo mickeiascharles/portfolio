@@ -116,17 +116,9 @@
   display: flex;
   gap: 24px;
   align-items: center;
-  overflow-x: auto;
-  white-space: nowrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 10px 5px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.badges::-webkit-scrollbar {
-  display: none;
 }
 
 .badge-icon {
@@ -136,10 +128,6 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   flex-shrink: 0;
-}
-
-.badge-icon[src$='google_embaixador.png'] {
-  height: 64px;
 }
 
 .badge-icon:hover {

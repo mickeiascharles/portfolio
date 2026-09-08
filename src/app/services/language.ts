@@ -406,8 +406,16 @@ int main(void) {
       badgesTitle: 'Certificados e emblemas:',
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
-        { src: 'assets/google_embaixador.png', alt: 'Emblema Google Embaixador' },
         { src: 'assets/badge_core_team.png', alt: 'Emblema Core Team AWS Student Builder Group' },
+        {
+          src: 'assets/IBM.png',
+          alt: 'IBM SkillsBuild - Data Classification and Summarization Using IBM Granite',
+        },
+        {
+          src: 'assets/IBM2.png',
+          alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
+        },
+        { src: 'assets/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
       ],
     },
     projects: {
@@ -929,8 +937,16 @@ int main(void) {
       badgesTitle: 'Certificates and badges:',
       badges: [
         { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
-        { src: 'assets/google_embaixador.png', alt: 'Google Ambassador badge' },
         { src: 'assets/badge_core_team.png', alt: 'AWS Student Builder Group Core Team badge' },
+        {
+          src: 'assets/IBM.png',
+          alt: 'IBM SkillsBuild - Data Classification and Summarization Using IBM Granite',
+        },
+        {
+          src: 'assets/IBM2.png',
+          alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
+        },
+        { src: 'assets/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
       ],
     },
     projects: {
