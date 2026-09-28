@@ -17,6 +17,10 @@ describe('AlbumComponent', () => {
 
     expect(pagina.querySelectorAll('.photo-item').length).toBe(15);
     expect(pagina.querySelector('figcaption')).toBeNull();
+    expect(pagina.querySelectorAll('.photo-item:not([inert])').length).toBe(1);
+    expect(fixture.componentInstance.fotos.slice(0, 3).map((foto) => foto.file)).toEqual([
+      'Estudando_em_casa', 'Google', 'IINFRA2',
+    ]);
   });
 
   it('move apenas a faixa da galeria e respeita os limites', () => {
@@ -25,14 +29,20 @@ describe('AlbumComponent', () => {
     const componente = fixture.componentInstance;
     const faixa = fixture.nativeElement.querySelector('.photo-strip') as HTMLElement;
     const rolar = spyOn(faixa, 'scrollTo');
+    spyOnProperty(faixa, 'clientWidth').and.returnValue(400);
 
     componente.moverGaleria(1);
+    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 400 }));
+    spyOnProperty(faixa, 'scrollLeft').and.returnValue(400);
+    componente.atualizarIndiceGaleria();
     expect(componente.indiceGaleria()).toBe(1);
-    expect(rolar).toHaveBeenCalled();
 
     componente.indiceGaleria.set(14);
     componente.moverGaleria(1);
-    expect(componente.indiceGaleria()).toBe(14);
+    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 5600 }));
+    componente.indiceGaleria.set(0);
+    componente.moverGaleria(-1);
+    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 0 }));
   });
 
   it('abre a foto inteira e fecha o visualizador', () => {

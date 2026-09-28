@@ -3,9 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  QueryList,
   ViewChild,
-  ViewChildren,
   computed,
   inject,
   signal,
@@ -32,43 +30,23 @@ export class AlbumComponent {
   });
 
   @ViewChild('faixaFotos') faixaFotos!: ElementRef<HTMLElement>;
-  @ViewChildren('cartaoFoto') cartoesFotos!: QueryList<ElementRef<HTMLElement>>;
   @ViewChild('viewer', { static: true }) viewer!: ElementRef<HTMLDialogElement>;
 
   moverGaleria(direcao: number, evento?: Event) {
     evento?.preventDefault();
     const indice = Math.max(0, Math.min(this.fotos.length - 1, this.indiceGaleria() + direcao));
-    this.indiceGaleria.set(indice);
     const faixa = this.faixaFotos.nativeElement;
-    const cartao = this.cartoesFotos.get(indice)?.nativeElement;
-    if (!cartao) return;
-
-    const esquerda =
-      faixa.scrollLeft + cartao.getBoundingClientRect().left - faixa.getBoundingClientRect().left;
     faixa.scrollTo({
-      left: esquerda,
+      left: indice * faixa.clientWidth,
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
   }
 
   atualizarIndiceGaleria() {
     const faixa = this.faixaFotos.nativeElement;
-    if (faixa.scrollLeft + faixa.clientWidth >= faixa.scrollWidth - 2) {
-      this.indiceGaleria.set(this.fotos.length - 1);
-      return;
-    }
-
-    const inicio = faixa.getBoundingClientRect().left;
-    let indiceMaisProximo = 0;
-    let menorDistancia = Infinity;
-    this.cartoesFotos.forEach((cartao, indice) => {
-      const distancia = Math.abs(cartao.nativeElement.getBoundingClientRect().left - inicio);
-      if (distancia < menorDistancia) {
-        menorDistancia = distancia;
-        indiceMaisProximo = indice;
-      }
-    });
-    this.indiceGaleria.set(indiceMaisProximo);
+    if (!faixa.clientWidth) return;
+    const indice = Math.round(faixa.scrollLeft / faixa.clientWidth);
+    this.indiceGaleria.set(Math.max(0, Math.min(this.fotos.length - 1, indice)));
   }
 
   abrirFoto(indice: number) {

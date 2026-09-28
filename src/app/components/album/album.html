@@ -1,36 +1,12 @@
 <section class="album-container" aria-labelledby="album-title">
   <header class="album-header">
     <h2 id="album-title">{{ language.text().album.title }}</h2>
-    <div class="gallery-actions">
-      <button
-        type="button"
-        class="gallery-arrow"
-        (click)="moverGaleria(-1)"
-        [disabled]="indiceGaleria() === 0"
-        [attr.aria-label]="language.text().album.previousPhoto"
-        [title]="language.text().album.previousPhoto"
-      >
-        <i class="bi bi-arrow-left" aria-hidden="true"></i>
-      </button>
-      <span class="album-count" aria-live="polite">
-        {{ (indiceGaleria() + 1).toString().padStart(2, '0') }} / {{ fotos.length }}
-      </span>
-      <button
-        type="button"
-        class="gallery-arrow"
-        (click)="moverGaleria(1)"
-        [disabled]="indiceGaleria() === fotos.length - 1"
-        [attr.aria-label]="language.text().album.nextPhoto"
-        [title]="language.text().album.nextPhoto"
-      >
-        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-      </button>
-    </div>
   </header>
 
   <div
     #faixaFotos
     class="photo-strip"
+    role="region"
     tabindex="0"
     [attr.aria-label]="language.text().album.title"
     (scroll)="atualizarIndiceGaleria()"
@@ -38,10 +14,11 @@
     (keydown.arrowRight)="moverGaleria(1, $event)"
   >
     <figure
-      #cartaoFoto
       *ngFor="let photo of fotos; let i = index"
       class="photo-item"
       [class.is-active]="indiceGaleria() === i"
+      [attr.aria-hidden]="indiceGaleria() !== i"
+      [inert]="indiceGaleria() !== i"
     >
       <button
         type="button"
@@ -53,7 +30,7 @@
         [title]="language.text().album.openPhoto"
       >
         <img
-          [src]="'assets/album/web/' + photo.file + '-thumb.webp'"
+          [src]="'assets/album/web/' + photo.file + '.webp'"
           [alt]="photo.caption[language.current()]"
           [width]="photo.width"
           [height]="photo.height"
@@ -63,6 +40,34 @@
         <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
       </button>
     </figure>
+  </div>
+
+  <div class="gallery-actions">
+    <button
+      type="button"
+      class="gallery-arrow"
+      (click)="moverGaleria(-1)"
+      [disabled]="indiceGaleria() === 0"
+      [attr.aria-label]="language.text().album.previousPhoto"
+      [title]="language.text().album.previousPhoto"
+    >
+      <i class="bi bi-arrow-left" aria-hidden="true"></i>
+    </button>
+    <span class="album-count" aria-live="polite" aria-atomic="true">
+      <span class="current-photo">{{ (indiceGaleria() + 1).toString().padStart(2, '0') }}</span>
+      <span class="count-divider" aria-hidden="true">/</span>
+      <span>{{ fotos.length }}</span>
+    </span>
+    <button
+      type="button"
+      class="gallery-arrow"
+      (click)="moverGaleria(1)"
+      [disabled]="indiceGaleria() === fotos.length - 1"
+      [attr.aria-label]="language.text().album.nextPhoto"
+      [title]="language.text().album.nextPhoto"
+    >
+      <i class="bi bi-arrow-right" aria-hidden="true"></i>
+    </button>
   </div>
 </section>
 

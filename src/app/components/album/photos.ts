@@ -9,6 +9,19 @@ type AlbumPhoto = {
 
 export const albumPhotos: AlbumPhoto[] = [
   {
+    file: 'Estudando_em_casa',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Estudando em casa', en: 'Studying at home' },
+  },
+  { file: 'Google', width: 1440, height: 1920, caption: { pt: 'Google', en: 'Google' } },
+  {
+    file: 'IINFRA2',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Na INFRA S.A.', en: 'At INFRA S.A.' },
+  },
+  {
     file: 'AWS',
     width: 1920,
     height: 1440,
@@ -52,12 +65,6 @@ export const albumPhotos: AlbumPhoto[] = [
     caption: { pt: 'Equipe INFRA S.A.', en: 'INFRA S.A. team' },
   },
   {
-    file: 'IINFRA2',
-    width: 1440,
-    height: 1920,
-    caption: { pt: 'Na INFRA S.A.', en: 'At INFRA S.A.' },
-  },
-  {
     file: 'INFRA3',
     width: 720,
     height: 1280,
@@ -80,12 +87,5 @@ export const albumPhotos: AlbumPhoto[] = [
     width: 1200,
     height: 1600,
     caption: { pt: 'Colegas da faculdade', en: 'University friends' },
-  },
-  { file: 'Google', width: 1440, height: 1920, caption: { pt: 'Google', en: 'Google' } },
-  {
-    file: 'Estudando_em_casa',
-    width: 1440,
-    height: 1920,
-    caption: { pt: 'Estudando em casa', en: 'Studying at home' },
   },
 ];
