@@ -26,22 +26,15 @@
 
 .header-fixed p {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
-  line-height: 1.45;
+  font-size: 0.9rem;
+  line-height: 1.4;
   text-wrap: balance;
-  margin: 9px 0 0 0;
-  padding: 0 0 7px;
-  border-bottom: 2px solid #000;
-  font-weight: 700;
+  margin: 6px 0 0;
+  font-weight: 500;
 }
 
 .mobile-header {
   display: none;
-}
-
-.home-link:hover h1.glitch {
-  animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-  color: #000;
 }
 
 .glitch::before,
@@ -121,15 +114,6 @@
   100% {
     clip-path: inset(20% 0 60% 0);
     transform: translate(-2px, 2px);
-  }
-}
-
-@keyframes glitch-skew {
-  0% {
-    transform: skew(0deg);
-  }
-  100% {
-    transform: skew(0deg);
   }
 }
 
@@ -334,13 +318,11 @@
     display: inline-block;
     max-width: 100%;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.94rem;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.4;
     text-wrap: balance;
-    margin: 10px 0 0 0;
-    padding: 0 0 7px;
-    border-bottom: 2px solid #000;
-    font-weight: 700;
+    margin: 6px 0 0;
+    font-weight: 500;
   }
 
   .timeline-strip {

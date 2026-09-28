@@ -11,17 +11,31 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('cria a aplicação', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render the portfolio layout', () => {
+  it('mostra a estrutura do portfólio', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.layout-frame')).toBeTruthy();
     expect(compiled.querySelector('app-navbar')).toBeTruthy();
+  });
+
+  it('remove a abertura após a animação da assinatura', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const abertura = fixture.nativeElement.querySelector('.intro-overlay') as HTMLElement;
+
+    abertura.dispatchEvent(new AnimationEvent('animationend', {
+      bubbles: true,
+      animationName: 'sumirAbertura',
+    }));
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.intro-overlay')).toBeNull();
   });
 });

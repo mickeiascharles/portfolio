@@ -1,15 +1,52 @@
 <section class="album-container" aria-labelledby="album-title">
   <header class="album-header">
     <h2 id="album-title">{{ language.text().album.title }}</h2>
-    <span class="album-count">{{ photos.length }} {{ language.text().album.photoCount }}</span>
+    <div class="gallery-actions">
+      <button
+        type="button"
+        class="gallery-arrow"
+        (click)="moverGaleria(-1)"
+        [disabled]="indiceGaleria() === 0"
+        [attr.aria-label]="language.text().album.previousPhoto"
+        [title]="language.text().album.previousPhoto"
+      >
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+      </button>
+      <span class="album-count" aria-live="polite">
+        {{ (indiceGaleria() + 1).toString().padStart(2, '0') }} / {{ fotos.length }}
+      </span>
+      <button
+        type="button"
+        class="gallery-arrow"
+        (click)="moverGaleria(1)"
+        [disabled]="indiceGaleria() === fotos.length - 1"
+        [attr.aria-label]="language.text().album.nextPhoto"
+        [title]="language.text().album.nextPhoto"
+      >
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
   </header>
 
-  <div class="photo-grid">
-    <figure *ngFor="let photo of photos; let i = index" class="photo-item">
+  <div
+    #faixaFotos
+    class="photo-strip"
+    tabindex="0"
+    [attr.aria-label]="language.text().album.title"
+    (scroll)="atualizarIndiceGaleria()"
+    (keydown.arrowLeft)="moverGaleria(-1, $event)"
+    (keydown.arrowRight)="moverGaleria(1, $event)"
+  >
+    <figure
+      #cartaoFoto
+      *ngFor="let photo of fotos; let i = index"
+      class="photo-item"
+      [class.is-active]="indiceGaleria() === i"
+    >
       <button
         type="button"
         class="photo-button"
-        (click)="openPhoto(i)"
+        (click)="abrirFoto(i)"
         [attr.aria-label]="
           language.text().album.openPhoto + ': ' + photo.caption[language.current()]
         "
@@ -20,7 +57,7 @@
           [alt]="photo.caption[language.current()]"
           [width]="photo.width"
           [height]="photo.height"
-          [loading]="i < 3 ? 'eager' : 'lazy'"
+          [loading]="i < 2 ? 'eager' : 'lazy'"
           decoding="async"
         />
         <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
@@ -33,18 +70,18 @@
   #viewer
   class="photo-viewer"
   [attr.aria-label]="language.text().album.title"
-  (click)="closeOnBackdrop($event)"
-  (close)="selectedIndex.set(null)"
-  (keydown.arrowLeft)="navigate(-1, $event)"
-  (keydown.arrowRight)="navigate(1, $event)"
+  (click)="fecharAoClicarFora($event)"
+  (close)="indiceSelecionado.set(null)"
+  (keydown.arrowLeft)="navegarFoto(-1, $event)"
+  (keydown.arrowRight)="navegarFoto(1, $event)"
 >
-  <div class="viewer-content" *ngIf="activePhoto() as photo">
+  <div class="viewer-content" *ngIf="fotoAtiva() as photo">
     <div class="viewer-toolbar">
-      <span aria-live="polite">{{ (selectedIndex() ?? 0) + 1 }} / {{ photos.length }}</span>
+      <span aria-live="polite">{{ (indiceSelecionado() ?? 0) + 1 }} / {{ fotos.length }}</span>
       <button
         type="button"
         autofocus
-        (click)="closePhoto()"
+        (click)="fecharFoto()"
         [attr.aria-label]="language.text().album.closePhoto"
         [title]="language.text().album.closePhoto"
       >
@@ -55,7 +92,7 @@
       <button
         type="button"
         class="previous-photo"
-        (click)="navigate(-1)"
+        (click)="navegarFoto(-1)"
         [attr.aria-label]="language.text().album.previousPhoto"
         [title]="language.text().album.previousPhoto"
       >
@@ -70,7 +107,7 @@
       <button
         type="button"
         class="next-photo"
-        (click)="navigate(1)"
+        (click)="navegarFoto(1)"
         [attr.aria-label]="language.text().album.nextPhoto"
         [title]="language.text().album.nextPhoto"
       >

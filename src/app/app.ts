@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/layout/navbar/navbar';
 import { LanguageService } from './services/language';
@@ -13,9 +13,15 @@ import { LanguageService } from './services/language';
 })
 export class AppComponent {
   readonly language = inject(LanguageService);
+  readonly mostrarAbertura = signal(true);
 
-  title = 'mickeiascharles';
   isMenuOpen = false;
+
+  encerrarAbertura(evento: AnimationEvent) {
+    if (evento.target === evento.currentTarget && evento.animationName === 'sumirAbertura') {
+      this.mostrarAbertura.set(false);
+    }
+  }
 
   playMenuSound() {
     const audio = new Audio('assets/click.mp3');

@@ -37,3 +37,12 @@
 
   <div class="copyright-fixed">{{ language.text().common.copyright }}</div>
 </div>
+
+<div
+  *ngIf="mostrarAbertura()"
+  class="intro-overlay"
+  aria-hidden="true"
+  (animationend)="encerrarAbertura($event)"
+>
+  <img src="assets/signature.webp" alt="" fetchpriority="high" />
+</div>

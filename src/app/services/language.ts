@@ -87,7 +87,6 @@ type SiteCopy = {
     closePhoto: string;
     previousPhoto: string;
     nextPhoto: string;
-    photoCount: string;
   };
   resume: {
     downloadLead: string;
@@ -657,7 +656,6 @@ int main(void) {
       closePhoto: 'Fechar foto',
       previousPhoto: 'Foto anterior',
       nextPhoto: 'Próxima foto',
-      photoCount: 'fotos',
     },
     resume: {
       downloadLead: 'D',
@@ -1250,7 +1248,6 @@ int main(void) {
       closePhoto: 'Close photo',
       previousPhoto: 'Previous photo',
       nextPhoto: 'Next photo',
-      photoCount: 'photos',
     },
     resume: {
       downloadLead: 'D',
