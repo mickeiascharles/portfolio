@@ -81,6 +81,14 @@ type SiteCopy = {
     backgroundAlt: string;
     items: HobbyItem[];
   };
+  album: {
+    title: string;
+    openPhoto: string;
+    closePhoto: string;
+    previousPhoto: string;
+    nextPhoto: string;
+    photoCount: string;
+  };
   resume: {
     downloadLead: string;
     downloadRest: string;
@@ -128,10 +136,11 @@ const translations: Record<LanguageCode, SiteCopy> = {
       signatureAlt: 'Assinatura',
     },
     nav: {
-      role: 'Software Developer',
+      role: 'Desenvolvedor e Arquiteto de Softwares e Inteligência Artificial',
       menuItems: [
         { label: 'Projetos', route: '/projetos' },
         { label: 'Hobbies', route: '/hobbies' },
+        { label: 'Álbum', route: '/album' },
         { label: 'Sobre mim', route: '/sobre' },
         { label: 'Currículo PDF', route: '/curriculo' },
       ],
@@ -165,6 +174,9 @@ typedef struct {
 
 typedef struct {
     const char *name;
+    const char *role;
+    const char *expertise;
+    const char *tools;
     Date birthdate;
     const char *birthplace;
     const char *favorites[20];
@@ -183,6 +195,10 @@ void printDate(Date d) {
 void printHeader(const Person *p) {
     printf("========================================\n");
     printf("Nome: %s\n", p->name);
+    printf("Atuação: %s\n", p->role);
+    printf("Áreas: %s\n", p->expertise);
+    printf("Ferramentas: %s\n", p->tools);
+    printf("Formação: Ciência da Computação na Universidade Católica de Brasília (UCB).\n");
     printf("Nascimento: "); printDate(p->birthdate); printf(" - %s\n", p->birthplace);
     printf("========================================\n\n");
 }
@@ -218,6 +234,12 @@ int main(void) {
     Person user = {0};
 
     user.name = "Mickeias Charles de Oliveira Paiva";
+    user.role = "Desenvolvedor e Arquiteto de Softwares e Inteligência Artificial";
+    user.expertise = "IA aplicada, Machine Learning, redes neurais, Deep Learning, "
+        "exploração e análise de dados; Full Stack, integração de sistemas e QA; "
+        "Git, metodologias ágeis e design como hobby com foco em produto e UX/UI.";
+    user.tools = "PyTorch, Keras, Kubernetes, Jupyter Notebook, Google Colab, "
+        "TensorFlow e Scikit-learn.";
     user.birthdate.day = 3; user.birthdate.month = 10; user.birthdate.year = 2001;
     user.birthplace = "Brasília, Brasil";
 
@@ -295,6 +317,8 @@ int main(void) {
     user.timeline[tc++] = (Event){"Comunidades técnicas",
         "Membro da SBC e da ACM desde 2026.", {0,0,2026}};
 
+    user.timeline[tc++] = (Event){"GCI World 2026 September",
+        "Curso internacional técnico e prático na Universidade de Tokyo, Matsuo-Iwasawa Laboratory.", {0,9,2026}};
     user.timeline_count = tc;
 
     printHeader(&user);
@@ -311,6 +335,30 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '========================================', cssClass: '' },
         { text: 'Nome: Mickeias Charles de Oliveira Paiva', cssClass: '' },
+        {
+          text: 'Atuação: Desenvolvedor e Arquiteto de Softwares e Inteligência Artificial',
+          cssClass: '',
+        },
+        {
+          text: 'Áreas: IA aplicada, Machine Learning, redes neurais, Deep Learning e análise de dados.',
+          cssClass: '',
+        },
+        {
+          text: 'Full Stack, arquitetura de software, integração de sistemas e QA manual e automatizado.',
+          cssClass: '',
+        },
+        {
+          text: 'Git, versionamento, metodologias ágeis; design como hobby, produto e UX/UI.',
+          cssClass: '',
+        },
+        {
+          text: 'Ferramentas: PyTorch, Keras, Kubernetes, Jupyter Notebook, Google Colab, TensorFlow e Scikit-learn.',
+          cssClass: '',
+        },
+        {
+          text: 'Formação: Ciência da Computação na Universidade Católica de Brasília (UCB).',
+          cssClass: '',
+        },
         { text: 'Nascimento: 03/10/2001 - Brasília, Brasil', cssClass: '' },
         { text: '========================================', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -387,6 +435,12 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '[00/00/2026] Comunidades técnicas', cssClass: '' },
         { text: '   Membro da SBC e da ACM.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/09/2026] GCI World 2026 September', cssClass: '' },
+        {
+          text: '   Curso internacional técnico e prático na Universidade de Tokyo, Matsuo-Iwasawa Laboratory.',
+          cssClass: '',
+        },
         { text: '------------', cssClass: '' },
         { text: 'ACOMPANHE PARA AS MINHAS PRÓXIMAS AVENTURAS.', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -396,26 +450,27 @@ int main(void) {
     about: {
       profileAlt: 'Foto de Mickeias',
       paragraphs: [
-        'Sou desenvolvedor fullstack, com experiência prática na área trabalhando tanto no frontend quanto no backend de aplicações web e mobile. Curto bastante a parte de qualidade de software, então testes automatizados (Robot Framework) e testes manuais são meu forte. Também tenho domínio forte em arquitetura de software, sempre pensando em soluções escaláveis e bem estruturadas desde o início do projeto.',
-        'No frontend, transito bem entre Angular, React e Flutter. No backend, trabalho com JavaScript e Node.js. Também já mexi com integração de IoT, uso Git no dia a dia e estou familiarizado com metodologias ágeis.',
-        'Além do código, tenho o design como hobbie — o que acabou virando uma qualificação extra pra criar artes e pensar em UX/UI. Gosto de ver o produto do início ao fim, da arquitetura e da ideia visual até a implementação técnica.',
+        'Desenvolvedor e Arquiteto de Softwares e IA, com experiência em Inteligência Artificial aplicada, incluindo Machine Learning, redes neurais, Deep Learning, exploração e análise de dados e desenvolvimento de soluções inteligentes. Também atuo com desenvolvimento Full Stack, abrangendo frontend, backend, bancos de dados e integração de sistemas, além de qualidade de software e QA com testes manuais e automatizados. Tenho experiência com Git, versionamento de código e metodologias ágeis. Como complemento ao perfil técnico, mantenho o design como hobby, o que contribui para minha visão de produto, UX/UI e construção de soluções mais completas.',
         'Graduando Ciência da Computação na Universidade Católica de Brasília (UCB).',
       ],
       languagesTitle: 'Linguagens de domínio:',
       toolsTitle: 'Tecnologias e ferramentas de domínio:',
       badgesTitle: 'Certificados e emblemas:',
       badges: [
-        { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
-        { src: 'assets/badge_core_team.png', alt: 'Emblema Core Team AWS Student Builder Group' },
+        { src: 'assets/sobre_mim/google_ai_essentials.png', alt: 'Google AI Essentials' },
         {
-          src: 'assets/IBM.png',
+          src: 'assets/sobre_mim/badge_core_team.png',
+          alt: 'Emblema Core Team AWS Student Builder Group',
+        },
+        {
+          src: 'assets/sobre_mim/IBM.png',
           alt: 'IBM SkillsBuild - Data Classification and Summarization Using IBM Granite',
         },
         {
-          src: 'assets/IBM2.png',
+          src: 'assets/sobre_mim/IBM2.png',
           alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
         },
-        { src: 'assets/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
+        { src: 'assets/sobre_mim/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
       ],
     },
     projects: {
@@ -526,49 +581,49 @@ int main(void) {
         {
           description:
             'Logo e protótipo desenvolvidos para uma rede social de um projeto acadêmico.',
-          image: 'assets/hubies-prototipo.png',
+          image: 'assets/hobbies/hubies-prototipo.png',
           alt: 'Protótipo Hubies',
           toolsLabel: 'Ferramentas:',
           tools: [illustrator, figma],
         },
         {
           description: 'Logo e protótipo desenvolvidos para um aplicativo do projeto HackTruck.',
-          image: 'assets/ListBeat.png',
+          image: 'assets/hobbies/ListBeat.png',
           alt: 'Protótipo ListBeat',
           toolsLabel: 'Ferramentas:',
           tools: [illustrator, figma],
         },
         {
           description: 'Logo desenvolvida para um projeto de residência.',
-          image: 'assets/mov-logo.png',
+          image: 'assets/hobbies/mov-logo.png',
           alt: 'Protótipo MOV',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
         {
           description: 'Pintura no Illustrator (Personagem no Espaço).',
-          image: 'assets/painting.png',
+          image: 'assets/hobbies/painting.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
         {
           description: 'Pintura no Illustrator (Arte Cartoon).',
-          image: 'assets/Lobo.jpg',
+          image: 'assets/hobbies/Lobo.jpg',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
         {
           description: 'Pintura no Illustrator (Personagem Cartoon).',
-          image: 'assets/Miguel.png',
+          image: 'assets/hobbies/Miguel.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
         {
           description: 'Pintura no Illustrator (Arte Abstrata).',
-          image: 'assets/arte.png',
+          image: 'assets/hobbies/arte.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
@@ -582,44 +637,52 @@ int main(void) {
         },
         {
           description: 'Pintura no Illustrator (Barba de Polvo).',
-          image: 'assets/barba-pova.png',
+          image: 'assets/hobbies/barba-pova.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
         {
           description: 'Pintura no Illustrator (Fantasy).',
-          image: 'assets/kovucke.png',
+          image: 'assets/hobbies/kovucke.png',
           alt: 'Pintura digital',
           toolsLabel: 'Ferramenta:',
           tools: [illustrator],
         },
       ],
     },
+    album: {
+      title: 'Álbum',
+      openPhoto: 'Ampliar foto',
+      closePhoto: 'Fechar foto',
+      previousPhoto: 'Foto anterior',
+      nextPhoto: 'Próxima foto',
+      photoCount: 'fotos',
+    },
     resume: {
       downloadLead: 'D',
       downloadRest: 'ownload aqui',
       downloadFileName: 'Mickeias_Charles_de_Oliveira_Paiva_curriculo.pdf',
-      filePath: 'assets/curriculo_PT.pdf',
-      previewImage: 'assets/curriculo_PT.jpg',
-      previewImagePageTwo: 'assets/curriculo_PT_page2.jpg',
+      filePath: 'assets/curriculo/curriculo_PT.pdf',
+      previewImage: 'assets/curriculo/curriculo_PT.jpg',
+      previewImagePageTwo: 'assets/curriculo/curriculo_PT_page2.jpg',
       pageOneAlt: 'Currículo Página 1',
       pageTwoAlt: 'Currículo Página 2',
       documents: [
         {
-          src: 'assets/carta-recomendacao.jpg',
+          src: 'assets/curriculo/carta-recomendacao.jpg',
           alt: 'Carta de referência profissional da Intech',
         },
         {
-          src: 'assets/carta_AWS.jpeg',
+          src: 'assets/curriculo/carta_AWS.jpeg',
           alt: 'Carta de boas-vindas ao Core-Team do AWS Student Builder Group da Universidade Católica de Brasília',
         },
         {
-          src: 'assets/certificado_monitoria.jpg',
+          src: 'assets/curriculo/certificado_monitoria.jpg',
           alt: 'Certificado de monitoria voluntária em Desenvolvimento Front End',
         },
         {
-          src: 'assets/certificado_ai_essentials.jpg',
+          src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Certificado Google AI Essentials',
         },
       ],
@@ -630,7 +693,7 @@ int main(void) {
           headline: 'Coordenador de TI na CAIXA',
           context: 'Recomendação profissional recebida no LinkedIn',
           text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
-          photo: 'assets/Douglas_CAIXA.jpg',
+          photo: 'assets/curriculo/Douglas_CAIXA.jpg',
           photoAlt: 'Foto de perfil de Douglas Franco',
         },
         {
@@ -640,7 +703,7 @@ int main(void) {
             'Análise de Requisitos e Negócios | Gerenciamento de Projetos | Voluntariado PMI-DF | Product Owner | Scrum Master',
           context: 'Em Julho de 2026, Lorena foi mentora de Mickeias',
           text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
-          photo: 'assets/Lorena_INFRA.png',
+          photo: 'assets/curriculo/Lorena_INFRA.png',
           photoAlt: 'Foto de perfil de Lorena Viana',
         },
       ],
@@ -656,10 +719,11 @@ int main(void) {
       signatureAlt: 'Signature',
     },
     nav: {
-      role: 'Software Developer',
+      role: 'Software and Artificial Intelligence Developer and Architect',
       menuItems: [
         { label: 'Projects', route: '/projetos' },
         { label: 'Hobbies', route: '/hobbies' },
+        { label: 'Album', route: '/album' },
         { label: 'About me', route: '/sobre' },
         { label: 'Resume PDF', route: '/curriculo' },
       ],
@@ -693,6 +757,9 @@ typedef struct {
 
 typedef struct {
     const char *name;
+    const char *role;
+    const char *expertise;
+    const char *tools;
     Date birthdate;
     const char *birthplace;
     const char *favorites[20];
@@ -711,6 +778,10 @@ void printDate(Date d) {
 void printHeader(const Person *p) {
     printf("========================================\n");
     printf("Name: %s\n", p->name);
+    printf("Role: %s\n", p->role);
+    printf("Expertise: %s\n", p->expertise);
+    printf("Tools: %s\n", p->tools);
+    printf("Education: Computer Science at the Catholic University of Brasília (UCB).\n");
     printf("Birth: "); printDate(p->birthdate); printf(" - %s\n", p->birthplace);
     printf("========================================\n\n");
 }
@@ -746,6 +817,12 @@ int main(void) {
     Person user = {0};
 
     user.name = "Mickeias Charles de Oliveira Paiva";
+    user.role = "Software and Artificial Intelligence Developer and Architect";
+    user.expertise = "Applied AI, Machine Learning, neural networks, Deep Learning, "
+        "data exploration and analysis; Full Stack, systems integration and QA; "
+        "Git, agile methodologies and design as a hobby with a product and UX/UI focus.";
+    user.tools = "PyTorch, Keras, Kubernetes, Jupyter Notebook, Google Colab, "
+        "TensorFlow and Scikit-learn.";
     user.birthdate.day = 3; user.birthdate.month = 10; user.birthdate.year = 2001;
     user.birthplace = "Brasilia, Brazil";
 
@@ -823,6 +900,8 @@ int main(void) {
     user.timeline[tc++] = (Event){"Technical communities",
         "Member of SBC and ACM since 2026.", {0,0,2026}};
 
+    user.timeline[tc++] = (Event){"GCI World 2026 September",
+        "International technical and practical course at the University of Tokyo, Matsuo-Iwasawa Laboratory.", {0,9,2026}};
     user.timeline_count = tc;
 
     printHeader(&user);
@@ -839,6 +918,30 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '========================================', cssClass: '' },
         { text: 'Name: Mickeias Charles de Oliveira Paiva', cssClass: '' },
+        {
+          text: 'Role: Software and Artificial Intelligence Developer and Architect',
+          cssClass: '',
+        },
+        {
+          text: 'Expertise: applied AI, Machine Learning, neural networks, Deep Learning and data analysis.',
+          cssClass: '',
+        },
+        {
+          text: 'Full Stack, software architecture, systems integration, manual and automated QA.',
+          cssClass: '',
+        },
+        {
+          text: 'Git, version control, agile methodologies; design as a hobby, product and UX/UI.',
+          cssClass: '',
+        },
+        {
+          text: 'Tools: PyTorch, Keras, Kubernetes, Jupyter Notebook, Google Colab, TensorFlow and Scikit-learn.',
+          cssClass: '',
+        },
+        {
+          text: 'Education: Computer Science at the Catholic University of Brasília (UCB).',
+          cssClass: '',
+        },
         { text: 'Birth: 03/10/2001 - Brasilia, Brazil', cssClass: '' },
         { text: '========================================', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -918,6 +1021,12 @@ int main(void) {
         { text: ' ', cssClass: '' },
         { text: '[00/00/2026] Technical communities', cssClass: '' },
         { text: '   Member of SBC and ACM.', cssClass: '' },
+        { text: ' ', cssClass: '' },
+        { text: '[00/09/2026] GCI World 2026 September', cssClass: '' },
+        {
+          text: '   International technical and practical course at the University of Tokyo, Matsuo-Iwasawa Laboratory.',
+          cssClass: '',
+        },
         { text: '------------', cssClass: '' },
         { text: 'FOLLOW ALONG FOR MY NEXT ADVENTURES.', cssClass: '' },
         { text: ' ', cssClass: '' },
@@ -927,26 +1036,27 @@ int main(void) {
     about: {
       profileAlt: 'Photo of Mickeias',
       paragraphs: [
-        "I'm a fullstack developer with hands-on experience working on both the frontend and backend of web and mobile applications. I really enjoy the software quality side of things, so automated testing (Robot Framework) and manual testing are among my strengths. I also have strong expertise in software architecture, always thinking about scalable, well-structured solutions from the start of a project.",
-        "On the frontend, I move comfortably between Angular, React and Flutter. On the backend, I work with JavaScript and Node.js. I've also worked with IoT integration, use Git daily and am familiar with agile methodologies.",
-        'Beyond code, design is a hobby of mine — which ended up becoming an extra skill for creating art and thinking about UX/UI. I like seeing a product from start to finish, from architecture and visual concept through to technical implementation.',
+        'Software and AI Developer and Architect with experience in applied Artificial Intelligence, including Machine Learning, neural networks, Deep Learning, data exploration and analysis, and the development of intelligent solutions. I also work in Full Stack development, covering frontend, backend, databases and systems integration, as well as software quality and QA through manual and automated testing. I have experience with Git, code version control and agile methodologies. To complement my technical background, I pursue design as a hobby, which strengthens my approach to product development, UX/UI and building more complete solutions.',
         'Computer Science undergraduate at the Catholic University of Brasília (UCB).',
       ],
       languagesTitle: 'Core languages:',
       toolsTitle: 'Core technologies and tools:',
       badgesTitle: 'Certificates and badges:',
       badges: [
-        { src: 'assets/google_ai_essentials.png', alt: 'Google AI Essentials' },
-        { src: 'assets/badge_core_team.png', alt: 'AWS Student Builder Group Core Team badge' },
+        { src: 'assets/sobre_mim/google_ai_essentials.png', alt: 'Google AI Essentials' },
         {
-          src: 'assets/IBM.png',
+          src: 'assets/sobre_mim/badge_core_team.png',
+          alt: 'AWS Student Builder Group Core Team badge',
+        },
+        {
+          src: 'assets/sobre_mim/IBM.png',
           alt: 'IBM SkillsBuild - Data Classification and Summarization Using IBM Granite',
         },
         {
-          src: 'assets/IBM2.png',
+          src: 'assets/sobre_mim/IBM2.png',
           alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
         },
-        { src: 'assets/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
+        { src: 'assets/sobre_mim/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
       ],
     },
     projects: {
@@ -1056,49 +1166,49 @@ int main(void) {
       items: [
         {
           description: 'Logo and prototype developed for an academic social network project.',
-          image: 'assets/hubies-prototipo.png',
+          image: 'assets/hobbies/hubies-prototipo.png',
           alt: 'Hubies prototype',
           toolsLabel: 'Tools:',
           tools: [illustrator, figma],
         },
         {
           description: 'Logo and prototype developed for a HackTruck project app.',
-          image: 'assets/ListBeat.png',
+          image: 'assets/hobbies/ListBeat.png',
           alt: 'ListBeat prototype',
           toolsLabel: 'Tools:',
           tools: [illustrator, figma],
         },
         {
           description: 'Logo developed for a residency project.',
-          image: 'assets/mov-logo.png',
+          image: 'assets/hobbies/mov-logo.png',
           alt: 'MOV prototype',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
         {
           description: 'Illustrator painting (Character in Space).',
-          image: 'assets/painting.png',
+          image: 'assets/hobbies/painting.png',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
         {
           description: 'Illustrator painting (Cartoon Art).',
-          image: 'assets/Lobo.jpg',
+          image: 'assets/hobbies/Lobo.jpg',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
         {
           description: 'Illustrator painting (Cartoon Character).',
-          image: 'assets/Miguel.png',
+          image: 'assets/hobbies/Miguel.png',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
         {
           description: 'Illustrator painting (Abstract Art).',
-          image: 'assets/arte.png',
+          image: 'assets/hobbies/arte.png',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
@@ -1112,44 +1222,52 @@ int main(void) {
         },
         {
           description: 'Illustrator painting (Octopus Beard).',
-          image: 'assets/barba-pova.png',
+          image: 'assets/hobbies/barba-pova.png',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
         {
           description: 'Illustrator painting (Fantasy).',
-          image: 'assets/kovucke.png',
+          image: 'assets/hobbies/kovucke.png',
           alt: 'Digital painting',
           toolsLabel: 'Tool:',
           tools: [illustrator],
         },
       ],
     },
+    album: {
+      title: 'Album',
+      openPhoto: 'Enlarge photo',
+      closePhoto: 'Close photo',
+      previousPhoto: 'Previous photo',
+      nextPhoto: 'Next photo',
+      photoCount: 'photos',
+    },
     resume: {
       downloadLead: 'D',
       downloadRest: 'ownload resume',
       downloadFileName: 'Mickeias_Charles_de_Oliveira_Paiva_resume.pdf',
-      filePath: 'assets/curriculo_EN.pdf',
-      previewImage: 'assets/curriculo_EN.jpg',
-      previewImagePageTwo: 'assets/curriculo_EN_page2.jpg',
+      filePath: 'assets/curriculo/curriculo_EN.pdf',
+      previewImage: 'assets/curriculo/curriculo_EN.jpg',
+      previewImagePageTwo: 'assets/curriculo/curriculo_EN_page2.jpg',
       pageOneAlt: 'Resume page 1',
       pageTwoAlt: 'Resume page 2',
       documents: [
         {
-          src: 'assets/carta-recomendacao.jpg',
+          src: 'assets/curriculo/carta-recomendacao.jpg',
           alt: 'Professional reference letter from Intech',
         },
         {
-          src: 'assets/carta_AWS.jpeg',
+          src: 'assets/curriculo/carta_AWS.jpeg',
           alt: 'Welcome letter to the Core Team of the AWS Student Builder Group at the Catholic University of Brasília',
         },
         {
-          src: 'assets/certificado_monitoria.jpg',
+          src: 'assets/curriculo/certificado_monitoria.jpg',
           alt: 'Volunteer teaching assistant certificate in Front End Development',
         },
         {
-          src: 'assets/certificado_ai_essentials.jpg',
+          src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Google AI Essentials certificate',
         },
       ],
@@ -1160,7 +1278,7 @@ int main(void) {
           headline: 'IT Coordinator at CAIXA',
           context: 'Professional recommendation received on LinkedIn',
           text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
-          photo: 'assets/Douglas_CAIXA.jpg',
+          photo: 'assets/curriculo/Douglas_CAIXA.jpg',
           photoAlt: 'Profile photo of Douglas Franco',
         },
         {
@@ -1170,7 +1288,7 @@ int main(void) {
             'Requirements and Business Analysis | Project Management | PMI-DF Volunteer | Product Owner | Scrum Master',
           context: "In July 2026, Lorena was Mickeias's mentor",
           text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
-          photo: 'assets/Lorena_INFRA.png',
+          photo: 'assets/curriculo/Lorena_INFRA.png',
           photoAlt: 'Profile photo of Lorena Viana',
         },
       ],

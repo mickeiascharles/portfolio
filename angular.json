@@ -18,7 +18,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "ignore": ["assets/album/*.*"]
               }
             ],
             "styles": ["src/styles.css"]

@@ -1,5 +1,5 @@
 .sobre-container {
-  padding: 60px 100px 60px 60px;
+  padding: 130px 260px 160px 60px;
   width: 100%;
 
   display: flex;
@@ -86,9 +86,7 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  overflow-x: auto;
-  white-space: nowrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 10px 5px;
   scrollbar-width: none;
@@ -207,7 +205,7 @@
   }
 
   .icons {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .contacts-footer {

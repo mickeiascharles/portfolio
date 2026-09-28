@@ -116,6 +116,10 @@
 }
 
 @media (max-width: 768px) {
+  .layout-frame:has(app-album) .scrollable-area {
+    height: calc(100% - 90px);
+  }
+
   .layout-frame {
     top: 10px;
     left: 10px;

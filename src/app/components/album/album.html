@@ -1,0 +1,84 @@
+<section class="album-container" aria-labelledby="album-title">
+  <header class="album-header">
+    <h2 id="album-title">{{ language.text().album.title }}</h2>
+    <span>{{ photos.length }} {{ language.text().album.photoCount }}</span>
+  </header>
+
+  <div class="photo-grid">
+    <figure *ngFor="let photo of photos; let i = index" class="photo-item">
+      <button
+        type="button"
+        class="photo-button"
+        (click)="openPhoto(i)"
+        [attr.aria-label]="
+          language.text().album.openPhoto + ': ' + photo.caption[language.current()]
+        "
+        [title]="language.text().album.openPhoto"
+      >
+        <img
+          [src]="'assets/album/web/' + photo.file + '-thumb.webp'"
+          [alt]="photo.caption[language.current()]"
+          [width]="photo.width"
+          [height]="photo.height"
+          [loading]="i < 3 ? 'eager' : 'lazy'"
+          decoding="async"
+        />
+        <i class="bi bi-arrows-fullscreen" aria-hidden="true"></i>
+      </button>
+      <figcaption>
+        <span>{{ photo.caption[language.current()] }}</span>
+        <span class="photo-number">{{ (i + 1).toString().padStart(2, '0') }}</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<dialog
+  #viewer
+  class="photo-viewer"
+  aria-labelledby="photo-caption"
+  (click)="closeOnBackdrop($event)"
+  (close)="selectedIndex.set(null)"
+  (keydown.arrowLeft)="navigate(-1, $event)"
+  (keydown.arrowRight)="navigate(1, $event)"
+>
+  <div class="viewer-content" *ngIf="activePhoto() as photo">
+    <div class="viewer-toolbar">
+      <span aria-live="polite">{{ (selectedIndex() ?? 0) + 1 }} / {{ photos.length }}</span>
+      <button
+        type="button"
+        autofocus
+        (click)="closePhoto()"
+        [attr.aria-label]="language.text().album.closePhoto"
+        [title]="language.text().album.closePhoto"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="viewer-stage">
+      <button
+        type="button"
+        class="previous-photo"
+        (click)="navigate(-1)"
+        [attr.aria-label]="language.text().album.previousPhoto"
+        [title]="language.text().album.previousPhoto"
+      >
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+      </button>
+      <img
+        [src]="'assets/album/web/' + photo.file + '.webp'"
+        [alt]="photo.caption[language.current()]"
+      />
+      <button
+        type="button"
+        class="next-photo"
+        (click)="navigate(1)"
+        [attr.aria-label]="language.text().album.nextPhoto"
+        [title]="language.text().album.nextPhoto"
+      >
+        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <p id="photo-caption">{{ photo.caption[language.current()] }}</p>
+  </div>
+</dialog>
