@@ -1,7 +1,7 @@
 <section class="album-container" aria-labelledby="album-title">
   <header class="album-header">
     <h2 id="album-title">{{ language.text().album.title }}</h2>
-    <span>{{ photos.length }} {{ language.text().album.photoCount }}</span>
+    <span class="album-count"><i class="bi bi-images" aria-hidden="true"></i> {{ photos.length }} {{ language.text().album.photoCount }}</span>
   </header>
 
   <div class="photo-grid">
@@ -65,10 +65,12 @@
       >
         <i class="bi bi-arrow-left" aria-hidden="true"></i>
       </button>
-      <img
-        [src]="'assets/album/web/' + photo.file + '.webp'"
-        [alt]="photo.caption[language.current()]"
-      />
+      <div class="viewer-photo-frame">
+        <img
+          [src]="'assets/album/web/' + photo.file + '.webp'"
+          [alt]="photo.caption[language.current()]"
+        />
+      </div>
       <button
         type="button"
         class="next-photo"

@@ -25,11 +25,16 @@
 }
 
 .header-fixed p {
-  font-size: 0.95rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
   line-height: 1.45;
   text-wrap: balance;
-  margin: 5px 0 0 0;
-  font-weight: 300;
+  margin: 9px 0 0 0;
+  padding: 7px 10px;
+  border: 2px solid #000;
+  background: #f5da72;
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 700;
 }
 
 .mobile-header {
@@ -328,11 +333,18 @@
   }
 
   .mobile-home-link p {
-    font-size: 0.95rem;
+    display: inline-block;
+    max-width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.94rem;
     line-height: 1.5;
     text-wrap: balance;
-    margin: 5px 0 0 0;
-    font-weight: 300;
+    margin: 10px 0 0 0;
+    padding: 5px 8px;
+    border: 2px solid #000;
+    background: #f5da72;
+    box-shadow: 3px 3px 0 #000;
+    font-weight: 700;
   }
 
   .timeline-strip {

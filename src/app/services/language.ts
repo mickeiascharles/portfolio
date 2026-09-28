@@ -685,6 +685,14 @@ int main(void) {
           src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Certificado Google AI Essentials',
         },
+        {
+          src: 'assets/curriculo/Certificado_Big_Data.jpg',
+          alt: 'Certificado Big Data Básico do IFMG, página 1',
+        },
+        {
+          src: 'assets/curriculo/Certificado_Big_Data_page2.jpg',
+          alt: 'Certificado Big Data Básico do IFMG, página 2',
+        },
       ],
       recommendations: [
         {
@@ -1269,6 +1277,14 @@ int main(void) {
         {
           src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Google AI Essentials certificate',
+        },
+        {
+          src: 'assets/curriculo/Certificado_Big_Data.jpg',
+          alt: 'IFMG Big Data Basics certificate, page 1',
+        },
+        {
+          src: 'assets/curriculo/Certificado_Big_Data_page2.jpg',
+          alt: 'IFMG Big Data Basics certificate, page 2',
         },
       ],
       recommendations: [
