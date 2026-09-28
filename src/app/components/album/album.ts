@@ -25,6 +25,7 @@ export class AlbumComponent {
   readonly fotos = albumPhotos;
   readonly indiceGaleria = signal(0);
   readonly indiceSelecionado = signal<number | null>(null);
+  private inicioDeslize: { x: number; y: number } | null = null;
   readonly fotoAtiva = computed(() => {
     const indice = this.indiceSelecionado();
     return indice === null ? null : this.fotos[indice];
@@ -35,11 +36,16 @@ export class AlbumComponent {
 
   moverGaleria(direcao: number, evento?: Event) {
     evento?.preventDefault();
-    const indice = Math.max(0, Math.min(this.fotos.length - 1, this.indiceGaleria() + direcao));
+    const atual = this.indiceGaleria();
+    const indice = (atual + direcao + this.fotos.length) % this.fotos.length;
+    const voltouAoInicio =
+      (atual === 0 && direcao < 0) ||
+      (atual === this.fotos.length - 1 && direcao > 0);
+    const animar = !voltouAoInicio && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const faixa = this.faixaFotos.nativeElement;
     faixa.scrollTo({
       left: indice * faixa.clientWidth,
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      behavior: animar ? 'smooth' : 'instant',
     });
   }
 
@@ -74,6 +80,27 @@ export class AlbumComponent {
     const indice = this.indiceSelecionado();
     if (indice !== null) {
       this.indiceSelecionado.set((indice + direcao + this.fotos.length) % this.fotos.length);
+    }
+  }
+
+  iniciarDeslize(evento: TouchEvent) {
+    const toque = evento.touches.length === 1 ? evento.touches[0] : null;
+    this.inicioDeslize = toque ? { x: toque.clientX, y: toque.clientY } : null;
+  }
+
+  encerrarDeslize(evento: TouchEvent) {
+    const inicio = this.inicioDeslize;
+    this.inicioDeslize = null;
+    if (!inicio || evento.changedTouches.length !== 1) return;
+
+    const toque = evento.changedTouches[0];
+    const distanciaX = toque.clientX - inicio.x;
+    const distanciaY = toque.clientY - inicio.y;
+
+    if (Math.abs(distanciaX) > 60 && Math.abs(distanciaX) > Math.abs(distanciaY) * 1.2) {
+      this.navegarFoto(distanciaX < 0 ? 1 : -1);
+    } else if (distanciaY > 90 && distanciaY > Math.abs(distanciaX) * 1.2) {
+      this.fecharFoto();
     }
   }
 

@@ -47,6 +47,7 @@ type SiteCopy = {
     copyright: string;
     languageSwitcherLabel: string;
     menuButtonLabel: string;
+    closeMenuButtonLabel: string;
     portuguese: string;
     english: string;
     signatureAlt: string;
@@ -130,6 +131,7 @@ const translations: Record<LanguageCode, SiteCopy> = {
       copyright: 'Copyright©, Todos os direitos reservados.',
       languageSwitcherLabel: 'Selecionar idioma',
       menuButtonLabel: 'Abrir menu de navegação',
+      closeMenuButtonLabel: 'Fechar menu de navegação',
       portuguese: 'Português',
       english: 'Inglês',
       signatureAlt: 'Assinatura',
@@ -720,6 +722,7 @@ int main(void) {
       copyright: 'Copyright©, All rights reserved.',
       languageSwitcherLabel: 'Select language',
       menuButtonLabel: 'Open navigation menu',
+      closeMenuButtonLabel: 'Close navigation menu',
       portuguese: 'Portuguese',
       english: 'English',
       signatureAlt: 'Signature',
