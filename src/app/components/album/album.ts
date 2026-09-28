@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   ViewChild,
   computed,
   inject,
@@ -47,6 +48,15 @@ export class AlbumComponent {
     if (!faixa.clientWidth) return;
     const indice = Math.round(faixa.scrollLeft / faixa.clientWidth);
     this.indiceGaleria.set(Math.max(0, Math.min(this.fotos.length - 1, indice)));
+  }
+
+  @HostListener('window:resize')
+  realinharGaleria() {
+    const faixa = this.faixaFotos?.nativeElement;
+    if (!faixa) return;
+
+    const indice = this.indiceGaleria();
+    requestAnimationFrame(() => faixa.scrollTo({ left: indice * faixa.clientWidth, behavior: 'instant' }));
   }
 
   abrirFoto(indice: number) {

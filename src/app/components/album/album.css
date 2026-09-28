@@ -1,18 +1,7 @@
 .album-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 140px 60px 110px;
-}
-
-.album-header {
-  margin-bottom: 8px;
-  font-family: 'Courier New', monospace;
-}
-
-.album-header h2 {
-  margin: 0;
-  font-size: 1.85rem;
-  font-weight: 700;
+  padding: 120px 60px 110px;
 }
 
 .gallery-actions {
@@ -57,7 +46,7 @@
 .count-divider { color: #aaa; }
 
 .photo-strip {
-  --altura-galeria: clamp(280px, calc(100dvh - 310px), 680px);
+  --altura-galeria: clamp(320px, calc(100dvh - 240px), 760px);
   display: flex;
   width: 100%;
   height: var(--altura-galeria);
@@ -206,9 +195,9 @@
 }
 
 @media (max-width: 768px) {
-  .album-container { padding: 110px 20px 30px; }
-  .photo-strip { --altura-galeria: clamp(260px, calc(100dvh - 340px), 640px); }
-  .photo-item { padding: 16px 8px 26px; }
+  .album-container { padding: 100px 12px 30px; }
+  .photo-strip { --altura-galeria: clamp(280px, calc(100dvh - 285px), 700px); }
+  .photo-item { padding: 16px 4px 26px; }
   .photo-button > i { opacity: 1; }
   .photo-viewer {
     width: calc(100% - 24px);
@@ -225,10 +214,6 @@
   .viewer-photo-frame img { max-height: 61dvh; }
   .previous-photo { grid-column: 1; grid-row: 2; }
   .next-photo { grid-column: 2; grid-row: 2; justify-self: end; }
-}
-
-@media (max-width: 480px) {
-  .album-header h2 { font-size: 1.7rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
