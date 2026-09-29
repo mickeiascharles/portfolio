@@ -22,4 +22,11 @@ describe('SobreComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('exibe as logos de COBOL e Assembly', () => {
+    const pagina = fixture.nativeElement as HTMLElement;
+
+    expect(pagina.querySelector('img[alt="COBOL"]')?.getAttribute('src')).toBe('assets/icons/cobol.svg');
+    expect(pagina.querySelector('img[alt="Assembly"]')?.getAttribute('src')).toBe('assets/icons/assembly.svg');
+  });
 });
