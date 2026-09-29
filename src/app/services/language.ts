@@ -84,8 +84,6 @@ type SiteCopy = {
   };
   album: {
     title: string;
-    openPhoto: string;
-    closePhoto: string;
     previousPhoto: string;
     nextPhoto: string;
   };
@@ -654,8 +652,6 @@ int main(void) {
     },
     album: {
       title: 'Álbum',
-      openPhoto: 'Ampliar foto',
-      closePhoto: 'Fechar foto',
       previousPhoto: 'Foto anterior',
       nextPhoto: 'Próxima foto',
     },
@@ -1247,8 +1243,6 @@ int main(void) {
     },
     album: {
       title: 'Album',
-      openPhoto: 'Enlarge photo',
-      closePhoto: 'Close photo',
       previousPhoto: 'Previous photo',
       nextPhoto: 'Next photo',
     },

@@ -1,54 +1,51 @@
 <section class="album-container">
-  <div class="gallery-stage" [class.foto-horizontal]="fotos[indiceGaleria()].width >= fotos[indiceGaleria()].height">
+  <div
+    #faixaFotos
+    class="photo-strip"
+    role="region"
+    tabindex="0"
+    [attr.aria-label]="language.text().album.title"
+    (scroll)="atualizarIndiceGaleria()"
+    (keydown.arrowLeft)="moverGaleria(-1, $event)"
+    (keydown.arrowRight)="moverGaleria(1, $event)"
+  >
+    <figure
+      *ngFor="let photo of fotos; let i = index"
+      class="photo-item"
+      [class.is-active]="indiceGaleria() === i"
+      [attr.aria-hidden]="indiceGaleria() !== i"
+      [inert]="indiceGaleria() !== i"
+    >
+      <img
+        [src]="'assets/album/web/' + photo.file + '.webp'"
+        [alt]="photo.caption[language.current()]"
+        [width]="photo.width"
+        [height]="photo.height"
+        [loading]="i < 2 ? 'eager' : 'lazy'"
+        decoding="async"
+        draggable="false"
+      />
+    </figure>
+  </div>
+
+  <div class="gallery-actions">
     <button
       type="button"
-      class="gallery-arrow gallery-arrow-previous"
+      class="gallery-arrow"
       (click)="moverGaleria(-1)"
       [attr.aria-label]="language.text().album.previousPhoto"
       [title]="language.text().album.previousPhoto"
     >
       &lt;
     </button>
-    <div
-      #faixaFotos
-      class="photo-strip"
-      role="region"
-      tabindex="0"
-      [attr.aria-label]="language.text().album.title"
-      (scroll)="atualizarIndiceGaleria()"
-      (keydown.arrowLeft)="moverGaleria(-1, $event)"
-      (keydown.arrowRight)="moverGaleria(1, $event)"
-    >
-      <figure
-        *ngFor="let photo of fotos; let i = index"
-        class="photo-item"
-        [class.is-active]="indiceGaleria() === i"
-        [attr.aria-hidden]="indiceGaleria() !== i"
-        [inert]="indiceGaleria() !== i"
-      >
-        <button
-          type="button"
-          class="photo-button"
-          (click)="abrirFoto(i)"
-          [attr.aria-label]="
-            language.text().album.openPhoto + ': ' + photo.caption[language.current()]
-          "
-          [title]="language.text().album.openPhoto"
-        >
-          <img
-            [src]="'assets/album/web/' + photo.file + '.webp'"
-            [alt]="photo.caption[language.current()]"
-            [width]="photo.width"
-            [height]="photo.height"
-            [loading]="i < 2 ? 'eager' : 'lazy'"
-            decoding="async"
-          />
-        </button>
-      </figure>
+    <div class="album-count" aria-live="polite" aria-atomic="true">
+      <span class="current-photo">{{ (indiceGaleria() + 1).toString().padStart(2, '0') }}</span>
+      <span class="count-divider" aria-hidden="true">/</span>
+      <span>{{ fotos.length }}</span>
     </div>
     <button
       type="button"
-      class="gallery-arrow gallery-arrow-next"
+      class="gallery-arrow"
       (click)="moverGaleria(1)"
       [attr.aria-label]="language.text().album.nextPhoto"
       [title]="language.text().album.nextPhoto"
@@ -56,63 +53,4 @@
       &gt;
     </button>
   </div>
-
-  <div class="album-count" aria-live="polite" aria-atomic="true">
-    <span class="current-photo">{{ (indiceGaleria() + 1).toString().padStart(2, '0') }}</span>
-    <span class="count-divider" aria-hidden="true">/</span>
-    <span>{{ fotos.length }}</span>
-  </div>
 </section>
-
-<dialog
-  #viewer
-  class="photo-viewer"
-  [attr.aria-label]="language.text().album.title"
-  (click)="fecharAoClicarFora($event)"
-  (close)="indiceSelecionado.set(null)"
-  (keydown.arrowLeft)="navegarFoto(-1, $event)"
-  (keydown.arrowRight)="navegarFoto(1, $event)"
-  (touchstart)="iniciarDeslize($event)"
-  (touchend)="encerrarDeslize($event)"
->
-  <div class="viewer-content" *ngIf="fotoAtiva() as photo">
-    <div class="viewer-toolbar">
-      <span aria-live="polite">{{ (indiceSelecionado() ?? 0) + 1 }} / {{ fotos.length }}</span>
-      <button
-        type="button"
-        autofocus
-        (click)="fecharFoto()"
-        [attr.aria-label]="language.text().album.closePhoto"
-        [title]="language.text().album.closePhoto"
-      >
-        <i class="bi bi-x-lg" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="viewer-stage">
-      <button
-        type="button"
-        class="previous-photo"
-        (click)="navegarFoto(-1)"
-        [attr.aria-label]="language.text().album.previousPhoto"
-        [title]="language.text().album.previousPhoto"
-      >
-        <i class="bi bi-arrow-left" aria-hidden="true"></i>
-      </button>
-      <div class="viewer-photo-frame">
-        <img
-          [src]="'assets/album/web/' + photo.file + '.webp'"
-          [alt]="photo.caption[language.current()]"
-        />
-      </div>
-      <button
-        type="button"
-        class="next-photo"
-        (click)="navegarFoto(1)"
-        [attr.aria-label]="language.text().album.nextPhoto"
-        [title]="language.text().album.nextPhoto"
-      >
-        <i class="bi bi-arrow-right" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
-</dialog>
