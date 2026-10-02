@@ -22,10 +22,37 @@ export const albumPhotos: AlbumPhoto[] = [
     caption: { pt: 'Na INFRA S.A.', en: 'At INFRA S.A.' },
   },
   {
+    file: 'abertura_aws_eu',
+    width: 1440,
+    height: 1920,
+    caption: {
+      pt: 'Apresentando na abertura do AWS Student Builder Group',
+      en: 'Presenting at the AWS Student Builder Group opening',
+    },
+  },
+  {
     file: 'AWS',
     width: 1920,
     height: 1440,
     caption: { pt: 'Comunidade AWS', en: 'AWS community' },
+  },
+  {
+    file: 'abertura_aws_1',
+    width: 1600,
+    height: 900,
+    caption: {
+      pt: 'Equipe na abertura do AWS Student Builder Group',
+      en: 'Team at the AWS Student Builder Group opening',
+    },
+  },
+  {
+    file: 'abertura_aws_2',
+    width: 1600,
+    height: 900,
+    caption: {
+      pt: 'Participantes da abertura do AWS Student Builder Group',
+      en: 'Attendees at the AWS Student Builder Group opening',
+    },
   },
   {
     file: 'COCOHEADS_2026',

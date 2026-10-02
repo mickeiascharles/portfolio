@@ -15,13 +15,13 @@ describe('AlbumComponent', () => {
     fixture.detectChanges();
     const pagina = fixture.nativeElement as HTMLElement;
 
-    expect(pagina.querySelectorAll('.photo-item').length).toBe(15);
+    expect(pagina.querySelectorAll('.photo-item').length).toBe(18);
     expect(pagina.querySelector('figcaption')).toBeNull();
     expect(pagina.querySelector('dialog')).toBeNull();
     expect(pagina.querySelector('.photo-item button')).toBeNull();
     expect(pagina.querySelectorAll('.photo-item:not([inert])').length).toBe(1);
-    expect(fixture.componentInstance.fotos.slice(0, 3).map((foto) => foto.file)).toEqual([
-      'Estudando_em_casa', 'Google', 'IINFRA2',
+    expect(fixture.componentInstance.fotos.slice(0, 4).map((foto) => foto.file)).toEqual([
+      'Estudando_em_casa', 'Google', 'IINFRA2', 'abertura_aws_eu',
     ]);
   });
 
@@ -39,11 +39,11 @@ describe('AlbumComponent', () => {
     componente.atualizarIndiceGaleria();
     expect(componente.indiceGaleria()).toBe(1);
 
-    componente.indiceGaleria.set(14);
+    componente.indiceGaleria.set(17);
     componente.moverGaleria(1);
     expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 0 }));
     componente.indiceGaleria.set(0);
     componente.moverGaleria(-1);
-    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 5600 }));
+    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 6800 }));
   });
 });
