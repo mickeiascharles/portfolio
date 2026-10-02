@@ -78,7 +78,7 @@
   z-index: var(--layer-controls);
   display: inline-flex;
   align-items: stretch;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
 .language-option {
@@ -141,12 +141,23 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 0 #000;
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}
+
+.mobile-menu-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #000;
 }
 
 @media (max-width: 768px) {
   .layout-frame:has(app-album) .scrollable-area {
     height: calc(100% - 90px);
+  }
+
+  .layout-frame:not(:has(app-album)) .scrollable-area {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 150px), transparent calc(100% - 60px));
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 150px), transparent calc(100% - 60px));
   }
 
   .layout-frame {

@@ -23,7 +23,7 @@
   background: transparent;
   color: #000;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1;
@@ -39,7 +39,7 @@
   gap: 14px;
   min-width: 80px;
   color: #777;
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   text-align: center;
   white-space: nowrap;
