@@ -1,6 +1,7 @@
 .projects-container {
   width: min(100%, 1540px);
-  padding: clamp(70px, 5vw, 96px) clamp(420px, 31vw, 600px) 110px
+  counter-reset: project;
+  padding: clamp(112px, 7vw, 128px) clamp(420px, 31vw, 600px) 110px
     clamp(48px, 6vw, 110px);
   position: relative;
   z-index: 5;
@@ -18,12 +19,30 @@
 }
 
 .project-item {
+  counter-increment: project;
   margin-bottom: clamp(48px, 6vw, 90px);
   border-left: 4px solid transparent;
   padding-left: 0;
-  transition: all 0.3s ease;
-  animation: fadeUp 0.8s ease-out;
+  transition:
+    border-color 0.3s ease,
+    padding-left 0.35s var(--ease-out);
+  animation: fadeUp 0.8s var(--ease-out);
   animation-fill-mode: backwards;
+}
+
+.project-item:nth-of-type(2) { animation-delay: 0.08s; }
+.project-item:nth-of-type(3) { animation-delay: 0.16s; }
+.project-item:nth-of-type(n + 4) { animation-delay: 0.24s; }
+
+.project-item::before {
+  content: counter(project, decimal-leading-zero) ' /';
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #777;
 }
 
 .project-item:hover {
@@ -37,18 +56,18 @@
   font-weight: 600;
   margin: 0 0 clamp(14px, 1.5vw, 24px) 0;
   color: #000;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
 .project-item p {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: clamp(0.9rem, 1vw, 1.18rem);
   line-height: 1.55;
   color: #333;
   margin-bottom: clamp(16px, 1.6vw, 24px);
   max-width: 68ch;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0;
   word-spacing: 0;
 }
@@ -65,14 +84,15 @@
   color: #000;
   font-weight: 600;
   font-size: 1rem;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.3s;
+  padding-bottom: 3px;
+  background: linear-gradient(#000, #000) left bottom / 0 1.5px no-repeat;
+  transition: background-size 0.35s var(--ease-out);
   font-family: inherit;
 }
 
-.link-btn:hover {
-  border-bottom: 1px solid #000;
+.link-btn:hover,
+.link-btn:focus-visible {
+  background-size: 100% 1.5px;
 }
 
 .link-btn i {
@@ -112,7 +132,7 @@
 
   .projects-container {
     width: 100%;
-    padding: clamp(62px, 5vw, 78px) clamp(480px, 39vw, 560px) 110px
+    padding: 112px clamp(480px, 39vw, 560px) 110px
       clamp(48px, 5vw, 70px);
   }
 
@@ -162,7 +182,7 @@
 
 @media (max-width: 768px) {
   .projects-container {
-    padding: 84px clamp(26px, 7vw, 34px) 64px;
+    padding: 104px clamp(26px, 7vw, 34px) 64px;
     width: 100%;
     max-width: none;
   }

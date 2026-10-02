@@ -29,12 +29,13 @@
   color: #000;
   display: inline-flex;
   align-items: center;
-  border-bottom: 1px solid transparent;
-  font-family: 'Courier New', Courier, monospace;
+  padding-bottom: 2px;
+  background: linear-gradient(#000, #000) left bottom / 0 1.5px no-repeat;
+  font-family: var(--font-mono);
   font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
-  transition: border-color 0.3s ease;
+  transition: background-size 0.35s var(--ease-out);
 }
 
 .highlight-letter {
@@ -50,7 +51,7 @@
 
 .download-link:hover,
 .download-link:focus-visible {
-  border-bottom-color: #000;
+  background-size: 100% 1.5px;
 }
 
 .download-link:hover i {

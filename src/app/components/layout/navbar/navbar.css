@@ -12,7 +12,6 @@
 .header-fixed .home-link {
   text-decoration: none;
   color: #000;
-  cursor: pointer;
   display: block;
 }
 
@@ -20,12 +19,12 @@
   font-size: 2.5rem;
   font-weight: 400;
   margin: 0;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   position: relative;
 }
 
 .header-fixed p {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   line-height: 1.4;
   text-wrap: balance;
@@ -126,7 +125,6 @@
   z-index: 90;
   display: flex;
   justify-content: flex-end;
-  overflow: visible;
   transition:
     right 0.3s ease,
     height 0.3s ease;
@@ -147,7 +145,6 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 10px solid #000;
-  margin-bottom: 0;
 }
 
 .geo-arrow-down {
@@ -156,7 +153,6 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 10px solid #000;
-  margin-top: 0;
 }
 
 .vertical-line {
@@ -167,7 +163,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: visible;
 }
 
 .menu-items-overlay {
@@ -194,8 +189,6 @@
   justify-content: flex-end;
   text-decoration: none;
   color: #000;
-  transition: all 0.3s ease;
-  padding-right: 0;
 
   pointer-events: auto !important;
   position: relative;
@@ -207,6 +200,7 @@
   margin-right: 15px;
   font-weight: 500;
   white-space: nowrap;
+  transition: transform 0.35s var(--ease-out);
 }
 
 .connector {
@@ -228,7 +222,13 @@
   border-radius: 50%;
   position: absolute;
   right: -2px;
+  transition: transform 0.35s var(--ease-out);
 }
+
+.nav-link:hover .label {
+  transform: translateX(-6px);
+}
+
 
 .nav-link:hover .label,
 .nav-link.active .label {
@@ -247,10 +247,6 @@
 
   .header-fixed h1 {
     font-size: 1.8rem;
-  }
-
-  .header-fixed p {
-    font-size: 0.9rem;
   }
 
   .nav-timeline {
@@ -279,10 +275,9 @@
 
   .nav-timeline {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 12px;
+    width: auto;
+    height: auto;
     transform: none;
     background-color: #ebebeb;
     z-index: 1500;
@@ -311,13 +306,13 @@
     font-size: 1.75rem;
     font-weight: 600;
     margin: 0;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
   }
 
   .mobile-home-link p {
     display: inline-block;
     max-width: 100%;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-mono);
     font-size: 0.88rem;
     line-height: 1.4;
     text-wrap: balance;
@@ -365,8 +360,14 @@
     padding: 10px;
   }
 
+  .nav-link.active .label {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
   .nav-link .label {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--font-mono);
     font-size: 1.6rem;
     font-weight: 600;
     margin-right: 0;

@@ -21,19 +21,22 @@
   border: 2px solid #000;
   border-radius: 0;
 
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
 
   padding: 10px 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 2px 2px 0px #000;
-  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px #000;
+  transition:
+    transform 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out),
+    background-color 0.2s ease;
 }
 
 .run-btn i {
@@ -42,13 +45,23 @@
 }
 
 .run-btn:hover {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0px #000;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
   background-color: #fff;
 }
 
+.run-btn:hover i {
+  animation: nudge 0.6s var(--ease-out) infinite alternate;
+}
+
+@keyframes nudge {
+  to {
+    transform: translateX(3px);
+  }
+}
+
 .run-btn:active {
-  transform: translate(2px, 2px);
+  transform: translate(4px, 4px);
   box-shadow: none;
 }
 
@@ -65,12 +78,13 @@
 }
 
 pre {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.7;
   color: #000000;
   margin: 0;
-  font-weight: 500;
+  font-weight: 400;
+  font-variant-ligatures: none;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -110,7 +124,7 @@ pre {
   background-color: #000;
   border: 2px solid #000;
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: 8px 8px 0 #000;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -128,7 +142,7 @@ pre {
 }
 
 .terminal-title {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: 1rem;
   display: flex;
@@ -156,7 +170,7 @@ pre {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-  font-family: 'Consolas', 'Lucida Console', monospace;
+  font-family: var(--font-mono);
   font-size: 0.95rem;
   color: #ffffff;
   line-height: 1.4;
@@ -247,5 +261,6 @@ pre {
     width: 100%;
     height: 100%;
     max-width: none;
+    box-shadow: none;
   }
 }
