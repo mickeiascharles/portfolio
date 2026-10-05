@@ -456,7 +456,7 @@ int main(void) {
       toolsTitle: 'Tecnologias e ferramentas de domínio:',
       badgesTitle: 'Certificados e emblemas:',
       badges: [
-        { src: 'assets/sobre_mim/google_ai_essentials.png', alt: 'Google AI Essentials' },
+        { src: 'assets/sobre_mim/Google_AI_Fundamentals.png', alt: 'Google AI Fundamentals' },
         {
           src: 'assets/sobre_mim/badge_core_team.png',
           alt: 'Emblema Core Team AWS Student Builder Group',
@@ -680,6 +680,10 @@ int main(void) {
         {
           src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Certificado Google AI Essentials',
+        },
+        {
+          src: 'assets/curriculo/certificado_ai_Fundamentals.jpg',
+          alt: 'Certificado Google AI Fundamentals',
         },
         {
           src: 'assets/curriculo/Certificado_Big_Data.jpg',
@@ -1048,7 +1052,7 @@ int main(void) {
       toolsTitle: 'Core technologies and tools:',
       badgesTitle: 'Certificates and badges:',
       badges: [
-        { src: 'assets/sobre_mim/google_ai_essentials.png', alt: 'Google AI Essentials' },
+        { src: 'assets/sobre_mim/Google_AI_Fundamentals.png', alt: 'Google AI Fundamentals' },
         {
           src: 'assets/sobre_mim/badge_core_team.png',
           alt: 'AWS Student Builder Group Core Team badge',
@@ -1271,6 +1275,10 @@ int main(void) {
         {
           src: 'assets/curriculo/certificado_ai_essentials.jpg',
           alt: 'Google AI Essentials certificate',
+        },
+        {
+          src: 'assets/curriculo/certificado_ai_Fundamentals.jpg',
+          alt: 'Google AI Fundamentals certificate',
         },
         {
           src: 'assets/curriculo/Certificado_Big_Data.jpg',
