@@ -24,7 +24,7 @@
   z-index: 20000;
   display: grid;
   place-items: center;
-  background: var(--grade-fundo), var(--bg-color);
+  background: var(--bg-color);
   pointer-events: none;
   animation: sumirAbertura 0.45s ease-in 1.35s both;
 }
@@ -53,6 +53,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+}
+
+.layout-frame:has(.terminal-overlay) app-rastro-cursor {
+  display: none;
 }
 
 .signature-logo {

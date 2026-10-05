@@ -113,7 +113,6 @@
   transform: translateY(-5px) scale(1.08);
 }
 
-/* Etiqueta com o nome da tecnologia, mostrada ao passar o mouse. */
 .skill::after {
   content: attr(data-nome);
   position: absolute;

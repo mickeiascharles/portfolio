@@ -201,7 +201,6 @@
   white-space: nowrap;
 }
 
-/* Prompt de terminal piscando na aba atual. */
 .nav-link.active .label::before {
   content: '> ';
   font-family: 'Courier New', Courier, monospace;

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { LanguageService } from '../../services/language';
 
-/** Logo exibida na seção de habilidades; o nome aparece ao passar o mouse. */
 type Tecnologia = { nome: string; icone: string };
 
 @Component({

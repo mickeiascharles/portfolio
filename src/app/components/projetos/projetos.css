@@ -41,7 +41,6 @@
   letter-spacing: 0;
 }
 
-/* Numeração automática no estilo de índice de arquivo: 01, 02, 03... */
 .project-item h2::before {
   counter-increment: projeto;
   content: counter(projeto, decimal-leading-zero) ' /';

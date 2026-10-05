@@ -1334,9 +1334,7 @@ export class LanguageService {
 
       try {
         window.localStorage.setItem('portfolio-language', language);
-      } catch {
-        // The language switch still works when storage is unavailable.
-      }
+      } catch {}
     });
   }
 

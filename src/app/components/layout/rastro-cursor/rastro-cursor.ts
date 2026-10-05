@@ -1,21 +1,14 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild, inject } from '@angular/core';
 
-/** Posição na grade, medida em células (não em pixels). */
 type Celula = { coluna: number; linha: number };
 
 const TAMANHO_CELULA = 10;
 const LADO_QUADRADO = 8;
 const QUANTIDADE_DE_QUADRADOS = 14;
-/** Intervalo entre um passo e outro, para o movimento andar "de casa em casa". */
 const INTERVALO_DO_PASSO = 22;
 const MAXIMO_DE_PASSOS_POR_QUADRO = 4;
-/** Quantas células a cabeça para antes do cursor, para não cobrir o que está sendo apontado. */
 const FOLGA_DO_CURSOR = 2;
 
-/**
- * Fila de quadradinhos pretos que segue o cursor andando pela grade, como um jogo de fliperama.
- * Quando o mouse para, a fila também para e continua desenhada na tela.
- */
 @Component({
   selector: 'app-rastro-cursor',
   standalone: true,
@@ -28,6 +21,7 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
   private readonly zona = inject(NgZone);
   private contexto: CanvasRenderingContext2D | null = null;
   private consulta: MediaQueryList | null = null;
+  private areaDaTela: DOMRect | null = null;
   private quadrados: Celula[] = [];
   private destino: Celula | null = null;
   private ultimoPasso = 0;
@@ -75,26 +69,27 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     this.animacao = 0;
     this.quadrados = [];
     this.destino = null;
-    this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    this.limparTela();
   }
 
   private readonly ajustarTela = (): void => {
     if (!this.contexto) return;
 
-    const escala = Math.min(window.devicePixelRatio || 1, 1.5);
     const canvas = this.tela.nativeElement;
-    canvas.width = Math.ceil(window.innerWidth * escala);
-    canvas.height = Math.ceil(window.innerHeight * escala);
+    const escala = Math.min(window.devicePixelRatio || 1, 1.5);
+    this.areaDaTela = canvas.getBoundingClientRect();
+    canvas.width = Math.ceil(this.areaDaTela.width * escala);
+    canvas.height = Math.ceil(this.areaDaTela.height * escala);
     this.contexto.setTransform(escala, 0, 0, escala, 0, 0);
     this.desenharQuadrados();
   };
 
   private readonly registrarMovimento = (evento: PointerEvent): void => {
-    if (evento.pointerType !== 'mouse') return;
+    if (evento.pointerType !== 'mouse' || !this.areaDaTela) return;
 
     this.destino = {
-      coluna: Math.floor(evento.clientX / TAMANHO_CELULA),
-      linha: Math.floor(evento.clientY / TAMANHO_CELULA),
+      coluna: Math.floor((evento.clientX - this.areaDaTela.left) / TAMANHO_CELULA),
+      linha: Math.floor((evento.clientY - this.areaDaTela.top) / TAMANHO_CELULA),
     };
     if (!this.quadrados.length) {
       this.quadrados = Array.from({ length: QUANTIDADE_DE_QUADRADOS }, () => ({ ...this.destino! }));
@@ -108,12 +103,10 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     let andou = true;
     if (agora - this.ultimoPasso >= INTERVALO_DO_PASSO) {
       this.ultimoPasso = agora;
-      // Longe do cursor a fila corre mais, para não ficar para trás em movimentos rápidos.
       for (let passo = 0; passo < this.passosPorQuadro(); passo++) andou = this.darUmPasso();
       this.desenharQuadrados();
     }
 
-    // Chegando ao destino a animação para; o último quadro fica na tela.
     if (andou) this.animacao = requestAnimationFrame(this.animar);
   };
 
@@ -125,7 +118,6 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     return Math.min(Math.max(Math.ceil(distancia / 12), 1), MAXIMO_DE_PASSOS_POR_QUADRO);
   }
 
-  /** Avança a cabeça uma célula em direção ao cursor e puxa o resto da fila atrás dela. */
   private darUmPasso(): boolean {
     const destino = this.destino;
     const cabeca = this.quadrados[0];
@@ -135,7 +127,6 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     const dy = destino.linha - cabeca.linha;
     if (Math.max(Math.abs(dx), Math.abs(dy)) <= FOLGA_DO_CURSOR) return false;
 
-    // Só anda na horizontal ou na vertical, nunca na diagonal.
     const novaCabeca =
       Math.abs(dx) >= Math.abs(dy)
         ? { coluna: cabeca.coluna + Math.sign(dx), linha: cabeca.linha }
@@ -146,11 +137,16 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     return true;
   }
 
+  private limparTela(): void {
+    const canvas = this.tela.nativeElement;
+    this.contexto?.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
   private desenharQuadrados(): void {
     const contexto = this.contexto;
     if (!contexto) return;
 
-    contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    this.limparTela();
     contexto.fillStyle = '#000';
     const margem = (TAMANHO_CELULA - LADO_QUADRADO) / 2;
     for (const quadrado of this.quadrados) {

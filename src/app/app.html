@@ -1,4 +1,6 @@
 <div class="layout-frame" [class.menu-open]="isMenuOpen">
+  <app-rastro-cursor></app-rastro-cursor>
+
   <button
     class="mobile-menu-toggle"
     (click)="toggleMenu()"
@@ -41,7 +43,6 @@
   <div class="copyright-fixed">{{ language.text().common.copyright }}</div>
 </div>
 
-<app-rastro-cursor></app-rastro-cursor>
 
 <div
   *ngIf="mostrarAbertura()"
