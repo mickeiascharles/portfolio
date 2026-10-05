@@ -288,7 +288,7 @@
     width: 100%;
     height: 100%;
     transform: none;
-    background-color: var(--bg-color);
+    background: var(--grade-fundo), var(--bg-color);
     z-index: 1500;
     display: flex;
     flex-direction: column;
