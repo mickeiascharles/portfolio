@@ -23,6 +23,7 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.layout-frame')).toBeTruthy();
     expect(compiled.querySelector('app-navbar')).toBeTruthy();
+    expect(compiled.querySelector('app-rastro-cursor canvas')).toBeTruthy();
   });
 
   it('remove a abertura após a animação da assinatura', () => {

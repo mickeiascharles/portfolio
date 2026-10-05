@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/layout/navbar/navbar';
+import { RastroCursorComponent } from './components/layout/rastro-cursor/rastro-cursor';
 import { LanguageService } from './services/language';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, NavbarComponent, RastroCursorComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
