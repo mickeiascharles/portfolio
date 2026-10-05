@@ -1,16 +1,32 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild, inject } from '@angular/core';
 
-/** Célula da grade acesa pelo cursor, como um pixel de tela antiga. */
-type Celula = { coluna: number; linha: number; acesaEm: number };
+type Ponto = { x: number; y: number };
+type Direcao = 'direita' | 'esquerda' | 'cima' | 'baixo';
 
-const TAMANHO_CELULA = 8;
-const ESPACO_ENTRE_CELULAS = 1;
-const DURACAO_CELULA = 420;
-const DEGRAUS_DE_OPACIDADE = 4;
-const LIMITE_CELULAS = 90;
-const CHANCE_DE_PIXEL_VIZINHO = 0.35;
-const SALTO_MAXIMO = 160;
+/** Tamanho de cada "pixel" do desenho, para manter o visual de jogo antigo. */
+const PIXEL = 3;
+/** Raio do Pac-Man medido em pixels do desenho. */
+const RAIO_PACMAN = 7;
+/** Distância que o Pac-Man mantém do cursor para não cobrir o que está sendo apontado. */
+const DISTANCIA_DO_CURSOR = 30;
+const SUAVIDADE_PERSEGUICAO = 0.16;
+const ESPACO_ENTRE_PASTILHAS = 18;
+const TAMANHO_PASTILHA = 4;
+const LIMITE_PASTILHAS = 70;
+const ABERTURA_MAXIMA_BOCA = Math.PI / 4;
+const VELOCIDADE_MASTIGADA = 0.012;
 
+const ANGULO_DA_DIRECAO: Record<Direcao, number> = {
+  direita: 0,
+  baixo: Math.PI / 2,
+  esquerda: Math.PI,
+  cima: -Math.PI / 2,
+};
+
+/**
+ * Pac-Man em pixel art que persegue o cursor e come as pastilhas deixadas pelo caminho.
+ * Fica parado na tela quando o mouse para; só anima enquanto há movimento.
+ */
 @Component({
   selector: 'app-rastro-cursor',
   standalone: true,
@@ -21,10 +37,13 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('tela', { static: true }) private tela!: ElementRef<HTMLCanvasElement>;
 
   private readonly zona = inject(NgZone);
-  private readonly celulas = new Map<string, Celula>();
+  private readonly pastilhas: Ponto[] = [];
   private contexto: CanvasRenderingContext2D | null = null;
   private consulta: MediaQueryList | null = null;
-  private ultimaPosicao: { coluna: number; linha: number } | null = null;
+  private pacman: Ponto | null = null;
+  private cursor: Ponto | null = null;
+  private ultimaPastilha: Ponto | null = null;
+  private direcao: Direcao = 'direita';
   private animacao = 0;
   private ativo = false;
 
@@ -55,7 +74,6 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
       this.ajustarTela();
       window.addEventListener('resize', this.ajustarTela);
       window.addEventListener('pointermove', this.registrarMovimento, { passive: true });
-      document.addEventListener('visibilitychange', this.limparSeOculta);
     } else {
       this.desativar();
     }
@@ -66,10 +84,11 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     this.ativo = false;
     window.removeEventListener('resize', this.ajustarTela);
     window.removeEventListener('pointermove', this.registrarMovimento);
-    document.removeEventListener('visibilitychange', this.limparSeOculta);
     cancelAnimationFrame(this.animacao);
     this.animacao = 0;
-    this.limpar();
+    this.pastilhas.length = 0;
+    this.pacman = this.cursor = this.ultimaPastilha = null;
+    this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
   }
 
   private readonly ajustarTela = (): void => {
@@ -80,101 +99,127 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     canvas.width = Math.ceil(window.innerWidth * escala);
     canvas.height = Math.ceil(window.innerHeight * escala);
     this.contexto.setTransform(escala, 0, 0, escala, 0, 0);
-    this.limpar();
+    this.contexto.imageSmoothingEnabled = false;
+    this.pedirQuadro();
   };
-
-  private readonly limparSeOculta = (): void => {
-    if (document.hidden) this.limpar();
-  };
-
-  private limpar(): void {
-    this.celulas.clear();
-    this.ultimaPosicao = null;
-    this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  }
 
   private readonly registrarMovimento = (evento: PointerEvent): void => {
     if (evento.pointerType !== 'mouse') return;
 
-    const atual = {
-      coluna: Math.floor(evento.clientX / TAMANHO_CELULA),
-      linha: Math.floor(evento.clientY / TAMANHO_CELULA),
-    };
-    const anterior = this.ultimaPosicao ?? atual;
-    const passos = Math.max(
-      Math.abs(atual.coluna - anterior.coluna),
-      Math.abs(atual.linha - anterior.linha),
-    );
-    if (this.ultimaPosicao && passos === 0) return;
-
-    // Um salto grande (mouse saindo e voltando da janela) não deve riscar a tela inteira.
-    const agora = performance.now();
-    if (passos * TAMANHO_CELULA > SALTO_MAXIMO) {
-      this.acenderCelula(atual.coluna, atual.linha, agora);
-    } else {
-      // Preenche as células entre as duas posições para o rastro não ficar com buracos.
-      for (let passo = 1; passo <= Math.max(passos, 1); passo++) {
-        const progresso = passo / Math.max(passos, 1);
-        const coluna = Math.round(anterior.coluna + (atual.coluna - anterior.coluna) * progresso);
-        const linha = Math.round(anterior.linha + (atual.linha - anterior.linha) * progresso);
-        this.acenderCelula(coluna, linha, agora);
-      }
-    }
-
-    this.ultimaPosicao = atual;
-    if (!this.animacao) this.animacao = requestAnimationFrame(this.desenhar);
+    this.cursor = { x: evento.clientX, y: evento.clientY };
+    this.pacman ??= { ...this.cursor };
+    this.soltarPastilhas(this.cursor);
+    this.pedirQuadro();
   };
 
-  private acenderCelula(coluna: number, linha: number, agora: number): void {
-    this.guardarCelula(coluna, linha, agora);
+  /** Deixa pastilhas espaçadas ao longo do caminho percorrido pelo cursor. */
+  private soltarPastilhas(cursor: Ponto): void {
+    const anterior = this.ultimaPastilha;
+    if (!anterior) {
+      this.ultimaPastilha = cursor;
+      return;
+    }
 
-    // Um pixel vizinho aceso de vez em quando dá o aspecto de ruído digital.
-    if (Math.random() < CHANCE_DE_PIXEL_VIZINHO) {
-      const deslocamentos = [-1, 1];
-      const vizinhoNaColuna = Math.random() < 0.5;
-      const deslocamento = deslocamentos[Math.floor(Math.random() * 2)];
-      this.guardarCelula(
-        coluna + (vizinhoNaColuna ? deslocamento : 0),
-        linha + (vizinhoNaColuna ? 0 : deslocamento),
-        agora - DURACAO_CELULA * 0.4,
-      );
+    const distancia = Math.hypot(cursor.x - anterior.x, cursor.y - anterior.y);
+    const quantidade = Math.floor(distancia / ESPACO_ENTRE_PASTILHAS);
+    for (let i = 1; i <= quantidade; i++) {
+      const progresso = (i * ESPACO_ENTRE_PASTILHAS) / distancia;
+      this.pastilhas.push({
+        x: anterior.x + (cursor.x - anterior.x) * progresso,
+        y: anterior.y + (cursor.y - anterior.y) * progresso,
+      });
+    }
+    if (quantidade) this.ultimaPastilha = this.pastilhas[this.pastilhas.length - 1];
+    if (this.pastilhas.length > LIMITE_PASTILHAS) {
+      this.pastilhas.splice(0, this.pastilhas.length - LIMITE_PASTILHAS);
     }
   }
 
-  private guardarCelula(coluna: number, linha: number, acesaEm: number): void {
-    const chave = `${coluna},${linha}`;
-    this.celulas.delete(chave);
-    this.celulas.set(chave, { coluna, linha, acesaEm });
-
-    // O Map preserva a ordem de inserção, então a primeira chave é sempre a mais antiga.
-    if (this.celulas.size > LIMITE_CELULAS) {
-      this.celulas.delete(this.celulas.keys().next().value!);
-    }
+  private pedirQuadro(): void {
+    if (!this.animacao) this.animacao = requestAnimationFrame(this.desenhar);
   }
 
   private readonly desenhar = (agora: number): void => {
     this.animacao = 0;
     const contexto = this.contexto;
-    if (!contexto) return;
+    const pacman = this.pacman;
+    const cursor = this.cursor;
+    if (!contexto || !pacman || !cursor) return;
+
+    const emMovimento = this.perseguirCursor(pacman, cursor);
+    this.comerPastilhas(pacman);
 
     contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
     contexto.fillStyle = '#000';
-    const lado = TAMANHO_CELULA - ESPACO_ENTRE_CELULAS;
-
-    for (const [chave, celula] of this.celulas) {
-      const restante = 1 - (agora - celula.acesaEm) / DURACAO_CELULA;
-      if (restante <= 0) {
-        this.celulas.delete(chave);
-        continue;
-      }
-
-      // A opacidade cai em degraus, sem gradiente suave, como um monitor de fósforo.
-      contexto.globalAlpha =
-        (Math.ceil(restante * DEGRAUS_DE_OPACIDADE) / DEGRAUS_DE_OPACIDADE) * 0.85;
-      contexto.fillRect(celula.coluna * TAMANHO_CELULA, celula.linha * TAMANHO_CELULA, lado, lado);
+    for (const pastilha of this.pastilhas) {
+      contexto.fillRect(
+        Math.round(pastilha.x - TAMANHO_PASTILHA / 2),
+        Math.round(pastilha.y - TAMANHO_PASTILHA / 2),
+        TAMANHO_PASTILHA,
+        TAMANHO_PASTILHA,
+      );
     }
 
-    contexto.globalAlpha = 1;
-    if (this.celulas.size) this.animacao = requestAnimationFrame(this.desenhar);
+    // A boca abre e fecha enquanto anda; parado, fica entreaberta esperando o cursor.
+    const abertura = emMovimento
+      ? Math.abs(Math.sin(agora * VELOCIDADE_MASTIGADA)) * ABERTURA_MAXIMA_BOCA
+      : ABERTURA_MAXIMA_BOCA / 2;
+    this.desenharPacman(contexto, pacman, abertura);
+
+    // Parado, o último quadro continua na tela sem gastar processamento.
+    if (emMovimento) this.pedirQuadro();
   };
+
+  /** Move o Pac-Man em direção ao cursor e devolve se ele ainda está andando. */
+  private perseguirCursor(pacman: Ponto, cursor: Ponto): boolean {
+    const dx = cursor.x - pacman.x;
+    const dy = cursor.y - pacman.y;
+    const distancia = Math.hypot(dx, dy);
+    const restante = distancia - DISTANCIA_DO_CURSOR;
+    if (restante <= 0.5) return false;
+
+    const passo = Math.max(restante * SUAVIDADE_PERSEGUICAO, 1);
+    pacman.x += (dx / distancia) * passo;
+    pacman.y += (dy / distancia) * passo;
+
+    // Como no fliperama, ele só olha para quatro direções.
+    this.direcao =
+      Math.abs(dx) >= Math.abs(dy) ? (dx > 0 ? 'direita' : 'esquerda') : dy > 0 ? 'baixo' : 'cima';
+    return true;
+  }
+
+  private comerPastilhas(pacman: Ponto): void {
+    const alcance = RAIO_PACMAN * PIXEL;
+    for (let i = this.pastilhas.length - 1; i >= 0; i--) {
+      const pastilha = this.pastilhas[i];
+      if (Math.hypot(pastilha.x - pacman.x, pastilha.y - pacman.y) <= alcance) {
+        this.pastilhas.splice(i, 1);
+      }
+    }
+  }
+
+  /** Desenha o Pac-Man célula por célula, o que dá o contorno serrilhado de pixel art. */
+  private desenharPacman(
+    contexto: CanvasRenderingContext2D,
+    centro: Ponto,
+    aberturaBoca: number,
+  ): void {
+    const anguloBoca = ANGULO_DA_DIRECAO[this.direcao];
+    const origemX = Math.round(centro.x / PIXEL) * PIXEL;
+    const origemY = Math.round(centro.y / PIXEL) * PIXEL;
+
+    for (let linha = -RAIO_PACMAN; linha < RAIO_PACMAN; linha++) {
+      for (let coluna = -RAIO_PACMAN; coluna < RAIO_PACMAN; coluna++) {
+        const x = coluna + 0.5;
+        const y = linha + 0.5;
+        if (x * x + y * y > RAIO_PACMAN * RAIO_PACMAN) continue;
+
+        const diferenca = Math.atan2(y, x) - anguloBoca;
+        const anguloAteBoca = Math.abs(Math.atan2(Math.sin(diferenca), Math.cos(diferenca)));
+        if (anguloAteBoca < aberturaBoca) continue;
+
+        contexto.fillRect(origemX + coluna * PIXEL, origemY + linha * PIXEL, PIXEL, PIXEL);
+      }
+    }
+  }
 }

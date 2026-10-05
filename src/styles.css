@@ -7,7 +7,6 @@
   --cor-texto-suave: #3a3a3a;
   --sombra-dura: 4px 4px 0 #000;
   --sombra-dura-pequena: 2px 2px 0 #000;
-  --grade-fundo: radial-gradient(rgb(0 0 0 / 13%) 1px, transparent 1.2px) 0 0 / 22px 22px;
   --transicao-rapida: 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

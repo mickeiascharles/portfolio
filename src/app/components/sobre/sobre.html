@@ -19,29 +19,14 @@
       <br />
       <div class="skill-group">
         <div class="icons">
-          <img src="assets/icons/html5.svg" alt="HTML5" title="HTML5" class="skill-icon" />
-          <img src="assets/icons/css3.svg" alt="CSS3" title="CSS3" class="skill-icon" />
-          <img src="assets/icons/sql.svg" alt="MySQL" title="SQL" class="skill-icon" />
-          <img src="assets/icons/java.svg" alt="Java" title="Java" class="skill-icon" />
-          <img src="assets/icons/c.svg" alt="C" title="C" class="skill-icon" />
-          <img src="assets/icons/swift.svg" alt="Swift" title="Swift" class="skill-icon" />
-          <img
-            src="assets/icons/javascript.svg"
-            alt="JavaScript"
-            title="JavaScript"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/typescript.svg"
-            alt="TypeScript"
-            title="TypeScript"
-            class="skill-icon"
-          />
-          <img src="assets/icons/python.svg" alt="Python" title="Python" class="skill-icon" />
-          <img src="assets/icons/cpp.svg" alt="C++" title="C++" class="skill-icon" />
-          <img src="assets/icons/dart.svg" alt="Dart" title="Dart" class="skill-icon" />
-          <img src="assets/icons/cobol.svg" alt="COBOL" title="COBOL" class="skill-icon" />
-          <img src="assets/icons/assembly.svg" alt="Assembly" title="Assembly" class="skill-icon" />
+          <span *ngFor="let tecnologia of linguagens" class="skill" [attr.data-nome]="tecnologia.nome">
+            <img
+              [src]="'assets/icons/' + tecnologia.icone + '.svg'"
+              [alt]="tecnologia.nome"
+              class="skill-icon"
+              loading="lazy"
+            />
+          </span>
         </div>
       </div>
 
@@ -49,46 +34,14 @@
       <br />
       <div class="skill-group">
         <div class="icons">
-          <img src="assets/icons/nodejs.svg" alt="Node.js" title="Node.js" class="skill-icon" />
-          <img src="assets/icons/react.svg" alt="React" title="React" class="skill-icon" />
-          <img src="assets/icons/vite.svg" alt="Vite" title="Vite" class="skill-icon" />
-          <img src="assets/icons/git.svg" alt="Git" title="Git" class="skill-icon" />
-          <img src="assets/icons/axios.svg" alt="Axios" title="Axios" class="skill-icon" />
-          <img src="assets/icons/angular.svg" alt="Angular" title="Angular" class="skill-icon" />
-          <img src="assets/icons/postman.svg" alt="Postman" title="Postman" class="skill-icon" />
-          <img src="assets/icons/express.svg" alt="Express" title="Express" class="skill-icon" />
-          <img src="assets/icons/pytorch.svg" alt="PyTorch" title="PyTorch" class="skill-icon" />
-          <img src="assets/icons/keras.svg" alt="Keras" title="Keras" class="skill-icon" />
-          <img
-            src="assets/icons/kubernetes.svg"
-            alt="Kubernetes"
-            title="Kubernetes"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/jupyter.svg"
-            alt="Jupyter Notebook"
-            title="Jupyter Notebook"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/googlecolab.svg"
-            alt="Google Colab"
-            title="Google Colab"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/tensorflow.svg"
-            alt="TensorFlow"
-            title="TensorFlow"
-            class="skill-icon"
-          />
-          <img
-            src="assets/icons/scikitlearn.svg"
-            alt="Scikit-learn"
-            title="Scikit-learn"
-            class="skill-icon"
-          />
+          <span *ngFor="let tecnologia of ferramentas" class="skill" [attr.data-nome]="tecnologia.nome">
+            <img
+              [src]="'assets/icons/' + tecnologia.icone + '.svg'"
+              [alt]="tecnologia.nome"
+              class="skill-icon"
+              loading="lazy"
+            />
+          </span>
         </div>
       </div>
 

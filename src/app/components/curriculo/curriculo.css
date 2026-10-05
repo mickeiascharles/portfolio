@@ -57,7 +57,6 @@
 
 .download-link:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
   background: #000;
   color: var(--bg-color);
 }
@@ -89,7 +88,6 @@
   display: block;
   border: 2px solid #000;
   background: #fff;
-  box-shadow: 6px 6px 0 #000;
 }
 
 .document-stack {
@@ -105,7 +103,6 @@
   padding: 6px;
   border: 2px solid #000;
   background: #fff;
-  box-shadow: 6px 6px 0 #000;
 }
 
 .document-item img {
@@ -130,7 +127,6 @@
   border: 2px solid #000;
   border-radius: 0;
   background: #fff;
-  box-shadow: 5px 5px 0 #000;
 }
 
 .recommendation-header {
@@ -229,7 +225,6 @@
   }
 
   .resume-page {
-    box-shadow: 4px 4px 0 #000;
   }
 
   .document-stack {
@@ -239,7 +234,6 @@
 
   .document-item {
     padding: 4px;
-    box-shadow: 4px 4px 0 #000;
   }
 
   .recommendations-list {

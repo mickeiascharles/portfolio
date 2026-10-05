@@ -62,31 +62,24 @@
   width: 100%;
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 2px dashed rgb(0 0 0 / 30%);
+  border-top: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .skills-section h3 {
-  font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 15px 0;
-  color: #000;
+  color: #444;
   width: 100%;
   text-align: center;
-}
-
-.skills-section h3::before {
-  content: '// ';
-  color: #777;
 }
 
 .skill-group {
   width: 100%;
   margin-bottom: 30px;
-  overflow: hidden;
 }
 
 .icons {
@@ -104,17 +97,48 @@
   display: none;
 }
 
+.skill {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
 .skill-icon {
   width: 45px;
   height: 45px;
   object-fit: contain;
   transition: transform var(--transicao-rapida);
-  cursor: pointer;
-  flex-shrink: 0;
 }
 
-.skill-icon:hover {
+.skill:hover .skill-icon {
   transform: translateY(-5px) scale(1.08);
+}
+
+/* Etiqueta com o nome da tecnologia, mostrada ao passar o mouse. */
+.skill::after {
+  content: attr(data-nome);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 5;
+  padding: 4px 8px;
+  background: #000;
+  color: var(--bg-color);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity var(--transicao-rapida),
+    transform var(--transicao-rapida);
+}
+
+.skill:hover::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .badges {
