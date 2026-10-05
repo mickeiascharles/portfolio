@@ -11,13 +11,12 @@
   bottom: 20px;
   border: 2px solid #000;
   overflow: hidden;
-  background-color: var(--bg-color, #ebebeb);
+  background: var(--grade-fundo), var(--bg-color, #ebebeb);
+  box-shadow: 5px 5px 0 #000;
 
   display: flex;
   flex-direction: column;
   isolation: isolate;
-
-  transition: all 0.3s ease;
 }
 
 .intro-overlay {
@@ -26,7 +25,7 @@
   z-index: 20000;
   display: grid;
   place-items: center;
-  background: #ebebeb;
+  background: var(--grade-fundo), var(--bg-color);
   pointer-events: none;
   animation: sumirAbertura 0.45s ease-in 1.35s both;
 }
@@ -79,20 +78,21 @@
   display: inline-flex;
   align-items: stretch;
   font-family: 'Courier New', Courier, monospace;
+  box-shadow: var(--sombra-dura-pequena);
 }
 
 .language-option {
   min-width: 42px;
   height: 34px;
   border: 2px solid #000;
-  background: transparent;
+  background: var(--cor-papel);
   color: #000;
   font: inherit;
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
 }
 
 .language-option + .language-option {
@@ -105,14 +105,6 @@
   color: #ebebeb;
 }
 
-.language-option:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 3px;
-}
-
-.language-option:active {
-  transform: translateY(1px);
-}
 
 .copyright-fixed {
   position: absolute;
@@ -132,16 +124,21 @@
   left: 30px;
   width: 50px;
   height: 50px;
-  background: #ebebeb;
+  background: var(--cor-papel);
   border: 2px solid #000;
-  border-radius: 50%;
   color: #000;
   font-size: 1.5rem;
   z-index: var(--layer-controls);
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--sombra-dura-pequena);
+  transition: transform var(--transicao-rapida), box-shadow var(--transicao-rapida);
+}
+
+.mobile-menu-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -152,8 +149,9 @@
   .layout-frame {
     top: 10px;
     left: 10px;
-    right: 10px;
-    bottom: 10px;
+    right: 14px;
+    bottom: 14px;
+    box-shadow: 4px 4px 0 #000;
   }
 
   .language-switcher {

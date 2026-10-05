@@ -29,12 +29,19 @@
   color: #000;
   display: inline-flex;
   align-items: center;
-  border-bottom: 1px solid transparent;
+  padding: 8px 18px;
+  border: 2px solid #000;
+  background: var(--cor-papel);
+  box-shadow: var(--sombra-dura);
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
-  transition: border-color 0.3s ease;
+  transition:
+    transform var(--transicao-rapida),
+    box-shadow var(--transicao-rapida),
+    background-color var(--transicao-rapida),
+    color var(--transicao-rapida);
 }
 
 .highlight-letter {
@@ -48,18 +55,20 @@
   transition: transform 0.3s ease;
 }
 
-.download-link:hover,
-.download-link:focus-visible {
-  border-bottom-color: #000;
+.download-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: #000;
+  color: var(--bg-color);
 }
 
 .download-link:hover i {
   transform: translateY(3px);
 }
 
-.download-link:focus-visible {
-  outline: 2px solid #000;
-  outline-offset: 5px;
+.download-link:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 
 .resume-preview,
@@ -78,9 +87,9 @@
   height: auto;
   margin-bottom: 30px;
   display: block;
-  border: 1px solid #d3d3d3;
+  border: 2px solid #000;
   background: #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 6px 6px 0 #000;
 }
 
 .document-stack {
@@ -94,9 +103,9 @@
   width: 100%;
   margin: 0;
   padding: 6px;
-  border: 1px solid #c8c8c8;
+  border: 2px solid #000;
   background: #fff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: 6px 6px 0 #000;
 }
 
 .document-item img {
@@ -118,10 +127,10 @@
   width: 100%;
   min-height: 124px;
   padding: 18px 52px 20px 64px;
-  border: 1px solid #d9d9d9;
-  border-radius: 7px;
+  border: 2px solid #000;
+  border-radius: 0;
   background: #fff;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22);
+  box-shadow: 5px 5px 0 #000;
 }
 
 .recommendation-header {
@@ -220,8 +229,7 @@
   }
 
   .resume-page {
-    border-color: #d9d9d9;
-    box-shadow: none;
+    box-shadow: 4px 4px 0 #000;
   }
 
   .document-stack {
@@ -231,7 +239,7 @@
 
   .document-item {
     padding: 4px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 4px 4px 0 #000;
   }
 
   .recommendations-list {

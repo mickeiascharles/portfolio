@@ -1,9 +1,10 @@
 .projects-container {
   width: min(100%, 1540px);
-  padding: clamp(70px, 5vw, 96px) clamp(420px, 31vw, 600px) 110px
+  padding: clamp(120px, 9vw, 140px) clamp(420px, 31vw, 600px) 110px
     clamp(48px, 6vw, 110px);
   position: relative;
   z-index: 5;
+  counter-reset: projeto;
 }
 
 @keyframes fadeUp {
@@ -40,6 +41,18 @@
   letter-spacing: 0;
 }
 
+/* Numeração automática no estilo de índice de arquivo: 01, 02, 03... */
+.project-item h2::before {
+  counter-increment: projeto;
+  content: counter(projeto, decimal-leading-zero) ' /';
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #777;
+}
+
 .project-item p {
   font-family: 'Courier New', Courier, monospace;
   font-size: clamp(0.9rem, 1vw, 1.18rem);
@@ -55,7 +68,7 @@
 
 .project-links {
   display: flex;
-  gap: 30px;
+  gap: 18px;
 }
 
 .link-btn {
@@ -65,18 +78,27 @@
   color: #000;
   font-weight: 600;
   font-size: 1rem;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.3s;
+  padding: 6px 14px;
+  border: 2px solid #000;
+  background: var(--cor-papel);
+  box-shadow: var(--sombra-dura-pequena);
+  transition:
+    transform var(--transicao-rapida),
+    box-shadow var(--transicao-rapida),
+    background-color var(--transicao-rapida),
+    color var(--transicao-rapida);
   font-family: inherit;
 }
 
 .link-btn:hover {
-  border-bottom: 1px solid #000;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sombra-dura);
+  background: #000;
+  color: var(--bg-color);
 }
 
 .link-btn i {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-right: 8px;
 }
 
@@ -112,7 +134,7 @@
 
   .projects-container {
     width: 100%;
-    padding: clamp(62px, 5vw, 78px) clamp(480px, 39vw, 560px) 110px
+    padding: clamp(112px, 8vw, 124px) clamp(480px, 39vw, 560px) 110px
       clamp(48px, 5vw, 70px);
   }
 
@@ -134,7 +156,7 @@
 @media (min-width: 769px) and (max-width: 1200px) {
   .projects-container {
     width: 100%;
-    padding: clamp(88px, 8vw, 104px) clamp(230px, 24vw, 290px) 110px
+    padding: clamp(112px, 10vw, 124px) clamp(230px, 24vw, 290px) 110px
       clamp(36px, 5vw, 60px);
   }
 
@@ -162,7 +184,7 @@
 
 @media (max-width: 768px) {
   .projects-container {
-    padding: 84px clamp(26px, 7vw, 34px) 64px;
+    padding: 104px clamp(26px, 7vw, 34px) 64px;
     width: 100%;
     max-width: none;
   }

@@ -81,7 +81,8 @@
   max-width: 100%;
   max-height: calc(var(--altura-galeria) - 44px);
   object-fit: contain;
-  box-shadow: 0 8px 22px rgb(0 0 0 / 14%);
+  border: 2px solid #000;
+  box-shadow: 6px 6px 0 #000;
 }
 
 @media (max-width: 768px) {

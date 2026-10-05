@@ -11,8 +11,10 @@
     </button>
   </div>
 
-  <div class="code-background">
-    <pre><code>{{ language.text().home.codeSample }}</code></pre>
+  <div class="code-background" aria-hidden="true">
+    <code class="editor-codigo">
+      <span *ngFor="let linha of linhasDoCodigo()" class="linha-codigo">{{ linha }}</span>
+    </code>
   </div>
 
   <div class="character-wrapper">
@@ -33,6 +35,7 @@
     >
       <div class="terminal-header">
         <div id="terminal-title" class="terminal-title">
+          <span class="terminal-luzes" aria-hidden="true"><i></i><i></i><i></i></span>
           <i class="bi bi-terminal-fill"></i>
           <span>{{ language.text().home.terminalTitle }}</span>
         </div>

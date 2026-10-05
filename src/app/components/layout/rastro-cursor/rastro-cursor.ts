@@ -1,10 +1,15 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild, inject } from '@angular/core';
 
-type Marca = { x: number; y: number; criadaEm: number };
+/** Célula da grade acesa pelo cursor, como um pixel de tela antiga. */
+type Celula = { coluna: number; linha: number; acesaEm: number };
 
-const DURACAO_MARCA = 430;
-const DISTANCIA_MINIMA = 11;
-const LIMITE_MARCAS = 16;
+const TAMANHO_CELULA = 8;
+const ESPACO_ENTRE_CELULAS = 1;
+const DURACAO_CELULA = 420;
+const DEGRAUS_DE_OPACIDADE = 4;
+const LIMITE_CELULAS = 90;
+const CHANCE_DE_PIXEL_VIZINHO = 0.35;
+const SALTO_MAXIMO = 160;
 
 @Component({
   selector: 'app-rastro-cursor',
@@ -16,9 +21,10 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
   @ViewChild('tela', { static: true }) private tela!: ElementRef<HTMLCanvasElement>;
 
   private readonly zona = inject(NgZone);
-  private readonly marcas: Marca[] = [];
+  private readonly celulas = new Map<string, Celula>();
   private contexto: CanvasRenderingContext2D | null = null;
   private consulta: MediaQueryList | null = null;
+  private ultimaPosicao: { coluna: number; linha: number } | null = null;
   private animacao = 0;
   private ativo = false;
 
@@ -63,8 +69,7 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     document.removeEventListener('visibilitychange', this.limparSeOculta);
     cancelAnimationFrame(this.animacao);
     this.animacao = 0;
-    this.marcas.length = 0;
-    this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    this.limpar();
   }
 
   private readonly ajustarTela = (): void => {
@@ -75,30 +80,77 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     canvas.width = Math.ceil(window.innerWidth * escala);
     canvas.height = Math.ceil(window.innerHeight * escala);
     this.contexto.setTransform(escala, 0, 0, escala, 0, 0);
-    this.marcas.length = 0;
+    this.limpar();
   };
 
   private readonly limparSeOculta = (): void => {
-    if (document.hidden) {
-      this.marcas.length = 0;
-      this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    }
+    if (document.hidden) this.limpar();
   };
+
+  private limpar(): void {
+    this.celulas.clear();
+    this.ultimaPosicao = null;
+    this.contexto?.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  }
 
   private readonly registrarMovimento = (evento: PointerEvent): void => {
     if (evento.pointerType !== 'mouse') return;
 
-    const anterior = this.marcas[this.marcas.length - 1];
-    if (anterior) {
-      const distancia = Math.hypot(evento.clientX - anterior.x, evento.clientY - anterior.y);
-      if (distancia < DISTANCIA_MINIMA) return;
-      if (distancia > 140) this.marcas.length = 0;
+    const atual = {
+      coluna: Math.floor(evento.clientX / TAMANHO_CELULA),
+      linha: Math.floor(evento.clientY / TAMANHO_CELULA),
+    };
+    const anterior = this.ultimaPosicao ?? atual;
+    const passos = Math.max(
+      Math.abs(atual.coluna - anterior.coluna),
+      Math.abs(atual.linha - anterior.linha),
+    );
+    if (this.ultimaPosicao && passos === 0) return;
+
+    // Um salto grande (mouse saindo e voltando da janela) não deve riscar a tela inteira.
+    const agora = performance.now();
+    if (passos * TAMANHO_CELULA > SALTO_MAXIMO) {
+      this.acenderCelula(atual.coluna, atual.linha, agora);
+    } else {
+      // Preenche as células entre as duas posições para o rastro não ficar com buracos.
+      for (let passo = 1; passo <= Math.max(passos, 1); passo++) {
+        const progresso = passo / Math.max(passos, 1);
+        const coluna = Math.round(anterior.coluna + (atual.coluna - anterior.coluna) * progresso);
+        const linha = Math.round(anterior.linha + (atual.linha - anterior.linha) * progresso);
+        this.acenderCelula(coluna, linha, agora);
+      }
     }
 
-    this.marcas.push({ x: evento.clientX, y: evento.clientY, criadaEm: performance.now() });
-    if (this.marcas.length > LIMITE_MARCAS) this.marcas.shift();
+    this.ultimaPosicao = atual;
     if (!this.animacao) this.animacao = requestAnimationFrame(this.desenhar);
   };
+
+  private acenderCelula(coluna: number, linha: number, agora: number): void {
+    this.guardarCelula(coluna, linha, agora);
+
+    // Um pixel vizinho aceso de vez em quando dá o aspecto de ruído digital.
+    if (Math.random() < CHANCE_DE_PIXEL_VIZINHO) {
+      const deslocamentos = [-1, 1];
+      const vizinhoNaColuna = Math.random() < 0.5;
+      const deslocamento = deslocamentos[Math.floor(Math.random() * 2)];
+      this.guardarCelula(
+        coluna + (vizinhoNaColuna ? deslocamento : 0),
+        linha + (vizinhoNaColuna ? 0 : deslocamento),
+        agora - DURACAO_CELULA * 0.4,
+      );
+    }
+  }
+
+  private guardarCelula(coluna: number, linha: number, acesaEm: number): void {
+    const chave = `${coluna},${linha}`;
+    this.celulas.delete(chave);
+    this.celulas.set(chave, { coluna, linha, acesaEm });
+
+    // O Map preserva a ordem de inserção, então a primeira chave é sempre a mais antiga.
+    if (this.celulas.size > LIMITE_CELULAS) {
+      this.celulas.delete(this.celulas.keys().next().value!);
+    }
+  }
 
   private readonly desenhar = (agora: number): void => {
     this.animacao = 0;
@@ -106,18 +158,23 @@ export class RastroCursorComponent implements AfterViewInit, OnDestroy {
     if (!contexto) return;
 
     contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    while (this.marcas.length && agora - this.marcas[0].criadaEm >= DURACAO_MARCA) {
-      this.marcas.shift();
+    contexto.fillStyle = '#000';
+    const lado = TAMANHO_CELULA - ESPACO_ENTRE_CELULAS;
+
+    for (const [chave, celula] of this.celulas) {
+      const restante = 1 - (agora - celula.acesaEm) / DURACAO_CELULA;
+      if (restante <= 0) {
+        this.celulas.delete(chave);
+        continue;
+      }
+
+      // A opacidade cai em degraus, sem gradiente suave, como um monitor de fósforo.
+      contexto.globalAlpha =
+        (Math.ceil(restante * DEGRAUS_DE_OPACIDADE) / DEGRAUS_DE_OPACIDADE) * 0.85;
+      contexto.fillRect(celula.coluna * TAMANHO_CELULA, celula.linha * TAMANHO_CELULA, lado, lado);
     }
 
-    for (const marca of this.marcas) {
-      const intensidade = 1 - (agora - marca.criadaEm) / DURACAO_MARCA;
-      const largura = 3 + 4 * intensidade;
-      const altura = 5 + 8 * intensidade;
-      contexto.fillStyle = `rgba(0, 0, 0, ${0.9 * intensidade})`;
-      contexto.fillRect(marca.x - largura / 2, marca.y - altura / 2, largura, altura);
-    }
-
-    if (this.marcas.length) this.animacao = requestAnimationFrame(this.desenhar);
+    contexto.globalAlpha = 1;
+    if (this.celulas.size) this.animacao = requestAnimationFrame(this.desenhar);
   };
 }

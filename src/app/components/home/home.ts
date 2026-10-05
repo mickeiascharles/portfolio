@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild, computed, inject } from '@angular/core';
 import { LanguageService } from '../../services/language';
 
 @Component({
@@ -11,6 +11,7 @@ import { LanguageService } from '../../services/language';
 })
 export class HomeComponent {
   readonly language = inject(LanguageService);
+  readonly linhasDoCodigo = computed(() => this.language.text().home.codeSample.split('\n'));
 
   @ViewChild('terminalBody') private terminalBody?: ElementRef<HTMLDivElement>;
 
