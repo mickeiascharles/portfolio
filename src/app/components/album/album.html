@@ -21,7 +21,9 @@
         [alt]="photo.caption[language.current()]"
         [width]="photo.width"
         [height]="photo.height"
-        [loading]="i < 2 ? 'eager' : 'lazy'"
+        [loading]="estaPerto(i) ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="i === indiceGaleria() ? 'high' : 'auto'"
+        [style.background-image]="miniatura(i)"
         decoding="async"
         draggable="false"
       />

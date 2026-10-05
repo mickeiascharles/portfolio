@@ -81,6 +81,8 @@
   max-width: 100%;
   max-height: calc(var(--altura-galeria) - 44px);
   object-fit: contain;
+  background-size: cover;
+  background-position: center;
 }
 
 @media (max-width: 768px) {

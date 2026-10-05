@@ -10,6 +10,8 @@ import {
 import { LanguageService } from '../../services/language';
 import { albumPhotos } from './photos';
 
+const FOTOS_PRE_CARREGADAS = 2;
+
 @Component({
   selector: 'app-album',
   standalone: true,
@@ -22,6 +24,16 @@ export class AlbumComponent {
   readonly fotos = albumPhotos;
   readonly indiceGaleria = signal(0);
   @ViewChild('faixaFotos') faixaFotos!: ElementRef<HTMLElement>;
+
+  estaPerto(indice: number): boolean {
+    const total = this.fotos.length;
+    const distancia = Math.abs(indice - this.indiceGaleria());
+    return Math.min(distancia, total - distancia) <= FOTOS_PRE_CARREGADAS;
+  }
+
+  miniatura(indice: number): string | null {
+    return this.estaPerto(indice) ? `url(assets/album/web/${this.fotos[indice].file}-thumb.webp)` : null;
+  }
 
   moverGaleria(direcao: number, evento?: Event) {
     evento?.preventDefault();
