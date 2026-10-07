@@ -184,6 +184,18 @@
   transition: transform var(--transicao-rapida);
 }
 
+.icone-svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+.icone-svg .mao {
+  stroke: var(--bg-color);
+  stroke-width: 1.2;
+}
+
 .social-links a:hover {
   transform: translateY(-3px) rotate(-6deg);
 }

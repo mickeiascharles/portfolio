@@ -693,6 +693,14 @@ int main(void) {
           src: 'assets/curriculo/Certificado_Big_Data_page2.jpg',
           alt: 'Certificado Big Data Básico do IFMG, página 2',
         },
+        {
+          src: 'assets/curriculo/Certificado_AEB.jpg',
+          alt: 'Certificado Narrativas Visuais com IA da AEB, página 1',
+        },
+        {
+          src: 'assets/curriculo/Certificado_AEB_page2.jpg',
+          alt: 'Certificado Narrativas Visuais com IA da AEB, página 2',
+        },
       ],
       recommendations: [
         {
@@ -1287,6 +1295,14 @@ int main(void) {
         {
           src: 'assets/curriculo/Certificado_Big_Data_page2.jpg',
           alt: 'IFMG Big Data Basics certificate, page 2',
+        },
+        {
+          src: 'assets/curriculo/Certificado_AEB.jpg',
+          alt: 'AEB Visual Storytelling with AI certificate, page 1',
+        },
+        {
+          src: 'assets/curriculo/Certificado_AEB_page2.jpg',
+          alt: 'AEB Visual Storytelling with AI certificate, page 2',
         },
       ],
       recommendations: [
