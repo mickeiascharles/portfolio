@@ -4,7 +4,27 @@
   </div>
 
   <article *ngFor="let project of language.text().projects.items" class="project-item">
-    <h2>{{ project.title }}</h2>
+    <h2>
+      <span *ngIf="project.logo; else tituloEmTexto" class="project-logos">
+        <img
+          class="project-logo"
+          [class.darken]="project.darkenLogo"
+          [src]="project.logo"
+          [alt]="project.title"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          *ngIf="project.subLogo"
+          class="project-sublogo"
+          [src]="project.subLogo.src"
+          [alt]="project.subLogo.alt"
+          loading="lazy"
+          decoding="async"
+        />
+      </span>
+      <ng-template #tituloEmTexto>{{ project.title }}</ng-template>
+    </h2>
     <p>{{ project.description }}</p>
     <div class="project-links">
       <a

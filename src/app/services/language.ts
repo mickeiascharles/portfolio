@@ -13,8 +13,16 @@ type ProjectLink = {
   label: string;
 };
 
+type ProjectSubLogo = {
+  src: string;
+  alt: string;
+};
+
 type ProjectItem = {
   title: string;
+  logo?: string;
+  darkenLogo?: boolean;
+  subLogo?: ProjectSubLogo;
   description: string;
   links: ProjectLink[];
 };
@@ -111,6 +119,12 @@ const hostingLink = (label: string, href: string): ProjectLink => ({
   href,
   label,
   iconClass: 'bi bi-house-door-fill',
+});
+
+const modelLink = (label: string, href: string): ProjectLink => ({
+  href,
+  label,
+  iconClass: 'bi bi-cpu',
 });
 
 const illustrator: ToolItem = {
@@ -476,6 +490,66 @@ int main(void) {
       sideImageAlt: 'Imagem lateral de projetos',
       items: [
         {
+          title: 'FOMO',
+          logo: 'assets/projetos/web/fomo.webp',
+          subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
+          description:
+            'Projeto de verificação de notícias com IA e revisão humana, desenvolvido no Challenge 1 (Fake News) da Residência em IA. Na FOMO, nenhuma matéria é publicada sem checagem: o VeritAI analisa as afirmações, reúne evidências e fontes, e um revisor humano toma a decisão final. A análise combina NLI, embeddings e regras auditáveis, sem uso de LLM, com modelo treinado no ASSIN 2. Atuei como desenvolvedor e arquiteto da IA e do sistema. Tecnologias: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker e scikit-learn.',
+          links: [
+            modelLink('modelo', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
+            hostingLink('hospedagem', 'https://fomo-veritai.github.io/fomo/'),
+            repositoryLink('repositório', 'https://github.com/FOMO-veritAI'),
+          ],
+        },
+        {
+          title: 'BEATfy',
+          logo: 'assets/projetos/web/letting_beatfy.webp',
+          darkenLogo: true,
+          description:
+            'O BEATfy é uma rede social musical integrada ao ecossistema do Spotify, onde usuários podem avaliar músicas, publicar opiniões e interagir com a comunidade. A plataforma utiliza Machine Learning para personalizar o feed e recomendar novas músicas com base no perfil e nas preferências de cada usuário.',
+          links: [
+            repositoryLink('repositório', 'https://github.com/mickeiascharles/Beatfy'),
+            hostingLink('hospedagem', 'https://mickeiascharles.github.io/Beatfy/'),
+          ],
+        },
+        {
+          title: 'Hubbies',
+          logo: 'assets/projetos/web/hubbies.webp',
+          description:
+            'Hubies é uma plataforma de rede social e portfólio profissional projetada para ser a ponte entre o talento universitário e o mercado de trabalho. A aplicação funciona como um "hub" onde estudantes podem exibir seus projetos acadêmicos e pessoais, enquanto empresas podem descobrir e se conectar com novos talentos de forma direcionada e interativa.',
+          links: [
+            repositoryLink('repositório', 'https://github.com/mickeiascharles/Hubies'),
+            hostingLink('hospedagem', 'https://hubies.onrender.com/'),
+          ],
+        },
+        {
+          title: 'ShelfShare',
+          logo: 'assets/projetos/web/shelfshare.webp',
+          description:
+            'ShelfShare é uma plataforma digital para o compartilhamento e empréstimo de livros entre usuários. A aplicação foi desenhada para funcionar como uma "biblioteca" comunitária, onde usuários podem disponibilizar livros que já leram e solicitar o empréstimo de títulos de outros membros da comunidade. O projeto foi construído com o objetivo principal de servir como um sistema completo para a aplicação prática de metodologias de teste de software.',
+          links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/ShelfShare')],
+        },
+        {
+          title: 'InsightPro',
+          logo: 'assets/projetos/web/InsightPro.webp',
+          description:
+            'Projeto de sistema para usuários visualizarem seus painéis BI, com segurança e compartilhamento multi-tenant. Tecnologias usadas: HTML, CSS, JavaScript, API.',
+          links: [
+            repositoryLink('repositório', 'https://github.com/mickeiascharles/InsightPro'),
+            hostingLink('hospedagem', 'https://mickeiascharles.github.io/InsightPro/'),
+          ],
+        },
+        {
+          title: 'MOV',
+          logo: 'assets/projetos/web/mov.webp',
+          description:
+            'Projeto desenvolvido para matéria de Residência em parceria com a Startup Azzz. MOV é um sistema de monitoramento preventivo para evitar roubo de cabos e vandalismo em infraestrutura subterrânea. MOV é uma plataforma full-stack desenhada para monitorar em tempo real a abertura de bueiros, diferenciando eventos de Manutenção Agendada (Autorizada) de eventos de Violação (Não Autorizada) detectados por sensores IoT (Internet das Coisas). O objetivo principal foi criar um painel de controle robusto, seguro e reativo, com foco na Gestão de Incidentes e na Visualização Geográfica dos ativos.',
+          links: [
+            repositoryLink('repositório', 'https://github.com/mickeiascharles/MOV'),
+            hostingLink('hospedagem', 'https://mickeiascharles.github.io/MOV/'),
+          ],
+        },
+        {
           title: 'LUMA',
           description:
             'Desenvolvi uma landing page interativa para a startup Ideia Space, projetada para apresentar de forma moderna e imersiva o ecossistema educacional de engenharia espacial da plataforma LUMA. O site transforma conceitos complexos em uma experiência visual intuitiva, permitindo que o usuário explore a arquitetura de um nanossatélite educacional, seus subsistemas, sensores e o fluxo operacional de uma missão espacial simulada. A interface destaca aplicações práticas em escolas técnicas, universidades, laboratórios maker e programas STEM, unindo programação, eletrônica, física e análise de dados em um ambiente educacional inovador. O projeto foi desenvolvido com foco em experiência do usuário (UX), interatividade, identidade visual futurista e comunicação clara de conceitos tecnológicos avançados.',
@@ -491,24 +565,6 @@ int main(void) {
           links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/_ListBeat')],
         },
         {
-          title: 'BEATfy',
-          description:
-            'O BEATfy é uma rede social musical integrada ao ecossistema do Spotify, onde usuários podem avaliar músicas, publicar opiniões e interagir com a comunidade. A plataforma utiliza Machine Learning para personalizar o feed e recomendar novas músicas com base no perfil e nas preferências de cada usuário.',
-          links: [
-            repositoryLink('repositório', 'https://github.com/mickeiascharles/Beatfy'),
-            hostingLink('hospedagem', 'https://mickeiascharles.github.io/Beatfy/'),
-          ],
-        },
-        {
-          title: 'Hubbies',
-          description:
-            'Hubies é uma plataforma de rede social e portfólio profissional projetada para ser a ponte entre o talento universitário e o mercado de trabalho. A aplicação funciona como um "hub" onde estudantes podem exibir seus projetos acadêmicos e pessoais, enquanto empresas podem descobrir e se conectar com novos talentos de forma direcionada e interativa.',
-          links: [
-            repositoryLink('repositório', 'https://github.com/mickeiascharles/Hubies'),
-            hostingLink('hospedagem', 'https://hubies.onrender.com/'),
-          ],
-        },
-        {
           title: 'Calculadora',
           description:
             'Este projeto consiste em uma calculadora web funcional desenvolvida para aplicar conceitos fundamentais de TypeScript no desenvolvimento Frontend sem o uso de frameworks (Vanilla TS).',
@@ -518,34 +574,10 @@ int main(void) {
           ],
         },
         {
-          title: 'ShelfShare',
-          description:
-            'ShelfShare é uma plataforma digital para o compartilhamento e empréstimo de livros entre usuários. A aplicação foi desenhada para funcionar como uma "biblioteca" comunitária, onde usuários podem disponibilizar livros que já leram e solicitar o empréstimo de títulos de outros membros da comunidade. O projeto foi construído com o objetivo principal de servir como um sistema completo para a aplicação prática de metodologias de teste de software.',
-          links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/ShelfShare')],
-        },
-        {
           title: 'Farmalink',
           description:
             'Farmalink é um sistema de marketplace de farmácias Full Stack que conecta clientes a uma variedade de medicamentos e produtos de saúde. A aplicação simula um ambiente de e-commerce real onde usuários podem pesquisar produtos, montar carrinhos de compras e acompanhar seus pedidos, enquanto administradores possuem controle total sobre o catálogo e as vendas. O projeto foi construído com o objetivo de aplicar conceitos avançados de desenvolvimento web, integrando um frontend moderno em React com uma API robusta em Node.js.',
           links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/Farmalink')],
-        },
-        {
-          title: 'InsightPro',
-          description:
-            'Projeto de sistema para usuários visualizarem seus painéis BI, com segurança e compartilhamento multi-tenant. Tecnologias usadas: HTML, CSS, JavaScript, API.',
-          links: [
-            repositoryLink('repositório', 'https://github.com/mickeiascharles/InsightPro'),
-            hostingLink('hospedagem', 'https://mickeiascharles.github.io/InsightPro/'),
-          ],
-        },
-        {
-          title: 'MOV',
-          description:
-            'Projeto desenvolvido para matéria de Residência em parceria com a Startup Azzz. MOV é um sistema de monitoramento preventivo para evitar roubo de cabos e vandalismo em infraestrutura subterrânea. MOV é uma plataforma full-stack desenhada para monitorar em tempo real a abertura de bueiros, diferenciando eventos de Manutenção Agendada (Autorizada) de eventos de Violação (Não Autorizada) detectados por sensores IoT (Internet das Coisas). O objetivo principal foi criar um painel de controle robusto, seguro e reativo, com foco na Gestão de Incidentes e na Visualização Geográfica dos ativos.',
-          links: [
-            repositoryLink('repositório', 'https://github.com/mickeiascharles/MOV'),
-            hostingLink('hospedagem', 'https://mickeiascharles.github.io/MOV/'),
-          ],
         },
         {
           title: 'Calculadora de Orçamento por Ponto de Função',
@@ -1080,6 +1112,66 @@ int main(void) {
       sideImageAlt: 'Side image for projects',
       items: [
         {
+          title: 'FOMO',
+          logo: 'assets/projetos/web/fomo.webp',
+          subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
+          description:
+            'AI-powered news verification project with human review, built for Challenge 1 (Fake News) of the AI Residency. At FOMO, no story is published without fact-checking: VeritAI analyzes claims, gathers evidence and sources, and a human reviewer makes the final call. The analysis combines NLI, embeddings and auditable rules, with no LLM, using a model trained on ASSIN 2. I worked as the developer and architect of both the AI and the system. Technologies: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker and scikit-learn.',
+          links: [
+            modelLink('model', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
+            hostingLink('hosting', 'https://fomo-veritai.github.io/fomo/'),
+            repositoryLink('repository', 'https://github.com/FOMO-veritAI'),
+          ],
+        },
+        {
+          title: 'BEATfy',
+          logo: 'assets/projetos/web/letting_beatfy.webp',
+          darkenLogo: true,
+          description:
+            'BEATfy is a music social network integrated with the Spotify ecosystem, where users can rate songs, publish opinions and interact with the community. The platform uses Machine Learning to personalize the feed and recommend new songs based on each user profile and preferences.',
+          links: [
+            repositoryLink('repository', 'https://github.com/mickeiascharles/Beatfy'),
+            hostingLink('live site', 'https://mickeiascharles.github.io/Beatfy/'),
+          ],
+        },
+        {
+          title: 'Hubbies',
+          logo: 'assets/projetos/web/hubbies.webp',
+          description:
+            'Hubies is a social network and professional portfolio platform designed to bridge university talent and the job market. The application works as a hub where students can showcase academic and personal projects, while companies can discover and connect with new talent in a targeted and interactive way.',
+          links: [
+            repositoryLink('repository', 'https://github.com/mickeiascharles/Hubies'),
+            hostingLink('live site', 'https://hubies.onrender.com/'),
+          ],
+        },
+        {
+          title: 'ShelfShare',
+          logo: 'assets/projetos/web/shelfshare.webp',
+          description:
+            'ShelfShare is a digital platform for sharing and lending books between users. The application was designed as a community library where users can make books they have already read available and request loans from other community members. The project was built primarily as a complete system for applying software testing methodologies in practice.',
+          links: [repositoryLink('repository', 'https://github.com/mickeiascharles/ShelfShare')],
+        },
+        {
+          title: 'InsightPro',
+          logo: 'assets/projetos/web/InsightPro.webp',
+          description:
+            'A system project for users to view their BI dashboards with security and multi-tenant sharing. Technologies used: HTML, CSS, JavaScript, API.',
+          links: [
+            repositoryLink('repository', 'https://github.com/mickeiascharles/InsightPro'),
+            hostingLink('live site', 'https://mickeiascharles.github.io/InsightPro/'),
+          ],
+        },
+        {
+          title: 'MOV',
+          logo: 'assets/projetos/web/mov.webp',
+          description:
+            'Project developed for a residency course in partnership with the startup Azzz. MOV is a preventive monitoring system designed to reduce cable theft and vandalism in underground infrastructure. MOV is a full-stack platform built to monitor manhole openings in real time, distinguishing Scheduled Maintenance (Authorized) events from Violation (Unauthorized) events detected by IoT sensors. The main goal was to create a robust, secure and reactive control panel focused on Incident Management and Geographic Asset Visualization.',
+          links: [
+            repositoryLink('repository', 'https://github.com/mickeiascharles/MOV'),
+            hostingLink('live site', 'https://mickeiascharles.github.io/MOV/'),
+          ],
+        },
+        {
           title: 'LUMA',
           description:
             'I developed an interactive landing page for the startup Ideia Space, designed to present the LUMA platform educational space engineering ecosystem in a modern and immersive way. The site turns complex concepts into an intuitive visual experience, allowing users to explore the architecture of an educational nanosatellite, its subsystems, sensors and the operational flow of a simulated space mission. The interface highlights practical applications for technical schools, universities, maker labs and STEM programs, combining programming, electronics, physics and data analysis in an innovative educational environment. The project was developed with a focus on user experience (UX), interactivity, futuristic visual identity and clear communication of advanced technology concepts.',
@@ -1095,24 +1187,6 @@ int main(void) {
           links: [repositoryLink('repository', 'https://github.com/mickeiascharles/_ListBeat')],
         },
         {
-          title: 'BEATfy',
-          description:
-            'BEATfy is a music social network integrated with the Spotify ecosystem, where users can rate songs, publish opinions and interact with the community. The platform uses Machine Learning to personalize the feed and recommend new songs based on each user profile and preferences.',
-          links: [
-            repositoryLink('repository', 'https://github.com/mickeiascharles/Beatfy'),
-            hostingLink('live site', 'https://mickeiascharles.github.io/Beatfy/'),
-          ],
-        },
-        {
-          title: 'Hubbies',
-          description:
-            'Hubies is a social network and professional portfolio platform designed to bridge university talent and the job market. The application works as a hub where students can showcase academic and personal projects, while companies can discover and connect with new talent in a targeted and interactive way.',
-          links: [
-            repositoryLink('repository', 'https://github.com/mickeiascharles/Hubies'),
-            hostingLink('live site', 'https://hubies.onrender.com/'),
-          ],
-        },
-        {
           title: 'Calculator',
           description:
             'This project is a functional web calculator built to apply core TypeScript concepts in frontend development without frameworks (Vanilla TS).',
@@ -1122,34 +1196,10 @@ int main(void) {
           ],
         },
         {
-          title: 'ShelfShare',
-          description:
-            'ShelfShare is a digital platform for sharing and lending books between users. The application was designed as a community library where users can make books they have already read available and request loans from other community members. The project was built primarily as a complete system for applying software testing methodologies in practice.',
-          links: [repositoryLink('repository', 'https://github.com/mickeiascharles/ShelfShare')],
-        },
-        {
           title: 'Farmalink',
           description:
             'Farmalink is a full-stack pharmacy marketplace system that connects customers to a variety of medicines and health products. The application simulates a real e-commerce environment where users can search for products, build shopping carts and track orders, while administrators have full control over the catalog and sales. The project was built to apply advanced web development concepts, integrating a modern React frontend with a robust Node.js API.',
           links: [repositoryLink('repository', 'https://github.com/mickeiascharles/Farmalink')],
-        },
-        {
-          title: 'InsightPro',
-          description:
-            'A system project for users to view their BI dashboards with security and multi-tenant sharing. Technologies used: HTML, CSS, JavaScript, API.',
-          links: [
-            repositoryLink('repository', 'https://github.com/mickeiascharles/InsightPro'),
-            hostingLink('live site', 'https://mickeiascharles.github.io/InsightPro/'),
-          ],
-        },
-        {
-          title: 'MOV',
-          description:
-            'Project developed for a residency course in partnership with the startup Azzz. MOV is a preventive monitoring system designed to reduce cable theft and vandalism in underground infrastructure. MOV is a full-stack platform built to monitor manhole openings in real time, distinguishing Scheduled Maintenance (Authorized) events from Violation (Unauthorized) events detected by IoT sensors. The main goal was to create a robust, secure and reactive control panel focused on Incident Management and Geographic Asset Visualization.',
-          links: [
-            repositoryLink('repository', 'https://github.com/mickeiascharles/MOV'),
-            hostingLink('live site', 'https://mickeiascharles.github.io/MOV/'),
-          ],
         },
         {
           title: 'Function Point Budget Calculator',

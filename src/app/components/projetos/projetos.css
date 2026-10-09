@@ -52,6 +52,31 @@
   color: #777;
 }
 
+.project-logos {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(12px, 1.4vw, 22px);
+}
+
+.project-logo {
+  display: block;
+  height: clamp(64px, 5.6vw, 104px);
+  width: auto;
+  max-width: min(100%, 440px);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.project-logo.darken {
+  filter: brightness(0);
+}
+
+.project-sublogo {
+  display: block;
+  height: clamp(40px, 3.4vw, 64px);
+  width: auto;
+}
+
 .project-item p {
   font-family: 'Courier New', Courier, monospace;
   font-size: clamp(0.9rem, 1vw, 1.18rem);
@@ -196,6 +221,14 @@
     font-size: 2rem;
     line-height: 1.15;
     margin-bottom: 14px;
+  }
+
+  .project-logo {
+    height: 60px;
+  }
+
+  .project-sublogo {
+    height: 38px;
   }
 
   .project-item p {

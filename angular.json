@@ -19,7 +19,7 @@
               {
                 "glob": "**/*",
                 "input": "public",
-                "ignore": ["assets/album/*.*"]
+                "ignore": ["assets/album/*.*", "assets/projetos/*.*"]
               }
             ],
             "styles": ["src/styles.css"]
