@@ -18,6 +18,9 @@
           loading="lazy"
           decoding="async"
         />
+        <span *ngIf="project.logoCaption" class="project-logo-caption">{{
+          project.logoCaption
+        }}</span>
         <img
           *ngIf="project.subLogo"
           class="project-sublogo"

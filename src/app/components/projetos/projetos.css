@@ -76,6 +76,13 @@
   filter: brightness(0);
 }
 
+.project-logo-caption {
+  align-self: center;
+  max-width: 18ch;
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+  line-height: 1.2;
+}
+
 .project-sublogo {
   display: block;
   height: clamp(40px, 3.4vw, 64px);
@@ -239,6 +246,10 @@
 
   .project-sublogo {
     height: 38px;
+  }
+
+  .project-logo-caption {
+    font-size: 1.05rem;
   }
 
   .project-item p {

@@ -23,6 +23,7 @@ type ProjectItem = {
   title: string;
   logo?: string;
   darkenLogo?: boolean;
+  logoCaption?: string;
   subLogo?: ProjectSubLogo;
   description: string;
   links: ProjectLink[];
@@ -490,6 +491,17 @@ int main(void) {
     projects: {
       sideImageAlt: 'Imagem lateral de projetos',
       items: [
+        {
+          title: 'AWS Student Builder Group at UCB',
+          logo: 'assets/projetos/web/aws_sbg.webp',
+          logoCaption: 'Site Portal do AWS Student Builder Group at UCB',
+          description:
+            'Site portal do AWS Student Builder Group at UCB, comunidade de estudantes da Universidade Católica de Brasília voltada para computação em nuvem e AWS. O portal reúne informações sobre o grupo, seus eventos e formas de participar.',
+          links: [
+            hostingLink('hospedagem', 'https://ucbaws.github.io/SITE/'),
+            repositoryLink('repositório', 'https://github.com/ucbaws/SITE'),
+          ],
+        },
         {
           title: 'FOMO',
           logo: 'assets/projetos/web/fomo.webp',
@@ -1114,6 +1126,17 @@ int main(void) {
     projects: {
       sideImageAlt: 'Side image for projects',
       items: [
+        {
+          title: 'AWS Student Builder Group at UCB',
+          logo: 'assets/projetos/web/aws_sbg.webp',
+          logoCaption: 'AWS Student Builder Group at UCB Portal Website',
+          description:
+            'Portal website for the AWS Student Builder Group at UCB, a student community at the Catholic University of Brasília focused on cloud computing and AWS. The portal brings together information about the group, its events and how to get involved.',
+          links: [
+            hostingLink('hosting', 'https://ucbaws.github.io/SITE/'),
+            repositoryLink('repository', 'https://github.com/ucbaws/SITE'),
+          ],
+        },
         {
           title: 'FOMO',
           logo: 'assets/projetos/web/fomo.webp',
