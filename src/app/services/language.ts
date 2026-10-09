@@ -2,7 +2,7 @@ import { computed, effect, Injectable, signal } from '@angular/core';
 
 export type LanguageCode = 'pt' | 'en';
 
-type TerminalLine = {
+export type TerminalLine = {
   text: string;
   cssClass: string;
 };

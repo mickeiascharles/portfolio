@@ -1,9 +1,3 @@
-"""Gera imagens WebP a partir dos originais locais do álbum.
-
-Coloque os originais em public/assets/album e versione apenas a pasta web gerada.
-Arquivos HEIC exigem pillow-heif; os demais formatos precisam apenas de Pillow.
-"""
-
 import argparse
 from pathlib import Path
 
@@ -14,7 +8,7 @@ album = root / "public/assets/album"
 output = album / "web"
 output.mkdir(exist_ok=True)
 
-parser = argparse.ArgumentParser(description=__doc__)
+parser = argparse.ArgumentParser(description="Gera fotos WebP e miniaturas a partir dos originais do álbum.")
 parser.add_argument("arquivos", nargs="*", help="Nomes dos originais a processar")
 args = parser.parse_args()
 

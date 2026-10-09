@@ -11,7 +11,6 @@ const FOLGA_DO_CURSOR = 2;
 
 @Component({
   selector: 'app-rastro-cursor',
-  standalone: true,
   template: '<canvas #tela aria-hidden="true"></canvas>',
   styleUrl: './rastro-cursor.css',
 })

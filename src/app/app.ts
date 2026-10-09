@@ -4,16 +4,17 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/layout/navbar/navbar';
 import { RastroCursorComponent } from './components/layout/rastro-cursor/rastro-cursor';
 import { LanguageService } from './services/language';
+import { SomService } from './services/som';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [CommonModule, RouterOutlet, NavbarComponent, RastroCursorComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class AppComponent {
   readonly language = inject(LanguageService);
+  private readonly som = inject(SomService);
   readonly mostrarAbertura = signal(true);
 
   isMenuOpen = false;
@@ -24,14 +25,8 @@ export class AppComponent {
     }
   }
 
-  playMenuSound() {
-    const audio = new Audio('assets/click.mp3');
-    audio.volume = 0.4;
-    audio.play().catch((err) => console.warn('Erro ao tocar som:', err));
-  }
-
   toggleMenu() {
-    this.playMenuSound();
+    this.som.tocar('click.mp3', 0.4);
     this.isMenuOpen = !this.isMenuOpen;
   }
 

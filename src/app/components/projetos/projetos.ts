@@ -4,7 +4,6 @@ import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-projetos',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './projetos.html',
   styleUrl: './projetos.css',

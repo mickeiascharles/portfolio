@@ -6,7 +6,6 @@ type Tecnologia = { nome: string; icone: string };
 
 @Component({
   selector: 'app-sobre',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css',

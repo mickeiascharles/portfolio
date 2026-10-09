@@ -4,7 +4,6 @@ import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-curriculo',
-  standalone: true,
   imports: [NgFor],
   templateUrl: './curriculo.html',
   styleUrl: './curriculo.css',

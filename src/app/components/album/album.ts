@@ -14,7 +14,6 @@ const FOTOS_PRE_CARREGADAS = 2;
 
 @Component({
   selector: 'app-album',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './album.html',
   styleUrl: './album.css',

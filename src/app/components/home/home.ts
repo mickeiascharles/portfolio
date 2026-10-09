@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, ElementRef, ViewChild, computed, inject } from '@angular/core';
-import { LanguageService } from '../../services/language';
+import { LanguageService, TerminalLine } from '../../services/language';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -16,7 +15,7 @@ export class HomeComponent {
   @ViewChild('terminalBody') private terminalBody?: ElementRef<HTMLDivElement>;
 
   isTerminalOpen = false;
-  displayedLines: { text: string; cssClass: string }[] = [];
+  displayedLines: TerminalLine[] = [];
   private typingTimeout: ReturnType<typeof setTimeout> | undefined;
 
   constructor(private cdr: ChangeDetectorRef) {}

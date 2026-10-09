@@ -4,7 +4,6 @@ import { LanguageService } from '../../services/language';
 
 @Component({
   selector: 'app-hobbies',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './hobbies.html',
   styleUrl: './hobbies.css',
