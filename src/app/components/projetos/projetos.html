@@ -5,7 +5,11 @@
 
   <article *ngFor="let project of language.text().projects.items" class="project-item">
     <h2>
-      <span *ngIf="project.logo; else tituloEmTexto" class="project-logos">
+      <span
+        *ngIf="project.logo; else tituloEmTexto"
+        class="project-logos"
+        [class.with-icon]="project.subLogo?.asIcon"
+      >
         <img
           class="project-logo"
           [class.darken]="project.darkenLogo"
@@ -17,6 +21,7 @@
         <img
           *ngIf="project.subLogo"
           class="project-sublogo"
+          [class.as-icon]="project.subLogo.asIcon"
           [src]="project.subLogo.src"
           [alt]="project.subLogo.alt"
           loading="lazy"

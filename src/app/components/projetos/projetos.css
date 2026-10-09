@@ -53,14 +53,19 @@
 }
 
 .project-logos {
+  --altura-logo: clamp(64px, 5.6vw, 104px);
   display: flex;
   align-items: flex-end;
   gap: clamp(12px, 1.4vw, 22px);
 }
 
+.project-logos.with-icon {
+  align-items: center;
+}
+
 .project-logo {
   display: block;
-  height: clamp(64px, 5.6vw, 104px);
+  height: var(--altura-logo);
   width: auto;
   max-width: min(100%, 440px);
   object-fit: contain;
@@ -75,6 +80,11 @@
   display: block;
   height: clamp(40px, 3.4vw, 64px);
   width: auto;
+}
+
+.project-sublogo.as-icon {
+  order: -1;
+  height: var(--altura-logo);
 }
 
 .project-item p {
@@ -223,8 +233,8 @@
     margin-bottom: 14px;
   }
 
-  .project-logo {
-    height: 60px;
+  .project-logos {
+    --altura-logo: 60px;
   }
 
   .project-sublogo {

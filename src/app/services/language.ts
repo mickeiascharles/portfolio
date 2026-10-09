@@ -16,6 +16,7 @@ type ProjectLink = {
 type ProjectSubLogo = {
   src: string;
   alt: string;
+  asIcon?: boolean;
 };
 
 type ProjectItem = {
@@ -505,6 +506,7 @@ int main(void) {
           title: 'BEATfy',
           logo: 'assets/projetos/web/letting_beatfy.webp',
           darkenLogo: true,
+          subLogo: { src: 'assets/projetos/web/icone_beatfy.webp', alt: '', asIcon: true },
           description:
             'O BEATfy é uma rede social musical integrada ao ecossistema do Spotify, onde usuários podem avaliar músicas, publicar opiniões e interagir com a comunidade. A plataforma utiliza Machine Learning para personalizar o feed e recomendar novas músicas com base no perfil e nas preferências de cada usuário.',
           links: [
@@ -550,6 +552,13 @@ int main(void) {
           ],
         },
         {
+          title: 'ListBeat',
+          logo: 'assets/projetos/web/ListBeat.webp',
+          description:
+            'O ListBeat é um aplicativo offline de catálogo musical pessoal, inspirado no Letterboxd, mas voltado para músicas e álbuns. Ele permite ao usuário cadastrar faixas ou discos, avaliar com notas de 1 a 5 estrelas, escrever comentários, criar listas personalizadas e visualizar seu catálogo filtrando por gênero, artista ou nota. O app também mantém um histórico do que já foi ouvido. Sua proposta é oferecer uma plataforma simples e independente para organizar e revisitar músicas sem depender de serviços de streaming.',
+          links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/_ListBeat')],
+        },
+        {
           title: 'LUMA',
           description:
             'Desenvolvi uma landing page interativa para a startup Ideia Space, projetada para apresentar de forma moderna e imersiva o ecossistema educacional de engenharia espacial da plataforma LUMA. O site transforma conceitos complexos em uma experiência visual intuitiva, permitindo que o usuário explore a arquitetura de um nanossatélite educacional, seus subsistemas, sensores e o fluxo operacional de uma missão espacial simulada. A interface destaca aplicações práticas em escolas técnicas, universidades, laboratórios maker e programas STEM, unindo programação, eletrônica, física e análise de dados em um ambiente educacional inovador. O projeto foi desenvolvido com foco em experiência do usuário (UX), interatividade, identidade visual futurista e comunicação clara de conceitos tecnológicos avançados.',
@@ -557,12 +566,6 @@ int main(void) {
             repositoryLink('repositório', 'https://github.com/mickeiascharles/LUMA'),
             hostingLink('hospedagem', 'https://mickeiascharles.github.io/LUMA/assets/index.html'),
           ],
-        },
-        {
-          title: 'ListBeat',
-          description:
-            'O ListBeat é um aplicativo offline de catálogo musical pessoal, inspirado no Letterboxd, mas voltado para músicas e álbuns. Ele permite ao usuário cadastrar faixas ou discos, avaliar com notas de 1 a 5 estrelas, escrever comentários, criar listas personalizadas e visualizar seu catálogo filtrando por gênero, artista ou nota. O app também mantém um histórico do que já foi ouvido. Sua proposta é oferecer uma plataforma simples e independente para organizar e revisitar músicas sem depender de serviços de streaming.',
-          links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/_ListBeat')],
         },
         {
           title: 'Calculadora',
@@ -1127,6 +1130,7 @@ int main(void) {
           title: 'BEATfy',
           logo: 'assets/projetos/web/letting_beatfy.webp',
           darkenLogo: true,
+          subLogo: { src: 'assets/projetos/web/icone_beatfy.webp', alt: '', asIcon: true },
           description:
             'BEATfy is a music social network integrated with the Spotify ecosystem, where users can rate songs, publish opinions and interact with the community. The platform uses Machine Learning to personalize the feed and recommend new songs based on each user profile and preferences.',
           links: [
@@ -1172,6 +1176,13 @@ int main(void) {
           ],
         },
         {
+          title: 'ListBeat',
+          logo: 'assets/projetos/web/ListBeat.webp',
+          description:
+            'ListBeat is an offline personal music catalog app inspired by Letterboxd, but focused on songs and albums. It lets users register tracks or records, rate them from 1 to 5 stars, write comments, create custom lists and browse their catalog by genre, artist or rating. The app also keeps a listening history. Its goal is to provide a simple and independent platform for organizing and revisiting music without relying on streaming services.',
+          links: [repositoryLink('repository', 'https://github.com/mickeiascharles/_ListBeat')],
+        },
+        {
           title: 'LUMA',
           description:
             'I developed an interactive landing page for the startup Ideia Space, designed to present the LUMA platform educational space engineering ecosystem in a modern and immersive way. The site turns complex concepts into an intuitive visual experience, allowing users to explore the architecture of an educational nanosatellite, its subsystems, sensors and the operational flow of a simulated space mission. The interface highlights practical applications for technical schools, universities, maker labs and STEM programs, combining programming, electronics, physics and data analysis in an innovative educational environment. The project was developed with a focus on user experience (UX), interactivity, futuristic visual identity and clear communication of advanced technology concepts.',
@@ -1179,12 +1190,6 @@ int main(void) {
             repositoryLink('repository', 'https://github.com/mickeiascharles/LUMA'),
             hostingLink('live site', 'https://mickeiascharles.github.io/LUMA/assets/index.html'),
           ],
-        },
-        {
-          title: 'ListBeat',
-          description:
-            'ListBeat is an offline personal music catalog app inspired by Letterboxd, but focused on songs and albums. It lets users register tracks or records, rate them from 1 to 5 stars, write comments, create custom lists and browse their catalog by genre, artist or rating. The app also keeps a listening history. Its goal is to provide a simple and independent platform for organizing and revisiting music without relying on streaming services.',
-          links: [repositoryLink('repository', 'https://github.com/mickeiascharles/_ListBeat')],
         },
         {
           title: 'Calculator',
