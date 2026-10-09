@@ -492,17 +492,6 @@ int main(void) {
       sideImageAlt: 'Imagem lateral de projetos',
       items: [
         {
-          title: 'AWS Student Builder Group at UCB',
-          logo: 'assets/projetos/web/aws_sbg.webp',
-          logoCaption: 'Site Portal do AWS Student Builder Group at UCB',
-          description:
-            'Site portal do AWS Student Builder Group at UCB, comunidade de estudantes da Universidade Católica de Brasília voltada para computação em nuvem e AWS. O portal reúne informações sobre o grupo, seus eventos e formas de participar.',
-          links: [
-            hostingLink('hospedagem', 'https://ucbaws.github.io/SITE/'),
-            repositoryLink('repositório', 'https://github.com/ucbaws/SITE'),
-          ],
-        },
-        {
           title: 'FOMO',
           logo: 'assets/projetos/web/fomo.webp',
           subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
@@ -569,6 +558,17 @@ int main(void) {
           description:
             'O ListBeat é um aplicativo offline de catálogo musical pessoal, inspirado no Letterboxd, mas voltado para músicas e álbuns. Ele permite ao usuário cadastrar faixas ou discos, avaliar com notas de 1 a 5 estrelas, escrever comentários, criar listas personalizadas e visualizar seu catálogo filtrando por gênero, artista ou nota. O app também mantém um histórico do que já foi ouvido. Sua proposta é oferecer uma plataforma simples e independente para organizar e revisitar músicas sem depender de serviços de streaming.',
           links: [repositoryLink('repositório', 'https://github.com/mickeiascharles/_ListBeat')],
+        },
+        {
+          title: 'AWS Student Builder Group at UCB',
+          logo: 'assets/projetos/web/aws_sbg.webp',
+          logoCaption: 'Site Portal do AWS Student Builder Group at UCB',
+          description:
+            'Site portal do AWS Student Builder Group at UCB, comunidade de estudantes da Universidade Católica de Brasília voltada para computação em nuvem e AWS. O portal reúne informações sobre o grupo, seus eventos e formas de participar.',
+          links: [
+            hostingLink('hospedagem', 'https://ucbaws.github.io/SITE/'),
+            repositoryLink('repositório', 'https://github.com/ucbaws/SITE'),
+          ],
         },
         {
           title: 'LUMA',
@@ -1127,17 +1127,6 @@ int main(void) {
       sideImageAlt: 'Side image for projects',
       items: [
         {
-          title: 'AWS Student Builder Group at UCB',
-          logo: 'assets/projetos/web/aws_sbg.webp',
-          logoCaption: 'AWS Student Builder Group at UCB Portal Website',
-          description:
-            'Portal website for the AWS Student Builder Group at UCB, a student community at the Catholic University of Brasília focused on cloud computing and AWS. The portal brings together information about the group, its events and how to get involved.',
-          links: [
-            hostingLink('hosting', 'https://ucbaws.github.io/SITE/'),
-            repositoryLink('repository', 'https://github.com/ucbaws/SITE'),
-          ],
-        },
-        {
           title: 'FOMO',
           logo: 'assets/projetos/web/fomo.webp',
           subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
@@ -1204,6 +1193,17 @@ int main(void) {
           description:
             'ListBeat is an offline personal music catalog app inspired by Letterboxd, but focused on songs and albums. It lets users register tracks or records, rate them from 1 to 5 stars, write comments, create custom lists and browse their catalog by genre, artist or rating. The app also keeps a listening history. Its goal is to provide a simple and independent platform for organizing and revisiting music without relying on streaming services.',
           links: [repositoryLink('repository', 'https://github.com/mickeiascharles/_ListBeat')],
+        },
+        {
+          title: 'AWS Student Builder Group at UCB',
+          logo: 'assets/projetos/web/aws_sbg.webp',
+          logoCaption: 'AWS Student Builder Group at UCB Portal Website',
+          description:
+            'Portal website for the AWS Student Builder Group at UCB, a student community at the Catholic University of Brasília focused on cloud computing and AWS. The portal brings together information about the group, its events and how to get involved.',
+          links: [
+            hostingLink('hosting', 'https://ucbaws.github.io/SITE/'),
+            repositoryLink('repository', 'https://github.com/ucbaws/SITE'),
+          ],
         },
         {
           title: 'LUMA',
