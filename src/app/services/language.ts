@@ -748,6 +748,10 @@ int main(void) {
           src: 'assets/curriculo/Certificado_AEB_page2.jpg',
           alt: 'Certificado Narrativas Visuais com IA da AEB, página 2',
         },
+        {
+          src: 'assets/curriculo/certificado_POSCOMP.jpg',
+          alt: 'Certificado do POSCOMP 2026 com 63 acertos de 70 questões',
+        },
       ],
       recommendations: [
         {
@@ -1381,6 +1385,10 @@ int main(void) {
         {
           src: 'assets/curriculo/Certificado_AEB_page2.jpg',
           alt: 'AEB Visual Storytelling with AI certificate, page 2',
+        },
+        {
+          src: 'assets/curriculo/certificado_POSCOMP.jpg',
+          alt: 'POSCOMP 2026 certificate with 63 out of 70 correct answers',
         },
       ],
       recommendations: [
