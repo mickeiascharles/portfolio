@@ -117,10 +117,6 @@
 }
 
 .project-link-group-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 68ch;
   margin: 0 0 12px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.85rem;
@@ -128,12 +124,6 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #777;
-}
-
-.project-link-group-title::after {
-  content: '';
-  flex: 1;
-  border-top: 2px solid #000;
 }
 
 .link-btn {
