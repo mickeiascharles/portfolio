@@ -13,6 +13,11 @@ type ProjectLink = {
   label: string;
 };
 
+type ProjectLinkGroup = {
+  title: string;
+  links: ProjectLink[];
+};
+
 type ProjectSubLogo = {
   src: string;
   alt: string;
@@ -26,7 +31,8 @@ type ProjectItem = {
   logoCaption?: string;
   subLogo?: ProjectSubLogo;
   description: string;
-  links: ProjectLink[];
+  links?: ProjectLink[];
+  linkGroups?: ProjectLinkGroup[];
 };
 
 type ToolItem = {
@@ -127,6 +133,12 @@ const modelLink = (label: string, href: string): ProjectLink => ({
   href,
   label,
   iconClass: 'bi bi-cpu',
+});
+
+const logicLink = (label: string, href: string): ProjectLink => ({
+  href,
+  label,
+  iconClass: 'bi bi-diagram-3',
 });
 
 const illustrator: ToolItem = {
@@ -496,11 +508,22 @@ int main(void) {
           logo: 'assets/projetos/web/fomo.webp',
           subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
           description:
-            'Projeto de verificação de notícias com IA e revisão humana, desenvolvido no Challenge 1 (Fake News) da Residência em IA. Na FOMO, nenhuma matéria é publicada sem checagem: o VeritAI analisa as afirmações, reúne evidências e fontes, e um revisor humano toma a decisão final. A análise combina NLI, embeddings e regras auditáveis, sem uso de LLM, com modelo treinado no ASSIN 2. Atuei como desenvolvedor e arquiteto da IA e do sistema. Tecnologias: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker e scikit-learn.',
-          links: [
-            modelLink('modelo', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
-            hostingLink('hospedagem', 'https://fomo-veritai.github.io/fomo/'),
-            repositoryLink('repositório', 'https://github.com/FOMO-veritAI'),
+            'Projeto de verificação de notícias com IA e revisão humana, desenvolvido no Challenge 1 (Fake News) da Residência em IA. Na FOMO, nenhuma matéria é publicada sem checagem: o VeritAI analisa as afirmações, reúne evidências e fontes, e um revisor humano toma a decisão final. A análise combina NLI, embeddings e regras auditáveis, sem uso de LLM, com modelo treinado no ASSIN 2. Atuei como desenvolvedor e arquiteto da IA e do sistema. Tecnologias: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker, Kubernetes, TensorFlow e scikit-learn.',
+          linkGroups: [
+            {
+              title: 'Plataforma',
+              links: [
+                hostingLink('hospedagem', 'https://fomo-veritai.github.io/fomo/'),
+                repositoryLink('repositório', 'https://github.com/FOMO-veritAI'),
+              ],
+            },
+            {
+              title: 'IA',
+              links: [
+                logicLink('lógica', 'https://fomo-veritai.github.io/veritai/'),
+                modelLink('modelo', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
+              ],
+            },
           ],
         },
         {
@@ -1135,11 +1158,22 @@ int main(void) {
           logo: 'assets/projetos/web/fomo.webp',
           subLogo: { src: 'assets/projetos/web/VeritAI.webp', alt: 'VeritAI' },
           description:
-            'AI-powered news verification project with human review, built for Challenge 1 (Fake News) of the AI Residency. At FOMO, no story is published without fact-checking: VeritAI analyzes claims, gathers evidence and sources, and a human reviewer makes the final call. The analysis combines NLI, embeddings and auditable rules, with no LLM, using a model trained on ASSIN 2. I worked as the developer and architect of both the AI and the system. Technologies: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker and scikit-learn.',
-          links: [
-            modelLink('model', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
-            hostingLink('hosting', 'https://fomo-veritai.github.io/fomo/'),
-            repositoryLink('repository', 'https://github.com/FOMO-veritAI'),
+            'AI-powered news verification project with human review, built for Challenge 1 (Fake News) of the AI Residency. At FOMO, no story is published without fact-checking: VeritAI analyzes claims, gathers evidence and sources, and a human reviewer makes the final call. The analysis combines NLI, embeddings and auditable rules, with no LLM, using a model trained on ASSIN 2. I worked as the developer and architect of both the AI and the system. Technologies: Python, FastAPI, PyTorch, Transformers, sentence-transformers, SQLite, Angular, Docker, Kubernetes, TensorFlow and scikit-learn.',
+          linkGroups: [
+            {
+              title: 'Platform',
+              links: [
+                hostingLink('hosting', 'https://fomo-veritai.github.io/fomo/'),
+                repositoryLink('repository', 'https://github.com/FOMO-veritAI'),
+              ],
+            },
+            {
+              title: 'AI',
+              links: [
+                logicLink('logic', 'https://fomo-veritai.github.io/veritai/'),
+                modelLink('model', 'https://huggingface.co/mickeias/veritai-relacao-assin2'),
+              ],
+            },
           ],
         },
         {

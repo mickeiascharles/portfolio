@@ -34,17 +34,31 @@
       <ng-template #tituloEmTexto>{{ project.title }}</ng-template>
     </h2>
     <p>{{ project.description }}</p>
-    <div class="project-links">
-      <a
-        *ngFor="let link of project.links"
-        [href]="link.href"
-        target="_blank"
-        class="link-btn"
-        rel="noopener noreferrer"
-      >
-        <i [class]="link.iconClass"></i>
-        <span>{{ link.label }}</span>
-      </a>
+    <div *ngIf="project.links" class="project-links">
+      <ng-container
+        *ngTemplateOutlet="linksTemplate; context: { $implicit: project.links }"
+      ></ng-container>
+    </div>
+    <div *ngFor="let group of project.linkGroups" class="project-link-group">
+      <h3 class="project-link-group-title">{{ group.title }}</h3>
+      <div class="project-links">
+        <ng-container
+          *ngTemplateOutlet="linksTemplate; context: { $implicit: group.links }"
+        ></ng-container>
+      </div>
     </div>
   </article>
+
+  <ng-template #linksTemplate let-links>
+    <a
+      *ngFor="let link of links"
+      [href]="link.href"
+      target="_blank"
+      class="link-btn"
+      rel="noopener noreferrer"
+    >
+      <i [class]="link.iconClass"></i>
+      <span>{{ link.label }}</span>
+    </a>
+  </ng-template>
 </section>
