@@ -16,6 +16,15 @@ export const albumPhotos: AlbumPhoto[] = [
   },
   { file: 'Google', width: 1440, height: 1920, caption: { pt: 'Google', en: 'Google' } },
   {
+    file: 'kit_google_embaixador',
+    width: 1920,
+    height: 1440,
+    caption: {
+      pt: 'Kit de Embaixador Estudantil Google',
+      en: 'Google Student Ambassador kit',
+    },
+  },
+  {
     file: 'IINFRA2',
     width: 1440,
     height: 1920,
