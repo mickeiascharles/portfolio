@@ -1,6 +1,7 @@
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AlbumComponent } from './album';
+import { albumPhotos } from './photos';
 
 describe('AlbumComponent', () => {
   beforeEach(async () => {
@@ -15,13 +16,16 @@ describe('AlbumComponent', () => {
     fixture.detectChanges();
     const pagina = fixture.nativeElement as HTMLElement;
 
-    expect(pagina.querySelectorAll('.photo-item').length).toBe(18);
+    expect(pagina.querySelectorAll('.photo-item').length).toBe(albumPhotos.length);
     expect(pagina.querySelector('figcaption')).toBeNull();
     expect(pagina.querySelector('dialog')).toBeNull();
     expect(pagina.querySelector('.photo-item button')).toBeNull();
     expect(pagina.querySelectorAll('.photo-item:not([inert])').length).toBe(1);
     expect(fixture.componentInstance.fotos.slice(0, 4).map((foto) => foto.file)).toEqual([
-      'Estudando_em_casa', 'Google', 'IINFRA2', 'abertura_aws_eu',
+      'Estudando_em_casa',
+      'Google',
+      'kit_google_embaixador',
+      'IINFRA2',
     ]);
   });
 
@@ -39,11 +43,13 @@ describe('AlbumComponent', () => {
     componente.atualizarIndiceGaleria();
     expect(componente.indiceGaleria()).toBe(1);
 
-    componente.indiceGaleria.set(17);
+    componente.indiceGaleria.set(albumPhotos.length - 1);
     componente.moverGaleria(1);
     expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 0 }));
     componente.indiceGaleria.set(0);
     componente.moverGaleria(-1);
-    expect(rolar.calls.mostRecent().args[0]).toEqual(jasmine.objectContaining({ left: 6800 }));
+    expect(rolar.calls.mostRecent().args[0]).toEqual(
+      jasmine.objectContaining({ left: (albumPhotos.length - 1) * 400 }),
+    );
   });
 });

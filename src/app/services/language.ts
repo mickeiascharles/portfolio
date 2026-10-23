@@ -54,6 +54,7 @@ type RecommendationItem = {
   headline: string;
   context: string;
   text: string;
+  textLang: 'pt-BR' | 'en';
   photo: string;
   photoAlt: string;
 };
@@ -498,6 +499,10 @@ int main(void) {
           alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
         },
         { src: 'assets/sobre_mim/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
+        {
+          src: 'assets/sobre_mim/embaixador_google.png',
+          alt: 'Emblema Embaixador Estudantil Google',
+        },
       ],
     },
     projects: {
@@ -775,6 +780,10 @@ int main(void) {
           src: 'assets/curriculo/certificado_POSCOMP.jpg',
           alt: 'Certificado do POSCOMP 2026 com 63 acertos de 70 questões',
         },
+        {
+          src: 'assets/curriculo/certificado_samsung_ocean.jpg',
+          alt: 'Certificado Introdução à Otimização e Computação Evolucionária do Samsung Ocean',
+        },
       ],
       recommendations: [
         {
@@ -783,6 +792,7 @@ int main(void) {
           headline: 'Coordenador de TI na CAIXA',
           context: 'Recomendação profissional recebida no LinkedIn',
           text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          textLang: 'pt-BR',
           photo: 'assets/curriculo/Douglas_CAIXA.jpg',
           photoAlt: 'Foto de perfil de Douglas Franco',
         },
@@ -793,8 +803,20 @@ int main(void) {
             'Análise de Requisitos e Negócios | Gerenciamento de Projetos | Voluntariado PMI-DF | Product Owner | Scrum Master',
           context: 'Em Julho de 2026, Lorena foi mentora de Mickeias',
           text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          textLang: 'pt-BR',
           photo: 'assets/curriculo/Lorena_INFRA.png',
           photoAlt: 'Foto de perfil de Lorena Viana',
+        },
+        {
+          name: 'Leo Alec Marquez',
+          degree: '1º',
+          headline:
+            'Engenheiro de IA e Engenheiro de Dados | Python, SQL, Cloud (Azure/GCP), PySpark | LLMs, Pipelines de ML & Big Data',
+          context: 'Recomendação profissional recebida no LinkedIn',
+          text: 'O Mickeias e um profissional extremamente proativo. Tive o prazer de trabalhar com ele no mesmo time, onde sempre entregou um otimo trabalho com soluções criativas para diversos temas. Essa postura gerou um impacto muito positivo no nosso projetos. Recomendo ele para qualquer equipe !!',
+          textLang: 'pt-BR',
+          photo: 'assets/curriculo/Leo_Residencia.webp',
+          photoAlt: 'Foto de perfil de Leo Alec Marquez',
         },
       ],
     },
@@ -1148,6 +1170,10 @@ int main(void) {
           alt: 'IBM SkillsBuild - Code Generation and Optimization Using IBM Granite',
         },
         { src: 'assets/sobre_mim/IBM3.png', alt: 'IBM SkillsBuild - Build an AI Agent' },
+        {
+          src: 'assets/sobre_mim/embaixador_google.png',
+          alt: 'Google Student Ambassador badge',
+        },
       ],
     },
     projects: {
@@ -1424,6 +1450,10 @@ int main(void) {
           src: 'assets/curriculo/certificado_POSCOMP.jpg',
           alt: 'POSCOMP 2026 certificate with 63 out of 70 correct answers',
         },
+        {
+          src: 'assets/curriculo/certificado_samsung_ocean.jpg',
+          alt: 'Samsung Ocean Introduction to Optimization and Evolutionary Computing certificate',
+        },
       ],
       recommendations: [
         {
@@ -1432,6 +1462,7 @@ int main(void) {
           headline: 'IT Coordinator at CAIXA',
           context: 'Professional recommendation received on LinkedIn',
           text: 'Mickeias é um profissional dedicado aos estudos e comprometido com o seu desenvolvimento profissional. Certamente auxiliará muito as empresas na implementação de métodos e melhorias na área tecnológica.',
+          textLang: 'pt-BR',
           photo: 'assets/curriculo/Douglas_CAIXA.jpg',
           photoAlt: 'Profile photo of Douglas Franco',
         },
@@ -1442,8 +1473,20 @@ int main(void) {
             'Requirements and Business Analysis | Project Management | PMI-DF Volunteer | Product Owner | Scrum Master',
           context: "In July 2026, Lorena was Mickeias's mentor",
           text: 'Com certeza como gestora eu recomendo o Mickeias. Super ágil em pegar demandas, e muito pró-ativo em entregar coisas que não foram pedidas. Ele nos surpreendeu aqui na Infra, estávamos muito atarefados, fiz o onboarding com ele e iria passar demandas no meio de muitas reuniões, ele viu uma de nossas necessidades e desenvolveu um robo de teste pra gente, maravilhoso!! Muito sucesso em seus próximos passos profissionais.',
+          textLang: 'pt-BR',
           photo: 'assets/curriculo/Lorena_INFRA.png',
           photoAlt: 'Profile photo of Lorena Viana',
+        },
+        {
+          name: 'Leo Alec Marquez',
+          degree: '1st',
+          headline:
+            'AI Engineer and Data Engineer | Python, SQL, Cloud (Azure/GCP), PySpark | LLMs, ML & Big Data Pipelines',
+          context: 'Professional recommendation received on LinkedIn',
+          text: 'Mickeias is an extremely proactive professional. I had the pleasure of working with him on the same team, where he always delivered great work with creative solutions across various topics. That attitude had a very positive impact on our projects. I recommend him for any team!!',
+          textLang: 'en',
+          photo: 'assets/curriculo/Leo_Residencia.webp',
+          photoAlt: 'Profile photo of Leo Alec Marquez',
         },
       ],
     },
