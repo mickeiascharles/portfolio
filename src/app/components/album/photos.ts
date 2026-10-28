@@ -76,6 +76,24 @@ export const albumPhotos: AlbumPhoto[] = [
     caption: { pt: 'BB Digital Week 2025', en: 'BB Digital Week 2025' },
   },
   {
+    file: 'bbddw',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Curtindo a BB Digital Week', en: 'Enjoying BB Digital Week' },
+  },
+  {
+    file: 'gustavo_guanabara',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Com Gustavo Guanabara', en: 'With Gustavo Guanabara' },
+  },
+  {
+    file: 'julio_aws',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Com Julio no estande da AWS', en: 'With Julio at the AWS booth' },
+  },
+  {
     file: 'Hackatruck',
     width: 1440,
     height: 1920,
