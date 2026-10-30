@@ -64,6 +64,15 @@ export const albumPhotos: AlbumPhoto[] = [
     },
   },
   {
+    file: 'aws_coffebreak_halloween',
+    width: 1440,
+    height: 1920,
+    caption: {
+      pt: 'Equipe no coffee break de Halloween da AWS',
+      en: 'Team at the AWS Halloween coffee break',
+    },
+  },
+  {
     file: 'COCOHEADS_2026',
     width: 827,
     height: 711,
