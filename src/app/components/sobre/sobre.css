@@ -206,7 +206,6 @@
   align-items: center;
   gap: 5px;
   font-size: 0.9rem;
-  font-weight: 500;
 }
 
 .contact-item {
@@ -214,7 +213,6 @@
   align-items: center;
   gap: 10px;
   font-family: 'Courier New', Courier, monospace;
-  font-weight: 700;
   color: #000;
   text-decoration: none;
 }
