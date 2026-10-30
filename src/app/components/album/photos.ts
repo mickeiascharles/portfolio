@@ -73,6 +73,15 @@ export const albumPhotos: AlbumPhoto[] = [
     },
   },
   {
+    file: 'aws_halloween',
+    width: 843,
+    height: 632,
+    caption: {
+      pt: 'Participantes do evento de Halloween da AWS',
+      en: 'Attendees at the AWS Halloween event',
+    },
+  },
+  {
     file: 'COCOHEADS_2026',
     width: 827,
     height: 711,
@@ -150,5 +159,14 @@ export const albumPhotos: AlbumPhoto[] = [
     width: 1200,
     height: 1600,
     caption: { pt: 'Colegas da faculdade', en: 'University friends' },
+  },
+  {
+    file: 'turma_ciencia_comp',
+    width: 1920,
+    height: 1440,
+    caption: {
+      pt: 'Turma de Ciência da Computação no laboratório',
+      en: 'Computer Science class in the lab',
+    },
   },
 ];
