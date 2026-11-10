@@ -31,6 +31,24 @@ export const albumPhotos: AlbumPhoto[] = [
     caption: { pt: 'Na INFRA S.A.', en: 'At INFRA S.A.' },
   },
   {
+    file: 'eu_apresentando_grupo_de_estudos_google',
+    width: 1440,
+    height: 1920,
+    caption: {
+      pt: 'Apresentando o grupo de estudos de NotebookLM dos Embaixadores Google',
+      en: 'Presenting the Google Ambassadors NotebookLM study group',
+    },
+  },
+  {
+    file: 'grupo_de_estudos_google',
+    width: 1920,
+    height: 1440,
+    caption: {
+      pt: 'Turma do grupo de estudos de NotebookLM',
+      en: 'NotebookLM study group attendees',
+    },
+  },
+  {
     file: 'abertura_aws_eu',
     width: 1440,
     height: 1920,
@@ -61,6 +79,21 @@ export const albumPhotos: AlbumPhoto[] = [
     caption: {
       pt: 'Participantes da abertura do AWS Student Builder Group',
       en: 'Attendees at the AWS Student Builder Group opening',
+    },
+  },
+  {
+    file: 'kit_aws',
+    width: 1440,
+    height: 1920,
+    caption: { pt: 'Kit do AWS Student Builder Group', en: 'AWS Student Builder Group kit' },
+  },
+  {
+    file: 'eu_com_kit_aws',
+    width: 1920,
+    height: 1440,
+    caption: {
+      pt: 'Vestindo a camiseta do kit AWS',
+      en: 'Wearing the AWS kit T-shirt',
     },
   },
   {
