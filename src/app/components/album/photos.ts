@@ -49,6 +49,15 @@ export const albumPhotos: AlbumPhoto[] = [
     },
   },
   {
+    file: 'encontro_embaixadores_google',
+    width: 1920,
+    height: 1371,
+    caption: {
+      pt: 'Encontro dos Embaixadores Estudantis do Google',
+      en: 'Google Student Ambassadors gathering',
+    },
+  },
+  {
     file: 'abertura_aws_eu',
     width: 1440,
     height: 1920,
