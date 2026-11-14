@@ -503,6 +503,10 @@ int main(void) {
           src: 'assets/sobre_mim/embaixador_google.png',
           alt: 'Emblema Embaixador Estudantil Google',
         },
+        {
+          src: 'assets/sobre_mim/embaixador_google_catalisador.png',
+          alt: 'Emblema Catalisador dos Embaixadores Estudantis do Google',
+        },
       ],
     },
     projects: {
@@ -1173,6 +1177,10 @@ int main(void) {
         {
           src: 'assets/sobre_mim/embaixador_google.png',
           alt: 'Google Student Ambassador badge',
+        },
+        {
+          src: 'assets/sobre_mim/embaixador_google_catalisador.png',
+          alt: 'Google Student Ambassadors Catalyst badge',
         },
       ],
     },
